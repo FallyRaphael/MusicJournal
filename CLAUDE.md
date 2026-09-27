@@ -1,0 +1,30 @@
+# Practice Journal – notes for Claude
+
+Personal piano practice PWA, used on an Android phone (Chrome), offline-first, English UI.
+The user decides product/UX questions; propose options with trade-offs before larger changes.
+
+## Build plan
+
+1. Foundation (done): setup, PWA, database, themes, tab navigation
+2. Pieces: list/filter/sort, add with catalog suggestions, piece page, statuses & periods, shelving
+3. Sessions: technique items, templates, planning, timer, quick log, finish summary, log afterwards
+4. Dashboard & cycles: weekly target/streak, cycles, goals with automatic progress, end review
+5. Backup: export, import (replace or merge) with preview, undo, backup reminder
+6. Polish & deploy: tempo chart, details, hosting (host not chosen yet – ask)
+
+UX direction: bottom tabs (Home / Pieces / Cycle / More) in a light, neutral look with a blue
+accent; the session screen is a full-screen "stage" mode showing one item at a time with a big
+timer, prev/pause/next, method buttons, a BPM stepper and an "All items" overview.
+
+## Conventions
+
+- `src/domain/` is pure TypeScript: no React, Dexie or browser APIs. Put logic there and test it.
+- Never store derived values (durations, totals, streaks, goal progress); compute them.
+- Every record has `id` (UUID via `newId()`), `createdAt`, `updatedAt`. Bump `updatedAt` on
+  every change and delete via `deleteRecord()` (writes a tombstone) – the backup merge relies
+  on both.
+- Timer: persist start/stop timestamps as segments; elapsed time is always calculated.
+- Schema changes: add a new `this.version(n)` in `src/db/database.ts`, never edit old versions.
+- Colours only via the CSS variables in `src/styles/tokens.css`; touch targets ≥ 44px.
+- Screens use `Screen`/`PageHeader` from `src/ui/Screen.tsx`; icons from `lucide-react`.
+- Before finishing a change: `npx tsc -b`, `npm test`, `npm run lint`, `npx prettier --check .`.

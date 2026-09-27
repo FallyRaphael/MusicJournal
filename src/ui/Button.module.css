@@ -1,0 +1,84 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: var(--tap-target);
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--text-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.15s,
+    opacity 0.15s,
+    transform 0.1s;
+}
+
+.button:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.button:disabled {
+  opacity: 0.45;
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.secondary {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.soft {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--accent);
+}
+
+.lg {
+  min-height: 56px;
+  border-radius: 14px;
+  font-size: var(--text-lg);
+}
+
+.block {
+  width: 100%;
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-target);
+  height: var(--tap-target);
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text);
+  transition: background-color 0.15s;
+}
+
+.iconButton:not(:disabled):active {
+  background: var(--surface-2);
+}
+
+.iconButton:disabled {
+  opacity: 0.4;
+}
+
+.outline {
+  border-color: var(--border-strong);
+  background: var(--surface);
+}

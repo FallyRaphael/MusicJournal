@@ -1,0 +1,51 @@
+.group {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 4px;
+  margin: 0;
+  padding: 4px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+}
+
+.option {
+  position: relative;
+  display: flex;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.label {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: var(--tap-target);
+  border-radius: 9px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+
+.input:checked + .label {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+}
+
+.input:focus-visible + .label {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

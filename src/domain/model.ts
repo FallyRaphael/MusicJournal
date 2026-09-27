@@ -1,0 +1,194 @@
+/**
+ * The app's data model. Every stored record carries an id and timestamps so that a
+ * backup can be merged into existing data ("newer version wins").
+ *
+ * Rule: anything that can be calculated (durations, totals, streaks, goal progress)
+ * is calculated from these records and never stored.
+ */
+
+import type { DateKey } from './dates';
+
+export type Id = string;
+
+/** Milliseconds since the Unix epoch (`Date.now()`). */
+export type Timestamp = number;
+
+export interface BaseRecord {
+  id: Id;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
+}
+
+/* ---------- Repertoire ---------- */
+
+export type PieceStatus = 'upNext' | 'learning' | 'maintaining' | 'shelved';
+
+/** How far a piece got when it was shelved. */
+export type ShelveOutcome = 'learned' | 'partlyLearned' | 'dropped';
+
+/** Personal difficulty, as it feels to the player. */
+export type Feel = 'easy' | 'medium' | 'hard';
+
+/** One entry of a piece's status history. A period lasts until the next change. */
+export interface StatusChange {
+  status: PieceStatus;
+  at: Timestamp;
+  /** Only set when the status is `shelved`. */
+  outcome?: ShelveOutcome;
+}
+
+export interface Piece extends BaseRecord {
+  title: string;
+  composer: string;
+  /** e.g. "Op. 9 No. 2", "BWV 846". */
+  catalogNumber?: string;
+  /** Reference to the built-in catalog entry the piece was created from, if any. */
+  catalogId?: string;
+  tags: string[];
+  /** Current status; always equal to the last entry of `statusHistory`. */
+  status: PieceStatus;
+  statusHistory: StatusChange[];
+  feel?: Feel;
+  targetDate?: DateKey;
+  notes: string;
+  /** The current "focus next time" note. */
+  focusNote: string;
+}
+
+export interface TechniqueItem extends BaseRecord {
+  name: string;
+  /** e.g. "Scales", "Arpeggios", "Exercises". */
+  category: string;
+  notes: string;
+  focusNote: string;
+  archived: boolean;
+}
+
+/* ---------- Sessions ---------- */
+
+export interface SectionType extends BaseRecord {
+  name: string;
+  order: number;
+  archived: boolean;
+}
+
+/** What a session item or goal is about. */
+export type ItemRef =
+  | { kind: 'piece'; pieceId: Id }
+  | { kind: 'technique'; techniqueId: Id }
+  | { kind: 'free'; label: string };
+
+export interface TemplateItem {
+  id: Id;
+  ref: ItemRef;
+  budgetMinutes?: number;
+}
+
+export interface TemplateSection {
+  id: Id;
+  sectionTypeId: Id;
+  items: TemplateItem[];
+}
+
+export interface SessionTemplate extends BaseRecord {
+  name: string;
+  sections: TemplateSection[];
+}
+
+/** A stretch of time an item's timer was running. `end` is null while it runs. */
+export interface TimeSegment {
+  start: Timestamp;
+  end: Timestamp | null;
+}
+
+export interface PracticeEntry {
+  id: Id;
+  at: Timestamp;
+  method: string;
+  bpm?: number;
+  note: string;
+}
+
+export interface SessionItem {
+  id: Id;
+  ref: ItemRef;
+  budgetMinutes?: number;
+  segments: TimeSegment[];
+  /** Manual correction in seconds, added to the timed segments (may be negative). */
+  adjustSeconds: number;
+  entries: PracticeEntry[];
+  note: string;
+  focusNext: string;
+}
+
+export interface SessionSection {
+  id: Id;
+  sectionTypeId: Id;
+  items: SessionItem[];
+}
+
+export type SessionStatus = 'planned' | 'running' | 'finished';
+
+export interface Session extends BaseRecord {
+  /** The day the session counts for. */
+  date: DateKey;
+  status: SessionStatus;
+  templateId?: Id;
+  sections: SessionSection[];
+  note: string;
+  startedAt?: Timestamp;
+  finishedAt?: Timestamp;
+  /** Search index only: ids of all pieces in `sections`, kept in sync on every save. */
+  pieceIds: Id[];
+  /** Search index only: ids of all technique items in `sections`. */
+  techniqueIds: Id[];
+}
+
+/* ---------- Cycles ---------- */
+
+export type GoalKind = 'check' | 'bpm' | 'time';
+
+export interface Goal {
+  id: Id;
+  ref: ItemRef;
+  kind: GoalKind;
+  /** Optional wording, e.g. "All major keys, 2 octaves". */
+  label?: string;
+  fromBpm?: number;
+  toBpm?: number;
+  targetMinutes?: number;
+  /** Manually ticked off (used by `check` goals). */
+  done: boolean;
+}
+
+export interface Cycle extends BaseRecord {
+  name: string;
+  startDate: DateKey;
+  lengthDays: number;
+  goals: Goal[];
+  reflection: string;
+  closedAt?: Timestamp;
+}
+
+/* ---------- Settings & bookkeeping ---------- */
+
+export const SETTINGS_ID = 'settings';
+
+export interface Settings extends BaseRecord {
+  weeklyTarget: number;
+  /** Practice methods offered as quick-log buttons, in display order. */
+  methods: string[];
+  lastBackupAt?: Timestamp;
+}
+
+/** Remembers a deletion, so merging an older backup doesn't bring the record back. */
+export interface Tombstone {
+  /** The id of the deleted record. */
+  id: Id;
+  table: SyncedTable;
+  deletedAt: Timestamp;
+}
+
+/** The tables that hold user data and take part in backups. */
+export type SyncedTable =
+  'pieces' | 'techniqueItems' | 'sectionTypes' | 'templates' | 'sessions' | 'cycles' | 'settings';

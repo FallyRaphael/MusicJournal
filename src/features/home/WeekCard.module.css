@@ -1,0 +1,74 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.count {
+  font-size: 34px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.target {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.days {
+  display: grid;
+  flex-grow: 1;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-2);
+}
+
+.practiced {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.today {
+  border: 2px solid var(--accent);
+  background: var(--surface);
+}
+
+.letter {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.todayLetter {
+  font-weight: 700;
+  color: var(--accent);
+}

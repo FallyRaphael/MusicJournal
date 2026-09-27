@@ -1,0 +1,22 @@
+.toast {
+  position: fixed;
+  right: 12px;
+  bottom: calc(var(--tabbar-height) + env(safe-area-inset-bottom) + 12px);
+  left: 12px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 536px;
+  margin: 0 auto;
+  padding: 8px 8px 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.14);
+}
+
+.message {
+  flex-grow: 1;
+  font-weight: 600;
+}

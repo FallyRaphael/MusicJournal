@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Practice Journal</title>
+    <meta
+      name="description"
+      content="Log piano practice, manage your repertoire and plan practice cycles."
+    />
+    <meta name="theme-color" content="#F4F5F2" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
+    <script>
+      // Apply a manually chosen theme before the first paint, so there is no light/dark flash.
+      (function () {
+        try {
+          var theme = localStorage.getItem('pj-theme');
+          if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

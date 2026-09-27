@@ -1,0 +1,86 @@
+/*
+ * Design tokens. Components use only these variables for colours, so light and dark
+ * mode are a matter of swapping the values below.
+ *
+ * Theme selection: the system setting by default, or a manual choice stored as
+ * <html data-theme="light|dark">.
+ */
+
+:root {
+  --font-sans: 'Figtree Variable', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 15px;
+  --text-lg: 17px;
+  --text-xl: 20px;
+  --text-2xl: 26px;
+  --text-3xl: 30px;
+
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --page-gutter: 20px;
+  --tabbar-height: 72px;
+  --tap-target: 44px;
+
+  color-scheme: light;
+  --bg: #f4f5f2;
+  --surface: #ffffff;
+  --surface-2: #eceeea;
+  --border: #e2e4e0;
+  --border-strong: #d5d9d3;
+  --text: #1b1f24;
+  --text-muted: #5a626c;
+  --accent: #2b59a3;
+  --accent-strong: #1e4580;
+  --accent-soft: #e6edf8;
+  --on-accent: #ffffff;
+  --focus: #c2621d;
+  --focus-soft: #fbf1e8;
+  --focus-text: #6e3510;
+  --danger: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #111418;
+    --surface: #1a1f26;
+    --surface-2: #262d36;
+    --border: #2c343e;
+    --border-strong: #343d48;
+    --text: #e8ecf1;
+    --text-muted: #9aa4b0;
+    --accent: #7fa7e8;
+    --accent-strong: #b9d0f5;
+    --accent-soft: #1f3354;
+    --on-accent: #0b1830;
+    --focus: #e08a4a;
+    --focus-soft: #2a1e14;
+    --focus-text: #f2c9a0;
+    --danger: #f2b8b5;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #111418;
+  --surface: #1a1f26;
+  --surface-2: #262d36;
+  --border: #2c343e;
+  --border-strong: #343d48;
+  --text: #e8ecf1;
+  --text-muted: #9aa4b0;
+  --accent: #7fa7e8;
+  --accent-strong: #b9d0f5;
+  --accent-soft: #1f3354;
+  --on-accent: #0b1830;
+  --focus: #e08a4a;
+  --focus-soft: #2a1e14;
+  --focus-text: #f2c9a0;
+  --danger: #f2b8b5;
+}

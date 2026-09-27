@@ -1,0 +1,15 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 100dvh;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: calc(8px + env(safe-area-inset-top)) var(--page-gutter)
+    calc(24px + env(safe-area-inset-bottom));
+}
+
+.header {
+  display: flex;
+  margin-left: -12px;
+}

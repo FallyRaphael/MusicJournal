@@ -1,0 +1,18 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.value {
+  min-width: 2.5ch;
+  text-align: center;
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.unit {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+}

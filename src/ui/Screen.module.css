@@ -1,0 +1,75 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: calc(28px + env(safe-area-inset-top)) var(--page-gutter) 24px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.eyebrow {
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.title {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+  margin-right: -10px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.emptyIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.emptyTitle {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.emptyText {
+  max-width: 34ch;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}

@@ -1,0 +1,55 @@
+.sectionTitle {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rowText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rowLabel {
+  font-weight: 600;
+}
+
+.rowHint {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.infoRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: var(--text-sm);
+}
+
+.infoRow svg {
+  flex-shrink: 0;
+}
+
+.okIcon {
+  color: var(--accent);
+}
+
+.mutedIcon {
+  color: var(--text-muted);
+}
+
+.footer {
+  padding-top: 8px;
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
