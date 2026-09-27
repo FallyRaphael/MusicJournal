@@ -1,0 +1,4629 @@
+{
+  "version": 1,
+  "composers": [
+    {
+      "id": "bach",
+      "name": "Johann Sebastian Bach",
+      "years": "1685–1750"
+    },
+    {
+      "id": "beethoven",
+      "name": "Ludwig van Beethoven",
+      "years": "1770–1827"
+    },
+    {
+      "id": "chopin",
+      "name": "Frédéric Chopin",
+      "years": "1810–1849"
+    },
+    {
+      "id": "mozart",
+      "name": "Wolfgang Amadeus Mozart",
+      "years": "1756–1791"
+    },
+    {
+      "id": "debussy",
+      "name": "Claude Debussy",
+      "years": "1862–1918"
+    },
+    {
+      "id": "schumann",
+      "name": "Robert Schumann",
+      "years": "1810–1856"
+    },
+    {
+      "id": "schubert",
+      "name": "Franz Schubert",
+      "years": "1797–1828"
+    },
+    {
+      "id": "liszt",
+      "name": "Franz Liszt",
+      "years": "1811–1886"
+    },
+    {
+      "id": "satie",
+      "name": "Erik Satie",
+      "years": "1866–1925"
+    },
+    {
+      "id": "rachmaninoff",
+      "name": "Sergei Rachmaninoff",
+      "years": "1873–1943"
+    },
+    {
+      "id": "brahms",
+      "name": "Johannes Brahms",
+      "years": "1833–1897"
+    },
+    {
+      "id": "mendelssohn",
+      "name": "Felix Mendelssohn",
+      "years": "1809–1847"
+    },
+    {
+      "id": "grieg",
+      "name": "Edvard Grieg",
+      "years": "1843–1907"
+    },
+    {
+      "id": "tchaikovsky",
+      "name": "Pyotr Ilyich Tchaikovsky",
+      "years": "1840–1893"
+    },
+    {
+      "id": "haydn",
+      "name": "Joseph Haydn",
+      "years": "1732–1809"
+    },
+    {
+      "id": "ravel",
+      "name": "Maurice Ravel",
+      "years": "1875–1937"
+    },
+    {
+      "id": "scriabin",
+      "name": "Alexander Scriabin",
+      "years": "1872–1915"
+    },
+    {
+      "id": "clementi",
+      "name": "Muzio Clementi",
+      "years": "1752–1832"
+    },
+    {
+      "id": "kuhlau",
+      "name": "Friedrich Kuhlau",
+      "years": "1786–1832"
+    },
+    {
+      "id": "diabelli",
+      "name": "Anton Diabelli",
+      "years": "1781–1858"
+    },
+    {
+      "id": "burgmuller",
+      "name": "Friedrich Burgmüller",
+      "years": "1806–1874"
+    },
+    {
+      "id": "czerny",
+      "name": "Carl Czerny",
+      "years": "1791–1857"
+    },
+    {
+      "id": "handel",
+      "name": "George Frideric Handel",
+      "years": "1685–1759"
+    },
+    {
+      "id": "scarlatti",
+      "name": "Domenico Scarlatti",
+      "years": "1685–1757"
+    },
+    {
+      "id": "couperin",
+      "name": "François Couperin",
+      "years": "1668–1733"
+    },
+    {
+      "id": "rameau",
+      "name": "Jean-Philippe Rameau",
+      "years": "1683–1764"
+    },
+    {
+      "id": "petzold",
+      "name": "Christian Petzold",
+      "years": "1677–1733"
+    },
+    {
+      "id": "clara-schumann",
+      "name": "Clara Schumann",
+      "years": "1819–1896"
+    },
+    {
+      "id": "bartok",
+      "name": "Béla Bartók",
+      "years": "1881–1945"
+    },
+    {
+      "id": "prokofiev",
+      "name": "Sergei Prokofiev",
+      "years": "1891–1953"
+    },
+    {
+      "id": "shostakovich",
+      "name": "Dmitri Shostakovich",
+      "years": "1906–1975"
+    },
+    {
+      "id": "kabalevsky",
+      "name": "Dmitry Kabalevsky",
+      "years": "1904–1987"
+    },
+    {
+      "id": "khachaturian",
+      "name": "Aram Khachaturian",
+      "years": "1903–1978"
+    },
+    {
+      "id": "mussorgsky",
+      "name": "Modest Mussorgsky",
+      "years": "1839–1881"
+    },
+    {
+      "id": "albeniz",
+      "name": "Isaac Albéniz",
+      "years": "1860–1909"
+    },
+    {
+      "id": "granados",
+      "name": "Enrique Granados",
+      "years": "1867–1916"
+    },
+    {
+      "id": "dvorak",
+      "name": "Antonín Dvořák",
+      "years": "1841–1904"
+    },
+    {
+      "id": "weber",
+      "name": "Carl Maria von Weber",
+      "years": "1786–1826"
+    },
+    {
+      "id": "joplin",
+      "name": "Scott Joplin",
+      "years": "1868–1917"
+    },
+    {
+      "id": "gershwin",
+      "name": "George Gershwin",
+      "years": "1898–1937"
+    },
+    {
+      "id": "glass",
+      "name": "Philip Glass",
+      "years": "b. 1937"
+    },
+    {
+      "id": "part",
+      "name": "Arvo Pärt",
+      "years": "b. 1935"
+    },
+    {
+      "id": "sakamoto",
+      "name": "Ryuichi Sakamoto",
+      "years": "1952–2023"
+    },
+    {
+      "id": "einaudi",
+      "name": "Ludovico Einaudi",
+      "years": "b. 1955"
+    },
+    {
+      "id": "tiersen",
+      "name": "Yann Tiersen",
+      "years": "b. 1970"
+    },
+    {
+      "id": "yiruma",
+      "name": "Yiruma",
+      "years": "b. 1978"
+    },
+    {
+      "id": "cpe-bach",
+      "name": "Carl Philipp Emanuel Bach",
+      "years": "1714–1788"
+    },
+    {
+      "id": "telemann",
+      "name": "Georg Philipp Telemann",
+      "years": "1681–1767"
+    },
+    {
+      "id": "purcell",
+      "name": "Henry Purcell",
+      "years": "1659–1695"
+    },
+    {
+      "id": "byrd",
+      "name": "William Byrd",
+      "years": "1543–1623"
+    },
+    {
+      "id": "pachelbel",
+      "name": "Johann Pachelbel",
+      "years": "1653–1706"
+    },
+    {
+      "id": "buxtehude",
+      "name": "Dieterich Buxtehude",
+      "years": "c. 1637–1707"
+    },
+    {
+      "id": "soler",
+      "name": "Antonio Soler",
+      "years": "1729–1783"
+    },
+    {
+      "id": "hummel",
+      "name": "Johann Nepomuk Hummel",
+      "years": "1778–1837"
+    },
+    {
+      "id": "field",
+      "name": "John Field",
+      "years": "1782–1837"
+    },
+    {
+      "id": "hensel",
+      "name": "Fanny Mendelssohn Hensel",
+      "years": "1805–1847"
+    },
+    {
+      "id": "heller",
+      "name": "Stephen Heller",
+      "years": "1813–1888"
+    },
+    {
+      "id": "gurlitt",
+      "name": "Cornelius Gurlitt",
+      "years": "1820–1901"
+    },
+    {
+      "id": "franck",
+      "name": "César Franck",
+      "years": "1822–1890"
+    },
+    {
+      "id": "smetana",
+      "name": "Bedřich Smetana",
+      "years": "1824–1884"
+    },
+    {
+      "id": "gottschalk",
+      "name": "Louis Moreau Gottschalk",
+      "years": "1829–1869"
+    },
+    {
+      "id": "saint-saens",
+      "name": "Camille Saint-Saëns",
+      "years": "1835–1921"
+    },
+    {
+      "id": "balakirev",
+      "name": "Mily Balakirev",
+      "years": "1837–1910"
+    },
+    {
+      "id": "bizet",
+      "name": "Georges Bizet",
+      "years": "1838–1875"
+    },
+    {
+      "id": "chabrier",
+      "name": "Emmanuel Chabrier",
+      "years": "1841–1894"
+    },
+    {
+      "id": "faure",
+      "name": "Gabriel Fauré",
+      "years": "1845–1924"
+    },
+    {
+      "id": "moszkowski",
+      "name": "Moritz Moszkowski",
+      "years": "1854–1925"
+    },
+    {
+      "id": "janacek",
+      "name": "Leoš Janáček",
+      "years": "1854–1928"
+    },
+    {
+      "id": "lyadov",
+      "name": "Anatoly Lyadov",
+      "years": "1855–1914"
+    },
+    {
+      "id": "chaminade",
+      "name": "Cécile Chaminade",
+      "years": "1857–1944"
+    },
+    {
+      "id": "bonis",
+      "name": "Mel Bonis",
+      "years": "1858–1937"
+    },
+    {
+      "id": "elgar",
+      "name": "Edward Elgar",
+      "years": "1857–1934"
+    },
+    {
+      "id": "beach",
+      "name": "Amy Beach",
+      "years": "1867–1944"
+    },
+    {
+      "id": "medtner",
+      "name": "Nikolai Medtner",
+      "years": "1880–1951"
+    },
+    {
+      "id": "szymanowski",
+      "name": "Karol Szymanowski",
+      "years": "1882–1937"
+    },
+    {
+      "id": "villa-lobos",
+      "name": "Heitor Villa-Lobos",
+      "years": "1887–1959"
+    },
+    {
+      "id": "price",
+      "name": "Florence Price",
+      "years": "1887–1953"
+    },
+    {
+      "id": "mompou",
+      "name": "Federico Mompou",
+      "years": "1893–1987"
+    },
+    {
+      "id": "poulenc",
+      "name": "Francis Poulenc",
+      "years": "1899–1963"
+    },
+    {
+      "id": "copland",
+      "name": "Aaron Copland",
+      "years": "1900–1990"
+    },
+    {
+      "id": "messiaen",
+      "name": "Olivier Messiaen",
+      "years": "1908–1992"
+    },
+    {
+      "id": "barber",
+      "name": "Samuel Barber",
+      "years": "1910–1981"
+    },
+    {
+      "id": "ginastera",
+      "name": "Alberto Ginastera",
+      "years": "1916–1983"
+    },
+    {
+      "id": "bernstein",
+      "name": "Leonard Bernstein",
+      "years": "1918–1990"
+    },
+    {
+      "id": "piazzolla",
+      "name": "Astor Piazzolla",
+      "years": "1921–1992"
+    },
+    {
+      "id": "ligeti",
+      "name": "György Ligeti",
+      "years": "1923–2006"
+    },
+    {
+      "id": "evans",
+      "name": "Bill Evans",
+      "years": "1929–1980"
+    },
+    {
+      "id": "kapustin",
+      "name": "Nikolai Kapustin",
+      "years": "1937–2020"
+    },
+    {
+      "id": "jarrett",
+      "name": "Keith Jarrett",
+      "years": "b. 1945"
+    },
+    {
+      "id": "hisaishi",
+      "name": "Joe Hisaishi",
+      "years": "b. 1950"
+    },
+    {
+      "id": "richter",
+      "name": "Max Richter",
+      "years": "b. 1966"
+    },
+    {
+      "id": "frahm",
+      "name": "Nils Frahm",
+      "years": "b. 1982"
+    },
+    {
+      "id": "arnalds",
+      "name": "Ólafur Arnalds",
+      "years": "b. 1986"
+    },
+    {
+      "id": "traditional",
+      "name": "Traditional",
+      "years": ""
+    }
+  ],
+  "works": [
+    {
+      "id": "bach/bwv-846",
+      "composer": "bach",
+      "title": "Prelude and Fugue in C major (WTC I)",
+      "catalog": "BWV 846",
+      "aliases": ["Well-Tempered Clavier", "Prelude in C major"]
+    },
+    {
+      "id": "bach/bwv-772",
+      "composer": "bach",
+      "title": "Invention No. 1 in C major",
+      "catalog": "BWV 772",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-971",
+      "composer": "bach",
+      "title": "Italian Concerto in F major",
+      "catalog": "BWV 971"
+    },
+    {
+      "id": "bach/bwv-988",
+      "composer": "bach",
+      "title": "Goldberg Variations",
+      "catalog": "BWV 988"
+    },
+    {
+      "id": "bach/bwv-999",
+      "composer": "bach",
+      "title": "Little Prelude in C minor",
+      "catalog": "BWV 999",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-903",
+      "composer": "bach",
+      "title": "Chromatic Fantasia and Fugue in D minor",
+      "catalog": "BWV 903"
+    },
+    {
+      "id": "bach/bwv-847",
+      "composer": "bach",
+      "title": "Prelude and Fugue in C minor (WTC I)",
+      "catalog": "BWV 847",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-848",
+      "composer": "bach",
+      "title": "Prelude and Fugue in C-sharp major (WTC I)",
+      "catalog": "BWV 848",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-849",
+      "composer": "bach",
+      "title": "Prelude and Fugue in C-sharp minor (WTC I)",
+      "catalog": "BWV 849",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-850",
+      "composer": "bach",
+      "title": "Prelude and Fugue in D major (WTC I)",
+      "catalog": "BWV 850",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-851",
+      "composer": "bach",
+      "title": "Prelude and Fugue in D minor (WTC I)",
+      "catalog": "BWV 851",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-852",
+      "composer": "bach",
+      "title": "Prelude and Fugue in E-flat major (WTC I)",
+      "catalog": "BWV 852",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-853",
+      "composer": "bach",
+      "title": "Prelude and Fugue in E-flat minor (WTC I)",
+      "catalog": "BWV 853",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-854",
+      "composer": "bach",
+      "title": "Prelude and Fugue in E major (WTC I)",
+      "catalog": "BWV 854",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-855",
+      "composer": "bach",
+      "title": "Prelude and Fugue in E minor (WTC I)",
+      "catalog": "BWV 855",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-856",
+      "composer": "bach",
+      "title": "Prelude and Fugue in F major (WTC I)",
+      "catalog": "BWV 856",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-857",
+      "composer": "bach",
+      "title": "Prelude and Fugue in F minor (WTC I)",
+      "catalog": "BWV 857",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-858",
+      "composer": "bach",
+      "title": "Prelude and Fugue in F-sharp major (WTC I)",
+      "catalog": "BWV 858",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-859",
+      "composer": "bach",
+      "title": "Prelude and Fugue in F-sharp minor (WTC I)",
+      "catalog": "BWV 859",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-860",
+      "composer": "bach",
+      "title": "Prelude and Fugue in G major (WTC I)",
+      "catalog": "BWV 860",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-861",
+      "composer": "bach",
+      "title": "Prelude and Fugue in G minor (WTC I)",
+      "catalog": "BWV 861",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-862",
+      "composer": "bach",
+      "title": "Prelude and Fugue in A-flat major (WTC I)",
+      "catalog": "BWV 862",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-863",
+      "composer": "bach",
+      "title": "Prelude and Fugue in G-sharp minor (WTC I)",
+      "catalog": "BWV 863",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-864",
+      "composer": "bach",
+      "title": "Prelude and Fugue in A major (WTC I)",
+      "catalog": "BWV 864",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-865",
+      "composer": "bach",
+      "title": "Prelude and Fugue in A minor (WTC I)",
+      "catalog": "BWV 865",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-866",
+      "composer": "bach",
+      "title": "Prelude and Fugue in B-flat major (WTC I)",
+      "catalog": "BWV 866",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-867",
+      "composer": "bach",
+      "title": "Prelude and Fugue in B-flat minor (WTC I)",
+      "catalog": "BWV 867",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-868",
+      "composer": "bach",
+      "title": "Prelude and Fugue in B major (WTC I)",
+      "catalog": "BWV 868",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-869",
+      "composer": "bach",
+      "title": "Prelude and Fugue in B minor (WTC I)",
+      "catalog": "BWV 869",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-870",
+      "composer": "bach",
+      "title": "Prelude and Fugue in C major (WTC II)",
+      "catalog": "BWV 870",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-871",
+      "composer": "bach",
+      "title": "Prelude and Fugue in C minor (WTC II)",
+      "catalog": "BWV 871",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-872",
+      "composer": "bach",
+      "title": "Prelude and Fugue in C-sharp major (WTC II)",
+      "catalog": "BWV 872",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-873",
+      "composer": "bach",
+      "title": "Prelude and Fugue in C-sharp minor (WTC II)",
+      "catalog": "BWV 873",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-874",
+      "composer": "bach",
+      "title": "Prelude and Fugue in D major (WTC II)",
+      "catalog": "BWV 874",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-875",
+      "composer": "bach",
+      "title": "Prelude and Fugue in D minor (WTC II)",
+      "catalog": "BWV 875",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-876",
+      "composer": "bach",
+      "title": "Prelude and Fugue in E-flat major (WTC II)",
+      "catalog": "BWV 876",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-877",
+      "composer": "bach",
+      "title": "Prelude and Fugue in D-sharp minor (WTC II)",
+      "catalog": "BWV 877",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-878",
+      "composer": "bach",
+      "title": "Prelude and Fugue in E major (WTC II)",
+      "catalog": "BWV 878",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-879",
+      "composer": "bach",
+      "title": "Prelude and Fugue in E minor (WTC II)",
+      "catalog": "BWV 879",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-880",
+      "composer": "bach",
+      "title": "Prelude and Fugue in F major (WTC II)",
+      "catalog": "BWV 880",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-881",
+      "composer": "bach",
+      "title": "Prelude and Fugue in F minor (WTC II)",
+      "catalog": "BWV 881",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-882",
+      "composer": "bach",
+      "title": "Prelude and Fugue in F-sharp major (WTC II)",
+      "catalog": "BWV 882",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-883",
+      "composer": "bach",
+      "title": "Prelude and Fugue in F-sharp minor (WTC II)",
+      "catalog": "BWV 883",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-884",
+      "composer": "bach",
+      "title": "Prelude and Fugue in G major (WTC II)",
+      "catalog": "BWV 884",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-885",
+      "composer": "bach",
+      "title": "Prelude and Fugue in G minor (WTC II)",
+      "catalog": "BWV 885",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-886",
+      "composer": "bach",
+      "title": "Prelude and Fugue in A-flat major (WTC II)",
+      "catalog": "BWV 886",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-887",
+      "composer": "bach",
+      "title": "Prelude and Fugue in G-sharp minor (WTC II)",
+      "catalog": "BWV 887",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-888",
+      "composer": "bach",
+      "title": "Prelude and Fugue in A major (WTC II)",
+      "catalog": "BWV 888",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-889",
+      "composer": "bach",
+      "title": "Prelude and Fugue in A minor (WTC II)",
+      "catalog": "BWV 889",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-890",
+      "composer": "bach",
+      "title": "Prelude and Fugue in B-flat major (WTC II)",
+      "catalog": "BWV 890",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-891",
+      "composer": "bach",
+      "title": "Prelude and Fugue in B-flat minor (WTC II)",
+      "catalog": "BWV 891",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-892",
+      "composer": "bach",
+      "title": "Prelude and Fugue in B major (WTC II)",
+      "catalog": "BWV 892",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-893",
+      "composer": "bach",
+      "title": "Prelude and Fugue in B minor (WTC II)",
+      "catalog": "BWV 893",
+      "aliases": ["Well-Tempered Clavier"]
+    },
+    {
+      "id": "bach/bwv-773",
+      "composer": "bach",
+      "title": "Invention No. 2 in C minor",
+      "catalog": "BWV 773",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-774",
+      "composer": "bach",
+      "title": "Invention No. 3 in D major",
+      "catalog": "BWV 774",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-775",
+      "composer": "bach",
+      "title": "Invention No. 4 in D minor",
+      "catalog": "BWV 775",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-776",
+      "composer": "bach",
+      "title": "Invention No. 5 in E-flat major",
+      "catalog": "BWV 776",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-777",
+      "composer": "bach",
+      "title": "Invention No. 6 in E major",
+      "catalog": "BWV 777",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-778",
+      "composer": "bach",
+      "title": "Invention No. 7 in E minor",
+      "catalog": "BWV 778",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-779",
+      "composer": "bach",
+      "title": "Invention No. 8 in F major",
+      "catalog": "BWV 779",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-780",
+      "composer": "bach",
+      "title": "Invention No. 9 in F minor",
+      "catalog": "BWV 780",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-781",
+      "composer": "bach",
+      "title": "Invention No. 10 in G major",
+      "catalog": "BWV 781",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-782",
+      "composer": "bach",
+      "title": "Invention No. 11 in G minor",
+      "catalog": "BWV 782",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-783",
+      "composer": "bach",
+      "title": "Invention No. 12 in A major",
+      "catalog": "BWV 783",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-784",
+      "composer": "bach",
+      "title": "Invention No. 13 in A minor",
+      "catalog": "BWV 784",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-785",
+      "composer": "bach",
+      "title": "Invention No. 14 in B-flat major",
+      "catalog": "BWV 785",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-786",
+      "composer": "bach",
+      "title": "Invention No. 15 in B minor",
+      "catalog": "BWV 786",
+      "aliases": ["Two-Part Inventions"]
+    },
+    {
+      "id": "bach/bwv-787",
+      "composer": "bach",
+      "title": "Sinfonia No. 1 in C major",
+      "catalog": "BWV 787",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-788",
+      "composer": "bach",
+      "title": "Sinfonia No. 2 in C minor",
+      "catalog": "BWV 788",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-789",
+      "composer": "bach",
+      "title": "Sinfonia No. 3 in D major",
+      "catalog": "BWV 789",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-790",
+      "composer": "bach",
+      "title": "Sinfonia No. 4 in D minor",
+      "catalog": "BWV 790",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-791",
+      "composer": "bach",
+      "title": "Sinfonia No. 5 in E-flat major",
+      "catalog": "BWV 791",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-792",
+      "composer": "bach",
+      "title": "Sinfonia No. 6 in E major",
+      "catalog": "BWV 792",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-793",
+      "composer": "bach",
+      "title": "Sinfonia No. 7 in E minor",
+      "catalog": "BWV 793",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-794",
+      "composer": "bach",
+      "title": "Sinfonia No. 8 in F major",
+      "catalog": "BWV 794",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-795",
+      "composer": "bach",
+      "title": "Sinfonia No. 9 in F minor",
+      "catalog": "BWV 795",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-796",
+      "composer": "bach",
+      "title": "Sinfonia No. 10 in G major",
+      "catalog": "BWV 796",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-797",
+      "composer": "bach",
+      "title": "Sinfonia No. 11 in G minor",
+      "catalog": "BWV 797",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-798",
+      "composer": "bach",
+      "title": "Sinfonia No. 12 in A major",
+      "catalog": "BWV 798",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-799",
+      "composer": "bach",
+      "title": "Sinfonia No. 13 in A minor",
+      "catalog": "BWV 799",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-800",
+      "composer": "bach",
+      "title": "Sinfonia No. 14 in B-flat major",
+      "catalog": "BWV 800",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-801",
+      "composer": "bach",
+      "title": "Sinfonia No. 15 in B minor",
+      "catalog": "BWV 801",
+      "aliases": ["Three-Part Inventions", "Sinfonias"]
+    },
+    {
+      "id": "bach/bwv-812",
+      "composer": "bach",
+      "title": "French Suite No. 1 in D minor",
+      "catalog": "BWV 812"
+    },
+    {
+      "id": "bach/bwv-813",
+      "composer": "bach",
+      "title": "French Suite No. 2 in C minor",
+      "catalog": "BWV 813"
+    },
+    {
+      "id": "bach/bwv-814",
+      "composer": "bach",
+      "title": "French Suite No. 3 in B minor",
+      "catalog": "BWV 814"
+    },
+    {
+      "id": "bach/bwv-815",
+      "composer": "bach",
+      "title": "French Suite No. 4 in E-flat major",
+      "catalog": "BWV 815"
+    },
+    {
+      "id": "bach/bwv-816",
+      "composer": "bach",
+      "title": "French Suite No. 5 in G major",
+      "catalog": "BWV 816"
+    },
+    {
+      "id": "bach/bwv-817",
+      "composer": "bach",
+      "title": "French Suite No. 6 in E major",
+      "catalog": "BWV 817"
+    },
+    {
+      "id": "bach/bwv-806",
+      "composer": "bach",
+      "title": "English Suite No. 1 in A major",
+      "catalog": "BWV 806"
+    },
+    {
+      "id": "bach/bwv-807",
+      "composer": "bach",
+      "title": "English Suite No. 2 in A minor",
+      "catalog": "BWV 807"
+    },
+    {
+      "id": "bach/bwv-808",
+      "composer": "bach",
+      "title": "English Suite No. 3 in G minor",
+      "catalog": "BWV 808"
+    },
+    {
+      "id": "bach/bwv-809",
+      "composer": "bach",
+      "title": "English Suite No. 4 in F major",
+      "catalog": "BWV 809"
+    },
+    {
+      "id": "bach/bwv-810",
+      "composer": "bach",
+      "title": "English Suite No. 5 in E minor",
+      "catalog": "BWV 810"
+    },
+    {
+      "id": "bach/bwv-811",
+      "composer": "bach",
+      "title": "English Suite No. 6 in D minor",
+      "catalog": "BWV 811"
+    },
+    {
+      "id": "bach/bwv-825",
+      "composer": "bach",
+      "title": "Partita No. 1 in B-flat major",
+      "catalog": "BWV 825"
+    },
+    {
+      "id": "bach/bwv-826",
+      "composer": "bach",
+      "title": "Partita No. 2 in C minor",
+      "catalog": "BWV 826"
+    },
+    {
+      "id": "bach/bwv-827",
+      "composer": "bach",
+      "title": "Partita No. 3 in A minor",
+      "catalog": "BWV 827"
+    },
+    {
+      "id": "bach/bwv-828",
+      "composer": "bach",
+      "title": "Partita No. 4 in D major",
+      "catalog": "BWV 828"
+    },
+    {
+      "id": "bach/bwv-829",
+      "composer": "bach",
+      "title": "Partita No. 5 in G major",
+      "catalog": "BWV 829"
+    },
+    {
+      "id": "bach/bwv-830",
+      "composer": "bach",
+      "title": "Partita No. 6 in E minor",
+      "catalog": "BWV 830"
+    },
+    {
+      "id": "bach/bwv-910",
+      "composer": "bach",
+      "title": "Toccata in F-sharp minor",
+      "catalog": "BWV 910"
+    },
+    {
+      "id": "bach/bwv-911",
+      "composer": "bach",
+      "title": "Toccata in C minor",
+      "catalog": "BWV 911"
+    },
+    {
+      "id": "bach/bwv-912",
+      "composer": "bach",
+      "title": "Toccata in D major",
+      "catalog": "BWV 912"
+    },
+    {
+      "id": "bach/bwv-913",
+      "composer": "bach",
+      "title": "Toccata in D minor",
+      "catalog": "BWV 913"
+    },
+    {
+      "id": "bach/bwv-914",
+      "composer": "bach",
+      "title": "Toccata in E minor",
+      "catalog": "BWV 914"
+    },
+    {
+      "id": "bach/bwv-915",
+      "composer": "bach",
+      "title": "Toccata in G minor",
+      "catalog": "BWV 915"
+    },
+    {
+      "id": "bach/bwv-916",
+      "composer": "bach",
+      "title": "Toccata in G major",
+      "catalog": "BWV 916"
+    },
+    {
+      "id": "bach/bwv-939",
+      "composer": "bach",
+      "title": "Little Prelude in C major",
+      "catalog": "BWV 939",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-940",
+      "composer": "bach",
+      "title": "Little Prelude in D minor",
+      "catalog": "BWV 940",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-941",
+      "composer": "bach",
+      "title": "Little Prelude in E minor",
+      "catalog": "BWV 941",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-942",
+      "composer": "bach",
+      "title": "Little Prelude in A minor",
+      "catalog": "BWV 942",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-933",
+      "composer": "bach",
+      "title": "Little Prelude in C major",
+      "catalog": "BWV 933",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-934",
+      "composer": "bach",
+      "title": "Little Prelude in C minor",
+      "catalog": "BWV 934",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-935",
+      "composer": "bach",
+      "title": "Little Prelude in D minor",
+      "catalog": "BWV 935",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-936",
+      "composer": "bach",
+      "title": "Little Prelude in D major",
+      "catalog": "BWV 936",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-937",
+      "composer": "bach",
+      "title": "Little Prelude in E major",
+      "catalog": "BWV 937",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-938",
+      "composer": "bach",
+      "title": "Little Prelude in E minor",
+      "catalog": "BWV 938",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-924",
+      "composer": "bach",
+      "title": "Little Prelude in C major",
+      "catalog": "BWV 924",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-926",
+      "composer": "bach",
+      "title": "Little Prelude in D minor",
+      "catalog": "BWV 926",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-927",
+      "composer": "bach",
+      "title": "Little Prelude in F major",
+      "catalog": "BWV 927",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-928",
+      "composer": "bach",
+      "title": "Little Prelude in F major",
+      "catalog": "BWV 928",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "bach/bwv-930",
+      "composer": "bach",
+      "title": "Little Prelude in G minor",
+      "catalog": "BWV 930",
+      "aliases": ["Little Preludes"]
+    },
+    {
+      "id": "petzold/bwv-anh-114",
+      "composer": "petzold",
+      "title": "Minuet in G major",
+      "catalog": "BWV Anh. 114",
+      "aliases": ["Bach", "Anna Magdalena Notebook", "Menuet"]
+    },
+    {
+      "id": "petzold/bwv-anh-115",
+      "composer": "petzold",
+      "title": "Minuet in G minor",
+      "catalog": "BWV Anh. 115",
+      "aliases": ["Bach", "Anna Magdalena Notebook", "Menuet"]
+    },
+    {
+      "id": "beethoven/woo-59",
+      "composer": "beethoven",
+      "title": "Bagatelle in A minor “Für Elise”",
+      "catalog": "WoO 59",
+      "aliases": ["Fur Elise", "Bagatelle No. 25"]
+    },
+    {
+      "id": "beethoven/op-27-no-2",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 14 in C-sharp minor “Moonlight”",
+      "catalog": "Op. 27 No. 2",
+      "aliases": ["Mondscheinsonate", "Quasi una fantasia"]
+    },
+    {
+      "id": "beethoven/op-27-no-2-moonlight-sonata-i-adagio-sostenuto",
+      "composer": "beethoven",
+      "title": "Moonlight Sonata – I. Adagio sostenuto",
+      "catalog": "Op. 27 No. 2",
+      "aliases": ["Piano Sonata No. 14", "Mondscheinsonate", "first movement"]
+    },
+    {
+      "id": "beethoven/op-27-no-2-moonlight-sonata-iii-presto-agitato",
+      "composer": "beethoven",
+      "title": "Moonlight Sonata – III. Presto agitato",
+      "catalog": "Op. 27 No. 2",
+      "aliases": ["Piano Sonata No. 14", "Mondscheinsonate", "third movement"]
+    },
+    {
+      "id": "beethoven/op-13",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 8 in C minor “Pathétique”",
+      "catalog": "Op. 13"
+    },
+    {
+      "id": "beethoven/op-13-pathetique-sonata-ii-adagio-cantabile",
+      "composer": "beethoven",
+      "title": "Pathétique Sonata – II. Adagio cantabile",
+      "catalog": "Op. 13",
+      "aliases": ["Piano Sonata No. 8", "second movement"]
+    },
+    {
+      "id": "beethoven/op-2-no-1",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 1 in F minor",
+      "catalog": "Op. 2 No. 1"
+    },
+    {
+      "id": "beethoven/op-2-no-2",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 2 in A major",
+      "catalog": "Op. 2 No. 2"
+    },
+    {
+      "id": "beethoven/op-2-no-3",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 3 in C major",
+      "catalog": "Op. 2 No. 3"
+    },
+    {
+      "id": "beethoven/op-7",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 4 in E-flat major",
+      "catalog": "Op. 7"
+    },
+    {
+      "id": "beethoven/op-10-no-1",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 5 in C minor",
+      "catalog": "Op. 10 No. 1"
+    },
+    {
+      "id": "beethoven/op-10-no-2",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 6 in F major",
+      "catalog": "Op. 10 No. 2"
+    },
+    {
+      "id": "beethoven/op-10-no-3",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 7 in D major",
+      "catalog": "Op. 10 No. 3"
+    },
+    {
+      "id": "beethoven/op-14-no-1",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 9 in E major",
+      "catalog": "Op. 14 No. 1"
+    },
+    {
+      "id": "beethoven/op-14-no-2",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 10 in G major",
+      "catalog": "Op. 14 No. 2"
+    },
+    {
+      "id": "beethoven/op-22",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 11 in B-flat major",
+      "catalog": "Op. 22"
+    },
+    {
+      "id": "beethoven/op-26",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 12 in A-flat major “Funeral March”",
+      "catalog": "Op. 26"
+    },
+    {
+      "id": "beethoven/op-27-no-1",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 13 in E-flat major “Quasi una fantasia”",
+      "catalog": "Op. 27 No. 1"
+    },
+    {
+      "id": "beethoven/op-28",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 15 in D major “Pastoral”",
+      "catalog": "Op. 28"
+    },
+    {
+      "id": "beethoven/op-31-no-1",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 16 in G major",
+      "catalog": "Op. 31 No. 1"
+    },
+    {
+      "id": "beethoven/op-31-no-2",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 17 in D minor “Tempest”",
+      "catalog": "Op. 31 No. 2"
+    },
+    {
+      "id": "beethoven/op-31-no-3",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 18 in E-flat major “The Hunt”",
+      "catalog": "Op. 31 No. 3"
+    },
+    {
+      "id": "beethoven/op-49-no-1",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 19 in G minor",
+      "catalog": "Op. 49 No. 1"
+    },
+    {
+      "id": "beethoven/op-49-no-2",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 20 in G major",
+      "catalog": "Op. 49 No. 2"
+    },
+    {
+      "id": "beethoven/op-53",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 21 in C major “Waldstein”",
+      "catalog": "Op. 53"
+    },
+    {
+      "id": "beethoven/op-54",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 22 in F major",
+      "catalog": "Op. 54"
+    },
+    {
+      "id": "beethoven/op-57",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 23 in F minor “Appassionata”",
+      "catalog": "Op. 57"
+    },
+    {
+      "id": "beethoven/op-78",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 24 in F-sharp major “À Thérèse”",
+      "catalog": "Op. 78"
+    },
+    {
+      "id": "beethoven/op-79",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 25 in G major “Cuckoo”",
+      "catalog": "Op. 79"
+    },
+    {
+      "id": "beethoven/op-81a",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 26 in E-flat major “Les Adieux”",
+      "catalog": "Op. 81a"
+    },
+    {
+      "id": "beethoven/op-90",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 27 in E minor",
+      "catalog": "Op. 90"
+    },
+    {
+      "id": "beethoven/op-101",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 28 in A major",
+      "catalog": "Op. 101"
+    },
+    {
+      "id": "beethoven/op-106",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 29 in B-flat major “Hammerklavier”",
+      "catalog": "Op. 106"
+    },
+    {
+      "id": "beethoven/op-109",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 30 in E major",
+      "catalog": "Op. 109"
+    },
+    {
+      "id": "beethoven/op-110",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 31 in A-flat major",
+      "catalog": "Op. 110"
+    },
+    {
+      "id": "beethoven/op-111",
+      "composer": "beethoven",
+      "title": "Piano Sonata No. 32 in C minor",
+      "catalog": "Op. 111"
+    },
+    {
+      "id": "beethoven/op-129",
+      "composer": "beethoven",
+      "title": "Rondo a capriccio in G major “Rage over a Lost Penny”",
+      "catalog": "Op. 129"
+    },
+    {
+      "id": "beethoven/op-33",
+      "composer": "beethoven",
+      "title": "Seven Bagatelles",
+      "catalog": "Op. 33"
+    },
+    {
+      "id": "beethoven/op-119",
+      "composer": "beethoven",
+      "title": "Eleven Bagatelles",
+      "catalog": "Op. 119"
+    },
+    {
+      "id": "beethoven/op-126",
+      "composer": "beethoven",
+      "title": "Six Bagatelles",
+      "catalog": "Op. 126"
+    },
+    {
+      "id": "beethoven/anh-5-no-1",
+      "composer": "beethoven",
+      "title": "Sonatina in G major",
+      "catalog": "Anh. 5 No. 1"
+    },
+    {
+      "id": "beethoven/anh-5-no-2",
+      "composer": "beethoven",
+      "title": "Sonatina in F major",
+      "catalog": "Anh. 5 No. 2"
+    },
+    {
+      "id": "beethoven/woo-57",
+      "composer": "beethoven",
+      "title": "Andante favori in F major",
+      "catalog": "WoO 57"
+    },
+    {
+      "id": "beethoven/woo-83",
+      "composer": "beethoven",
+      "title": "Six Écossaises",
+      "catalog": "WoO 83"
+    },
+    {
+      "id": "beethoven/woo-80",
+      "composer": "beethoven",
+      "title": "32 Variations in C minor",
+      "catalog": "WoO 80"
+    },
+    {
+      "id": "chopin/op-9-no-2",
+      "composer": "chopin",
+      "title": "Nocturne in E-flat major",
+      "catalog": "Op. 9 No. 2"
+    },
+    {
+      "id": "chopin/op-66",
+      "composer": "chopin",
+      "title": "Fantaisie-Impromptu in C-sharp minor",
+      "catalog": "Op. 66"
+    },
+    {
+      "id": "chopin/b-49",
+      "composer": "chopin",
+      "title": "Nocturne in C-sharp minor (Lento con gran espressione)",
+      "catalog": "B. 49"
+    },
+    {
+      "id": "chopin/op-23",
+      "composer": "chopin",
+      "title": "Ballade No. 1 in G minor",
+      "catalog": "Op. 23"
+    },
+    {
+      "id": "chopin/op-28-no-4",
+      "composer": "chopin",
+      "title": "Prelude in E minor",
+      "catalog": "Op. 28 No. 4"
+    },
+    {
+      "id": "chopin/op-28-no-15",
+      "composer": "chopin",
+      "title": "Prelude in D-flat major “Raindrop”",
+      "catalog": "Op. 28 No. 15"
+    },
+    {
+      "id": "chopin/op-64-no-1",
+      "composer": "chopin",
+      "title": "Waltz in D-flat major “Minute”",
+      "catalog": "Op. 64 No. 1"
+    },
+    {
+      "id": "chopin/op-64-no-2",
+      "composer": "chopin",
+      "title": "Waltz in C-sharp minor",
+      "catalog": "Op. 64 No. 2"
+    },
+    {
+      "id": "chopin/b-150",
+      "composer": "chopin",
+      "title": "Waltz in A minor",
+      "catalog": "B. 150"
+    },
+    {
+      "id": "chopin/op-10-no-12",
+      "composer": "chopin",
+      "title": "Étude in C minor “Revolutionary”",
+      "catalog": "Op. 10 No. 12"
+    },
+    {
+      "id": "chopin/op-10-no-3",
+      "composer": "chopin",
+      "title": "Étude in E major “Tristesse”",
+      "catalog": "Op. 10 No. 3"
+    },
+    {
+      "id": "chopin/op-9-no-1",
+      "composer": "chopin",
+      "title": "Nocturne in B-flat minor",
+      "catalog": "Op. 9 No. 1"
+    },
+    {
+      "id": "chopin/op-9-no-3",
+      "composer": "chopin",
+      "title": "Nocturne in B major",
+      "catalog": "Op. 9 No. 3"
+    },
+    {
+      "id": "chopin/op-15-no-1",
+      "composer": "chopin",
+      "title": "Nocturne in F major",
+      "catalog": "Op. 15 No. 1"
+    },
+    {
+      "id": "chopin/op-15-no-2",
+      "composer": "chopin",
+      "title": "Nocturne in F-sharp major",
+      "catalog": "Op. 15 No. 2"
+    },
+    {
+      "id": "chopin/op-15-no-3",
+      "composer": "chopin",
+      "title": "Nocturne in G minor",
+      "catalog": "Op. 15 No. 3"
+    },
+    {
+      "id": "chopin/op-27-no-1",
+      "composer": "chopin",
+      "title": "Nocturne in C-sharp minor",
+      "catalog": "Op. 27 No. 1"
+    },
+    {
+      "id": "chopin/op-27-no-2",
+      "composer": "chopin",
+      "title": "Nocturne in D-flat major",
+      "catalog": "Op. 27 No. 2"
+    },
+    {
+      "id": "chopin/op-32-no-1",
+      "composer": "chopin",
+      "title": "Nocturne in B major",
+      "catalog": "Op. 32 No. 1"
+    },
+    {
+      "id": "chopin/op-32-no-2",
+      "composer": "chopin",
+      "title": "Nocturne in A-flat major",
+      "catalog": "Op. 32 No. 2"
+    },
+    {
+      "id": "chopin/op-37-no-1",
+      "composer": "chopin",
+      "title": "Nocturne in G minor",
+      "catalog": "Op. 37 No. 1"
+    },
+    {
+      "id": "chopin/op-37-no-2",
+      "composer": "chopin",
+      "title": "Nocturne in G major",
+      "catalog": "Op. 37 No. 2"
+    },
+    {
+      "id": "chopin/op-48-no-1",
+      "composer": "chopin",
+      "title": "Nocturne in C minor",
+      "catalog": "Op. 48 No. 1"
+    },
+    {
+      "id": "chopin/op-48-no-2",
+      "composer": "chopin",
+      "title": "Nocturne in F-sharp minor",
+      "catalog": "Op. 48 No. 2"
+    },
+    {
+      "id": "chopin/op-55-no-1",
+      "composer": "chopin",
+      "title": "Nocturne in F minor",
+      "catalog": "Op. 55 No. 1"
+    },
+    {
+      "id": "chopin/op-55-no-2",
+      "composer": "chopin",
+      "title": "Nocturne in E-flat major",
+      "catalog": "Op. 55 No. 2"
+    },
+    {
+      "id": "chopin/op-62-no-1",
+      "composer": "chopin",
+      "title": "Nocturne in B major",
+      "catalog": "Op. 62 No. 1"
+    },
+    {
+      "id": "chopin/op-62-no-2",
+      "composer": "chopin",
+      "title": "Nocturne in E major",
+      "catalog": "Op. 62 No. 2"
+    },
+    {
+      "id": "chopin/op-72-no-1",
+      "composer": "chopin",
+      "title": "Nocturne in E minor",
+      "catalog": "Op. 72 No. 1"
+    },
+    {
+      "id": "chopin/b-108",
+      "composer": "chopin",
+      "title": "Nocturne in C minor",
+      "catalog": "B. 108"
+    },
+    {
+      "id": "chopin/op-10-no-1",
+      "composer": "chopin",
+      "title": "Étude in C major",
+      "catalog": "Op. 10 No. 1",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-10-no-2",
+      "composer": "chopin",
+      "title": "Étude in A minor",
+      "catalog": "Op. 10 No. 2",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-10-no-4",
+      "composer": "chopin",
+      "title": "Étude in C-sharp minor",
+      "catalog": "Op. 10 No. 4",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-10-no-5",
+      "composer": "chopin",
+      "title": "Étude in G-flat major “Black Keys”",
+      "catalog": "Op. 10 No. 5",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-10-no-6",
+      "composer": "chopin",
+      "title": "Étude in E-flat minor",
+      "catalog": "Op. 10 No. 6",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-10-no-7",
+      "composer": "chopin",
+      "title": "Étude in C major",
+      "catalog": "Op. 10 No. 7",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-10-no-8",
+      "composer": "chopin",
+      "title": "Étude in F major",
+      "catalog": "Op. 10 No. 8",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-10-no-9",
+      "composer": "chopin",
+      "title": "Étude in F minor",
+      "catalog": "Op. 10 No. 9",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-10-no-10",
+      "composer": "chopin",
+      "title": "Étude in A-flat major",
+      "catalog": "Op. 10 No. 10",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-10-no-11",
+      "composer": "chopin",
+      "title": "Étude in E-flat major",
+      "catalog": "Op. 10 No. 11",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-1",
+      "composer": "chopin",
+      "title": "Étude in A-flat major “Aeolian Harp”",
+      "catalog": "Op. 25 No. 1",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-2",
+      "composer": "chopin",
+      "title": "Étude in F minor",
+      "catalog": "Op. 25 No. 2",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-3",
+      "composer": "chopin",
+      "title": "Étude in F major",
+      "catalog": "Op. 25 No. 3",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-4",
+      "composer": "chopin",
+      "title": "Étude in A minor",
+      "catalog": "Op. 25 No. 4",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-5",
+      "composer": "chopin",
+      "title": "Étude in E minor",
+      "catalog": "Op. 25 No. 5",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-6",
+      "composer": "chopin",
+      "title": "Étude in G-sharp minor “Thirds”",
+      "catalog": "Op. 25 No. 6",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-7",
+      "composer": "chopin",
+      "title": "Étude in C-sharp minor",
+      "catalog": "Op. 25 No. 7",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-8",
+      "composer": "chopin",
+      "title": "Étude in D-flat major “Sixths”",
+      "catalog": "Op. 25 No. 8",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-9",
+      "composer": "chopin",
+      "title": "Étude in G-flat major “Butterfly”",
+      "catalog": "Op. 25 No. 9",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-10",
+      "composer": "chopin",
+      "title": "Étude in B minor “Octaves”",
+      "catalog": "Op. 25 No. 10",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-11",
+      "composer": "chopin",
+      "title": "Étude in A minor “Winter Wind”",
+      "catalog": "Op. 25 No. 11",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/op-25-no-12",
+      "composer": "chopin",
+      "title": "Étude in C minor “Ocean”",
+      "catalog": "Op. 25 No. 12",
+      "aliases": ["Etude"]
+    },
+    {
+      "id": "chopin/b-130-no-1",
+      "composer": "chopin",
+      "title": "Nouvelle Étude No. 1 in F minor",
+      "catalog": "B. 130 No. 1",
+      "aliases": ["Trois nouvelles études", "Etude"]
+    },
+    {
+      "id": "chopin/b-130-no-2",
+      "composer": "chopin",
+      "title": "Nouvelle Étude No. 2 in A-flat major",
+      "catalog": "B. 130 No. 2",
+      "aliases": ["Trois nouvelles études", "Etude"]
+    },
+    {
+      "id": "chopin/b-130-no-3",
+      "composer": "chopin",
+      "title": "Nouvelle Étude No. 3 in D-flat major",
+      "catalog": "B. 130 No. 3",
+      "aliases": ["Trois nouvelles études", "Etude"]
+    },
+    {
+      "id": "chopin/op-28-no-1",
+      "composer": "chopin",
+      "title": "Prelude in C major",
+      "catalog": "Op. 28 No. 1"
+    },
+    {
+      "id": "chopin/op-28-no-2",
+      "composer": "chopin",
+      "title": "Prelude in A minor",
+      "catalog": "Op. 28 No. 2"
+    },
+    {
+      "id": "chopin/op-28-no-3",
+      "composer": "chopin",
+      "title": "Prelude in G major",
+      "catalog": "Op. 28 No. 3"
+    },
+    {
+      "id": "chopin/op-28-no-5",
+      "composer": "chopin",
+      "title": "Prelude in D major",
+      "catalog": "Op. 28 No. 5"
+    },
+    {
+      "id": "chopin/op-28-no-6",
+      "composer": "chopin",
+      "title": "Prelude in B minor",
+      "catalog": "Op. 28 No. 6"
+    },
+    {
+      "id": "chopin/op-28-no-7",
+      "composer": "chopin",
+      "title": "Prelude in A major",
+      "catalog": "Op. 28 No. 7"
+    },
+    {
+      "id": "chopin/op-28-no-8",
+      "composer": "chopin",
+      "title": "Prelude in F-sharp minor",
+      "catalog": "Op. 28 No. 8"
+    },
+    {
+      "id": "chopin/op-28-no-9",
+      "composer": "chopin",
+      "title": "Prelude in E major",
+      "catalog": "Op. 28 No. 9"
+    },
+    {
+      "id": "chopin/op-28-no-10",
+      "composer": "chopin",
+      "title": "Prelude in C-sharp minor",
+      "catalog": "Op. 28 No. 10"
+    },
+    {
+      "id": "chopin/op-28-no-11",
+      "composer": "chopin",
+      "title": "Prelude in B major",
+      "catalog": "Op. 28 No. 11"
+    },
+    {
+      "id": "chopin/op-28-no-12",
+      "composer": "chopin",
+      "title": "Prelude in G-sharp minor",
+      "catalog": "Op. 28 No. 12"
+    },
+    {
+      "id": "chopin/op-28-no-13",
+      "composer": "chopin",
+      "title": "Prelude in F-sharp major",
+      "catalog": "Op. 28 No. 13"
+    },
+    {
+      "id": "chopin/op-28-no-14",
+      "composer": "chopin",
+      "title": "Prelude in E-flat minor",
+      "catalog": "Op. 28 No. 14"
+    },
+    {
+      "id": "chopin/op-28-no-16",
+      "composer": "chopin",
+      "title": "Prelude in B-flat minor",
+      "catalog": "Op. 28 No. 16"
+    },
+    {
+      "id": "chopin/op-28-no-17",
+      "composer": "chopin",
+      "title": "Prelude in A-flat major",
+      "catalog": "Op. 28 No. 17"
+    },
+    {
+      "id": "chopin/op-28-no-18",
+      "composer": "chopin",
+      "title": "Prelude in F minor",
+      "catalog": "Op. 28 No. 18"
+    },
+    {
+      "id": "chopin/op-28-no-19",
+      "composer": "chopin",
+      "title": "Prelude in E-flat major",
+      "catalog": "Op. 28 No. 19"
+    },
+    {
+      "id": "chopin/op-28-no-20",
+      "composer": "chopin",
+      "title": "Prelude in C minor",
+      "catalog": "Op. 28 No. 20"
+    },
+    {
+      "id": "chopin/op-28-no-21",
+      "composer": "chopin",
+      "title": "Prelude in B-flat major",
+      "catalog": "Op. 28 No. 21"
+    },
+    {
+      "id": "chopin/op-28-no-22",
+      "composer": "chopin",
+      "title": "Prelude in G minor",
+      "catalog": "Op. 28 No. 22"
+    },
+    {
+      "id": "chopin/op-28-no-23",
+      "composer": "chopin",
+      "title": "Prelude in F major",
+      "catalog": "Op. 28 No. 23"
+    },
+    {
+      "id": "chopin/op-28-no-24",
+      "composer": "chopin",
+      "title": "Prelude in D minor",
+      "catalog": "Op. 28 No. 24"
+    },
+    {
+      "id": "chopin/op-28",
+      "composer": "chopin",
+      "title": "24 Preludes",
+      "catalog": "Op. 28"
+    },
+    {
+      "id": "chopin/op-45",
+      "composer": "chopin",
+      "title": "Prelude in C-sharp minor",
+      "catalog": "Op. 45"
+    },
+    {
+      "id": "chopin/op-38",
+      "composer": "chopin",
+      "title": "Ballade No. 2 in F major",
+      "catalog": "Op. 38"
+    },
+    {
+      "id": "chopin/op-47",
+      "composer": "chopin",
+      "title": "Ballade No. 3 in A-flat major",
+      "catalog": "Op. 47"
+    },
+    {
+      "id": "chopin/op-52",
+      "composer": "chopin",
+      "title": "Ballade No. 4 in F minor",
+      "catalog": "Op. 52"
+    },
+    {
+      "id": "chopin/op-20",
+      "composer": "chopin",
+      "title": "Scherzo No. 1 in B minor",
+      "catalog": "Op. 20"
+    },
+    {
+      "id": "chopin/op-31",
+      "composer": "chopin",
+      "title": "Scherzo No. 2 in B-flat minor",
+      "catalog": "Op. 31"
+    },
+    {
+      "id": "chopin/op-39",
+      "composer": "chopin",
+      "title": "Scherzo No. 3 in C-sharp minor",
+      "catalog": "Op. 39"
+    },
+    {
+      "id": "chopin/op-54",
+      "composer": "chopin",
+      "title": "Scherzo No. 4 in E major",
+      "catalog": "Op. 54"
+    },
+    {
+      "id": "chopin/op-29",
+      "composer": "chopin",
+      "title": "Impromptu No. 1 in A-flat major",
+      "catalog": "Op. 29"
+    },
+    {
+      "id": "chopin/op-36",
+      "composer": "chopin",
+      "title": "Impromptu No. 2 in F-sharp major",
+      "catalog": "Op. 36"
+    },
+    {
+      "id": "chopin/op-51",
+      "composer": "chopin",
+      "title": "Impromptu No. 3 in G-flat major",
+      "catalog": "Op. 51"
+    },
+    {
+      "id": "chopin/op-18",
+      "composer": "chopin",
+      "title": "Waltz in E-flat major “Grande valse brillante”",
+      "catalog": "Op. 18"
+    },
+    {
+      "id": "chopin/op-34-no-1",
+      "composer": "chopin",
+      "title": "Waltz in A-flat major",
+      "catalog": "Op. 34 No. 1"
+    },
+    {
+      "id": "chopin/op-34-no-2",
+      "composer": "chopin",
+      "title": "Waltz in A minor",
+      "catalog": "Op. 34 No. 2"
+    },
+    {
+      "id": "chopin/op-34-no-3",
+      "composer": "chopin",
+      "title": "Waltz in F major",
+      "catalog": "Op. 34 No. 3"
+    },
+    {
+      "id": "chopin/op-42",
+      "composer": "chopin",
+      "title": "Waltz in A-flat major",
+      "catalog": "Op. 42"
+    },
+    {
+      "id": "chopin/op-64-no-3",
+      "composer": "chopin",
+      "title": "Waltz in A-flat major",
+      "catalog": "Op. 64 No. 3"
+    },
+    {
+      "id": "chopin/op-69-no-1",
+      "composer": "chopin",
+      "title": "Waltz in A-flat major “L’adieu”",
+      "catalog": "Op. 69 No. 1"
+    },
+    {
+      "id": "chopin/op-69-no-2",
+      "composer": "chopin",
+      "title": "Waltz in B minor",
+      "catalog": "Op. 69 No. 2"
+    },
+    {
+      "id": "chopin/op-70-no-1",
+      "composer": "chopin",
+      "title": "Waltz in G-flat major",
+      "catalog": "Op. 70 No. 1"
+    },
+    {
+      "id": "chopin/op-70-no-2",
+      "composer": "chopin",
+      "title": "Waltz in F minor",
+      "catalog": "Op. 70 No. 2"
+    },
+    {
+      "id": "chopin/op-70-no-3",
+      "composer": "chopin",
+      "title": "Waltz in D-flat major",
+      "catalog": "Op. 70 No. 3"
+    },
+    {
+      "id": "chopin/b-56",
+      "composer": "chopin",
+      "title": "Waltz in E minor",
+      "catalog": "B. 56"
+    },
+    {
+      "id": "chopin/op-40-no-1",
+      "composer": "chopin",
+      "title": "Polonaise in A major “Military”",
+      "catalog": "Op. 40 No. 1"
+    },
+    {
+      "id": "chopin/op-53",
+      "composer": "chopin",
+      "title": "Polonaise in A-flat major “Heroic”",
+      "catalog": "Op. 53"
+    },
+    {
+      "id": "chopin/op-26-no-1",
+      "composer": "chopin",
+      "title": "Polonaise in C-sharp minor",
+      "catalog": "Op. 26 No. 1"
+    },
+    {
+      "id": "chopin/op-26-no-2",
+      "composer": "chopin",
+      "title": "Polonaise in E-flat minor",
+      "catalog": "Op. 26 No. 2"
+    },
+    {
+      "id": "chopin/op-40-no-2",
+      "composer": "chopin",
+      "title": "Polonaise in C minor",
+      "catalog": "Op. 40 No. 2"
+    },
+    {
+      "id": "chopin/op-44",
+      "composer": "chopin",
+      "title": "Polonaise in F-sharp minor",
+      "catalog": "Op. 44"
+    },
+    {
+      "id": "chopin/b-1",
+      "composer": "chopin",
+      "title": "Polonaise in G minor",
+      "catalog": "B. 1"
+    },
+    {
+      "id": "chopin/op-61",
+      "composer": "chopin",
+      "title": "Polonaise-Fantaisie in A-flat major",
+      "catalog": "Op. 61"
+    },
+    {
+      "id": "chopin/op-22",
+      "composer": "chopin",
+      "title": "Andante spianato et Grande polonaise brillante",
+      "catalog": "Op. 22"
+    },
+    {
+      "id": "chopin/op-7-no-1",
+      "composer": "chopin",
+      "title": "Mazurka in B-flat major",
+      "catalog": "Op. 7 No. 1"
+    },
+    {
+      "id": "chopin/op-17-no-4",
+      "composer": "chopin",
+      "title": "Mazurka in A minor",
+      "catalog": "Op. 17 No. 4"
+    },
+    {
+      "id": "chopin/op-24-no-1",
+      "composer": "chopin",
+      "title": "Mazurka in G minor",
+      "catalog": "Op. 24 No. 1"
+    },
+    {
+      "id": "chopin/op-30-no-4",
+      "composer": "chopin",
+      "title": "Mazurka in C-sharp minor",
+      "catalog": "Op. 30 No. 4"
+    },
+    {
+      "id": "chopin/op-33-no-2",
+      "composer": "chopin",
+      "title": "Mazurka in D major",
+      "catalog": "Op. 33 No. 2"
+    },
+    {
+      "id": "chopin/op-33-no-4",
+      "composer": "chopin",
+      "title": "Mazurka in B minor",
+      "catalog": "Op. 33 No. 4"
+    },
+    {
+      "id": "chopin/op-63-no-3",
+      "composer": "chopin",
+      "title": "Mazurka in C-sharp minor",
+      "catalog": "Op. 63 No. 3"
+    },
+    {
+      "id": "chopin/op-67-no-2",
+      "composer": "chopin",
+      "title": "Mazurka in G minor",
+      "catalog": "Op. 67 No. 2"
+    },
+    {
+      "id": "chopin/op-67-no-4",
+      "composer": "chopin",
+      "title": "Mazurka in A minor",
+      "catalog": "Op. 67 No. 4"
+    },
+    {
+      "id": "chopin/op-68-no-2",
+      "composer": "chopin",
+      "title": "Mazurka in A minor",
+      "catalog": "Op. 68 No. 2"
+    },
+    {
+      "id": "chopin/op-35",
+      "composer": "chopin",
+      "title": "Piano Sonata No. 2 in B-flat minor “Funeral March”",
+      "catalog": "Op. 35"
+    },
+    {
+      "id": "chopin/op-58",
+      "composer": "chopin",
+      "title": "Piano Sonata No. 3 in B minor",
+      "catalog": "Op. 58"
+    },
+    {
+      "id": "chopin/op-4",
+      "composer": "chopin",
+      "title": "Piano Sonata No. 1 in C minor",
+      "catalog": "Op. 4"
+    },
+    {
+      "id": "chopin/op-60",
+      "composer": "chopin",
+      "title": "Barcarolle in F-sharp major",
+      "catalog": "Op. 60"
+    },
+    {
+      "id": "chopin/op-57",
+      "composer": "chopin",
+      "title": "Berceuse in D-flat major",
+      "catalog": "Op. 57"
+    },
+    {
+      "id": "chopin/op-49",
+      "composer": "chopin",
+      "title": "Fantaisie in F minor",
+      "catalog": "Op. 49"
+    },
+    {
+      "id": "chopin/op-43",
+      "composer": "chopin",
+      "title": "Tarantelle in A-flat major",
+      "catalog": "Op. 43"
+    },
+    {
+      "id": "chopin/op-19",
+      "composer": "chopin",
+      "title": "Bolero",
+      "catalog": "Op. 19"
+    },
+    {
+      "id": "chopin/op-1",
+      "composer": "chopin",
+      "title": "Rondo in C minor",
+      "catalog": "Op. 1"
+    },
+    {
+      "id": "chopin/b-84",
+      "composer": "chopin",
+      "title": "Cantabile in B-flat major",
+      "catalog": "B. 84"
+    },
+    {
+      "id": "mozart/k-545",
+      "composer": "mozart",
+      "title": "Piano Sonata in C major “Sonata facile”",
+      "catalog": "K. 545",
+      "aliases": ["Sonata semplice"]
+    },
+    {
+      "id": "mozart/k-331",
+      "composer": "mozart",
+      "title": "Piano Sonata in A major “Alla Turca”",
+      "catalog": "K. 331",
+      "aliases": ["Turkish March", "Rondo alla turca"]
+    },
+    {
+      "id": "mozart/k-397",
+      "composer": "mozart",
+      "title": "Fantasia in D minor",
+      "catalog": "K. 397"
+    },
+    {
+      "id": "mozart/k-265",
+      "composer": "mozart",
+      "title": "12 Variations on “Ah vous dirai-je, Maman”",
+      "catalog": "K. 265",
+      "aliases": ["Twinkle Twinkle"]
+    },
+    {
+      "id": "mozart/k-310",
+      "composer": "mozart",
+      "title": "Piano Sonata in A minor",
+      "catalog": "K. 310"
+    },
+    {
+      "id": "mozart/k-279",
+      "composer": "mozart",
+      "title": "Piano Sonata in C major",
+      "catalog": "K. 279"
+    },
+    {
+      "id": "mozart/k-280",
+      "composer": "mozart",
+      "title": "Piano Sonata in F major",
+      "catalog": "K. 280"
+    },
+    {
+      "id": "mozart/k-281",
+      "composer": "mozart",
+      "title": "Piano Sonata in B-flat major",
+      "catalog": "K. 281"
+    },
+    {
+      "id": "mozart/k-282",
+      "composer": "mozart",
+      "title": "Piano Sonata in E-flat major",
+      "catalog": "K. 282"
+    },
+    {
+      "id": "mozart/k-283",
+      "composer": "mozart",
+      "title": "Piano Sonata in G major",
+      "catalog": "K. 283"
+    },
+    {
+      "id": "mozart/k-284",
+      "composer": "mozart",
+      "title": "Piano Sonata in D major",
+      "catalog": "K. 284"
+    },
+    {
+      "id": "mozart/k-309",
+      "composer": "mozart",
+      "title": "Piano Sonata in C major",
+      "catalog": "K. 309"
+    },
+    {
+      "id": "mozart/k-311",
+      "composer": "mozart",
+      "title": "Piano Sonata in D major",
+      "catalog": "K. 311"
+    },
+    {
+      "id": "mozart/k-330",
+      "composer": "mozart",
+      "title": "Piano Sonata in C major",
+      "catalog": "K. 330"
+    },
+    {
+      "id": "mozart/k-332",
+      "composer": "mozart",
+      "title": "Piano Sonata in F major",
+      "catalog": "K. 332"
+    },
+    {
+      "id": "mozart/k-333",
+      "composer": "mozart",
+      "title": "Piano Sonata in B-flat major",
+      "catalog": "K. 333"
+    },
+    {
+      "id": "mozart/k-457",
+      "composer": "mozart",
+      "title": "Piano Sonata in C minor",
+      "catalog": "K. 457"
+    },
+    {
+      "id": "mozart/k-533-494",
+      "composer": "mozart",
+      "title": "Piano Sonata in F major",
+      "catalog": "K. 533/494"
+    },
+    {
+      "id": "mozart/k-570",
+      "composer": "mozart",
+      "title": "Piano Sonata in B-flat major",
+      "catalog": "K. 570"
+    },
+    {
+      "id": "mozart/k-576",
+      "composer": "mozart",
+      "title": "Piano Sonata in D major",
+      "catalog": "K. 576"
+    },
+    {
+      "id": "mozart/k-475",
+      "composer": "mozart",
+      "title": "Fantasia in C minor",
+      "catalog": "K. 475"
+    },
+    {
+      "id": "mozart/k-485",
+      "composer": "mozart",
+      "title": "Rondo in D major",
+      "catalog": "K. 485"
+    },
+    {
+      "id": "mozart/k-511",
+      "composer": "mozart",
+      "title": "Rondo in A minor",
+      "catalog": "K. 511"
+    },
+    {
+      "id": "mozart/k-540",
+      "composer": "mozart",
+      "title": "Adagio in B minor",
+      "catalog": "K. 540"
+    },
+    {
+      "id": "mozart/k-2",
+      "composer": "mozart",
+      "title": "Minuet in F major",
+      "catalog": "K. 2"
+    },
+    {
+      "id": "mozart/k-3",
+      "composer": "mozart",
+      "title": "Allegro in B-flat major",
+      "catalog": "K. 3"
+    },
+    {
+      "id": "mozart/k-5",
+      "composer": "mozart",
+      "title": "Minuet in F major",
+      "catalog": "K. 5"
+    },
+    {
+      "id": "debussy/l-75-no-3",
+      "composer": "debussy",
+      "title": "Clair de lune (Suite bergamasque)",
+      "catalog": "L. 75 No. 3"
+    },
+    {
+      "id": "debussy/l-66-no-1",
+      "composer": "debussy",
+      "title": "Arabesque No. 1 in E major",
+      "catalog": "L. 66 No. 1",
+      "aliases": ["Deux arabesques"]
+    },
+    {
+      "id": "debussy/l-68",
+      "composer": "debussy",
+      "title": "Rêverie",
+      "catalog": "L. 68"
+    },
+    {
+      "id": "debussy/l-75",
+      "composer": "debussy",
+      "title": "Suite bergamasque",
+      "catalog": "L. 75"
+    },
+    {
+      "id": "debussy/l-66-no-2",
+      "composer": "debussy",
+      "title": "Arabesque No. 2 in G major",
+      "catalog": "L. 66 No. 2",
+      "aliases": ["Deux arabesques"]
+    },
+    {
+      "id": "debussy/l-121",
+      "composer": "debussy",
+      "title": "La plus que lente",
+      "catalog": "L. 121"
+    },
+    {
+      "id": "debussy/l-113",
+      "composer": "debussy",
+      "title": "Children’s Corner",
+      "catalog": "L. 113"
+    },
+    {
+      "id": "debussy/l-113-no-1",
+      "composer": "debussy",
+      "title": "Doctor Gradus ad Parnassum (Children’s Corner)",
+      "catalog": "L. 113 No. 1"
+    },
+    {
+      "id": "debussy/l-113-no-2",
+      "composer": "debussy",
+      "title": "Jimbo’s Lullaby (Children’s Corner)",
+      "catalog": "L. 113 No. 2"
+    },
+    {
+      "id": "debussy/l-113-no-3",
+      "composer": "debussy",
+      "title": "Serenade for the Doll (Children’s Corner)",
+      "catalog": "L. 113 No. 3"
+    },
+    {
+      "id": "debussy/l-113-no-4",
+      "composer": "debussy",
+      "title": "The Snow Is Dancing (Children’s Corner)",
+      "catalog": "L. 113 No. 4"
+    },
+    {
+      "id": "debussy/l-113-no-5",
+      "composer": "debussy",
+      "title": "The Little Shepherd (Children’s Corner)",
+      "catalog": "L. 113 No. 5"
+    },
+    {
+      "id": "debussy/l-113-no-6",
+      "composer": "debussy",
+      "title": "Golliwogg’s Cakewalk (Children’s Corner)",
+      "catalog": "L. 113 No. 6"
+    },
+    {
+      "id": "debussy/l-117",
+      "composer": "debussy",
+      "title": "Préludes, Book 1",
+      "catalog": "L. 117"
+    },
+    {
+      "id": "debussy/l-117-no-1",
+      "composer": "debussy",
+      "title": "Danseuses de Delphes (Préludes I)",
+      "catalog": "L. 117 No. 1",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-2",
+      "composer": "debussy",
+      "title": "Voiles (Préludes I)",
+      "catalog": "L. 117 No. 2",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-3",
+      "composer": "debussy",
+      "title": "Le vent dans la plaine (Préludes I)",
+      "catalog": "L. 117 No. 3",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-4",
+      "composer": "debussy",
+      "title": "Les sons et les parfums tournent dans l’air du soir (Préludes I)",
+      "catalog": "L. 117 No. 4",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-5",
+      "composer": "debussy",
+      "title": "Les collines d’Anacapri (Préludes I)",
+      "catalog": "L. 117 No. 5",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-6",
+      "composer": "debussy",
+      "title": "Des pas sur la neige (Préludes I)",
+      "catalog": "L. 117 No. 6",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-7",
+      "composer": "debussy",
+      "title": "Ce qu’a vu le vent d’ouest (Préludes I)",
+      "catalog": "L. 117 No. 7",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-8",
+      "composer": "debussy",
+      "title": "La fille aux cheveux de lin (Préludes I)",
+      "catalog": "L. 117 No. 8",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-9",
+      "composer": "debussy",
+      "title": "La sérénade interrompue (Préludes I)",
+      "catalog": "L. 117 No. 9",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-10",
+      "composer": "debussy",
+      "title": "La cathédrale engloutie (Préludes I)",
+      "catalog": "L. 117 No. 10",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-11",
+      "composer": "debussy",
+      "title": "La danse de Puck (Préludes I)",
+      "catalog": "L. 117 No. 11",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-117-no-12",
+      "composer": "debussy",
+      "title": "Minstrels (Préludes I)",
+      "catalog": "L. 117 No. 12",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123",
+      "composer": "debussy",
+      "title": "Préludes, Book 2",
+      "catalog": "L. 123"
+    },
+    {
+      "id": "debussy/l-123-no-1",
+      "composer": "debussy",
+      "title": "Brouillards (Préludes II)",
+      "catalog": "L. 123 No. 1",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-2",
+      "composer": "debussy",
+      "title": "Feuilles mortes (Préludes II)",
+      "catalog": "L. 123 No. 2",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-3",
+      "composer": "debussy",
+      "title": "La puerta del Vino (Préludes II)",
+      "catalog": "L. 123 No. 3",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-4",
+      "composer": "debussy",
+      "title": "Les fées sont d’exquises danseuses (Préludes II)",
+      "catalog": "L. 123 No. 4",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-5",
+      "composer": "debussy",
+      "title": "Bruyères (Préludes II)",
+      "catalog": "L. 123 No. 5",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-6",
+      "composer": "debussy",
+      "title": "General Lavine – eccentric (Préludes II)",
+      "catalog": "L. 123 No. 6",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-7",
+      "composer": "debussy",
+      "title": "La terrasse des audiences du clair de lune (Préludes II)",
+      "catalog": "L. 123 No. 7",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-8",
+      "composer": "debussy",
+      "title": "Ondine (Préludes II)",
+      "catalog": "L. 123 No. 8",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-9",
+      "composer": "debussy",
+      "title": "Hommage à S. Pickwick Esq. P.P.M.P.C. (Préludes II)",
+      "catalog": "L. 123 No. 9",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-10",
+      "composer": "debussy",
+      "title": "Canope (Préludes II)",
+      "catalog": "L. 123 No. 10",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-11",
+      "composer": "debussy",
+      "title": "Les tierces alternées (Préludes II)",
+      "catalog": "L. 123 No. 11",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-123-no-12",
+      "composer": "debussy",
+      "title": "Feux d’artifice (Préludes II)",
+      "catalog": "L. 123 No. 12",
+      "aliases": ["Prelude"]
+    },
+    {
+      "id": "debussy/l-100",
+      "composer": "debussy",
+      "title": "Estampes",
+      "catalog": "L. 100"
+    },
+    {
+      "id": "debussy/l-110-no-1",
+      "composer": "debussy",
+      "title": "Reflets dans l’eau (Images I)",
+      "catalog": "L. 110 No. 1"
+    },
+    {
+      "id": "debussy/l-95",
+      "composer": "debussy",
+      "title": "Pour le piano",
+      "catalog": "L. 95"
+    },
+    {
+      "id": "debussy/l-106",
+      "composer": "debussy",
+      "title": "L’isle joyeuse",
+      "catalog": "L. 106"
+    },
+    {
+      "id": "debussy/l-105",
+      "composer": "debussy",
+      "title": "Masques",
+      "catalog": "L. 105"
+    },
+    {
+      "id": "schumann/op-15-no-7",
+      "composer": "schumann",
+      "title": "Träumerei (Kinderszenen)",
+      "catalog": "Op. 15 No. 7",
+      "aliases": ["Scenes from Childhood", "Dreaming"]
+    },
+    {
+      "id": "schumann/op-15",
+      "composer": "schumann",
+      "title": "Kinderszenen",
+      "catalog": "Op. 15",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-1",
+      "composer": "schumann",
+      "title": "Von fremden Ländern und Menschen (Kinderszenen)",
+      "catalog": "Op. 15 No. 1",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-2",
+      "composer": "schumann",
+      "title": "Kuriose Geschichte (Kinderszenen)",
+      "catalog": "Op. 15 No. 2",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-3",
+      "composer": "schumann",
+      "title": "Hasche-Mann (Kinderszenen)",
+      "catalog": "Op. 15 No. 3",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-4",
+      "composer": "schumann",
+      "title": "Bittendes Kind (Kinderszenen)",
+      "catalog": "Op. 15 No. 4",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-5",
+      "composer": "schumann",
+      "title": "Glückes genug (Kinderszenen)",
+      "catalog": "Op. 15 No. 5",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-6",
+      "composer": "schumann",
+      "title": "Wichtige Begebenheit (Kinderszenen)",
+      "catalog": "Op. 15 No. 6",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-8",
+      "composer": "schumann",
+      "title": "Am Kamin (Kinderszenen)",
+      "catalog": "Op. 15 No. 8",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-9",
+      "composer": "schumann",
+      "title": "Ritter vom Steckenpferd (Kinderszenen)",
+      "catalog": "Op. 15 No. 9",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-10",
+      "composer": "schumann",
+      "title": "Fast zu ernst (Kinderszenen)",
+      "catalog": "Op. 15 No. 10",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-11",
+      "composer": "schumann",
+      "title": "Fürchtenmachen (Kinderszenen)",
+      "catalog": "Op. 15 No. 11",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-12",
+      "composer": "schumann",
+      "title": "Kind im Einschlummern (Kinderszenen)",
+      "catalog": "Op. 15 No. 12",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-15-no-13",
+      "composer": "schumann",
+      "title": "Der Dichter spricht (Kinderszenen)",
+      "catalog": "Op. 15 No. 13",
+      "aliases": ["Scenes from Childhood"]
+    },
+    {
+      "id": "schumann/op-68",
+      "composer": "schumann",
+      "title": "Album für die Jugend",
+      "catalog": "Op. 68",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-1",
+      "composer": "schumann",
+      "title": "Melodie (Album für die Jugend)",
+      "catalog": "Op. 68 No. 1",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-2",
+      "composer": "schumann",
+      "title": "Soldatenmarsch (Album für die Jugend)",
+      "catalog": "Op. 68 No. 2",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-3",
+      "composer": "schumann",
+      "title": "Trällerliedchen (Album für die Jugend)",
+      "catalog": "Op. 68 No. 3",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-4",
+      "composer": "schumann",
+      "title": "Ein Choral (Album für die Jugend)",
+      "catalog": "Op. 68 No. 4",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-5",
+      "composer": "schumann",
+      "title": "Stückchen (Album für die Jugend)",
+      "catalog": "Op. 68 No. 5",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-6",
+      "composer": "schumann",
+      "title": "Armes Waisenkind (Album für die Jugend)",
+      "catalog": "Op. 68 No. 6",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-7",
+      "composer": "schumann",
+      "title": "Jägerliedchen (Album für die Jugend)",
+      "catalog": "Op. 68 No. 7",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-8",
+      "composer": "schumann",
+      "title": "Wilder Reiter (Album für die Jugend)",
+      "catalog": "Op. 68 No. 8",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-9",
+      "composer": "schumann",
+      "title": "Volksliedchen (Album für die Jugend)",
+      "catalog": "Op. 68 No. 9",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-10",
+      "composer": "schumann",
+      "title": "Fröhlicher Landmann (Album für die Jugend)",
+      "catalog": "Op. 68 No. 10",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-11",
+      "composer": "schumann",
+      "title": "Sicilianisch (Album für die Jugend)",
+      "catalog": "Op. 68 No. 11",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-12",
+      "composer": "schumann",
+      "title": "Knecht Ruprecht (Album für die Jugend)",
+      "catalog": "Op. 68 No. 12",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-13",
+      "composer": "schumann",
+      "title": "Mai, lieber Mai (Album für die Jugend)",
+      "catalog": "Op. 68 No. 13",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-14",
+      "composer": "schumann",
+      "title": "Kleine Studie (Album für die Jugend)",
+      "catalog": "Op. 68 No. 14",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-15",
+      "composer": "schumann",
+      "title": "Frühlingsgesang (Album für die Jugend)",
+      "catalog": "Op. 68 No. 15",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-16",
+      "composer": "schumann",
+      "title": "Erster Verlust (Album für die Jugend)",
+      "catalog": "Op. 68 No. 16",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-17",
+      "composer": "schumann",
+      "title": "Kleiner Morgenwanderer (Album für die Jugend)",
+      "catalog": "Op. 68 No. 17",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-68-no-18",
+      "composer": "schumann",
+      "title": "Schnitterliedchen (Album für die Jugend)",
+      "catalog": "Op. 68 No. 18",
+      "aliases": ["Album for the Young"]
+    },
+    {
+      "id": "schumann/op-18",
+      "composer": "schumann",
+      "title": "Arabeske in C major",
+      "catalog": "Op. 18"
+    },
+    {
+      "id": "schumann/op-2",
+      "composer": "schumann",
+      "title": "Papillons",
+      "catalog": "Op. 2"
+    },
+    {
+      "id": "schumann/op-9",
+      "composer": "schumann",
+      "title": "Carnaval",
+      "catalog": "Op. 9"
+    },
+    {
+      "id": "schumann/op-16",
+      "composer": "schumann",
+      "title": "Kreisleriana",
+      "catalog": "Op. 16"
+    },
+    {
+      "id": "schumann/op-17",
+      "composer": "schumann",
+      "title": "Fantasie in C major",
+      "catalog": "Op. 17"
+    },
+    {
+      "id": "schumann/op-1",
+      "composer": "schumann",
+      "title": "Abegg Variations",
+      "catalog": "Op. 1"
+    },
+    {
+      "id": "schumann/op-28-no-2",
+      "composer": "schumann",
+      "title": "Romance in F-sharp major",
+      "catalog": "Op. 28 No. 2"
+    },
+    {
+      "id": "schumann/op-82-no-7",
+      "composer": "schumann",
+      "title": "Vogel als Prophet (Waldszenen)",
+      "catalog": "Op. 82 No. 7",
+      "aliases": ["Forest Scenes", "Bird as Prophet"]
+    },
+    {
+      "id": "schumann/op-82",
+      "composer": "schumann",
+      "title": "Waldszenen",
+      "catalog": "Op. 82",
+      "aliases": ["Forest Scenes"]
+    },
+    {
+      "id": "clara-schumann/op-11",
+      "composer": "clara-schumann",
+      "title": "Three Romances",
+      "catalog": "Op. 11"
+    },
+    {
+      "id": "clara-schumann/op-21",
+      "composer": "clara-schumann",
+      "title": "Three Romances",
+      "catalog": "Op. 21"
+    },
+    {
+      "id": "clara-schumann/op-6",
+      "composer": "clara-schumann",
+      "title": "Soirées musicales",
+      "catalog": "Op. 6"
+    },
+    {
+      "id": "schubert/d-899-no-1",
+      "composer": "schubert",
+      "title": "Impromptu in C minor",
+      "catalog": "D. 899 No. 1",
+      "aliases": ["Op. 90 No. 1"]
+    },
+    {
+      "id": "schubert/d-899-no-2",
+      "composer": "schubert",
+      "title": "Impromptu in E-flat major",
+      "catalog": "D. 899 No. 2",
+      "aliases": ["Op. 90 No. 2"]
+    },
+    {
+      "id": "schubert/d-899-no-3",
+      "composer": "schubert",
+      "title": "Impromptu in G-flat major",
+      "catalog": "D. 899 No. 3",
+      "aliases": ["Op. 90 No. 3"]
+    },
+    {
+      "id": "schubert/d-899-no-4",
+      "composer": "schubert",
+      "title": "Impromptu in A-flat major",
+      "catalog": "D. 899 No. 4",
+      "aliases": ["Op. 90 No. 4"]
+    },
+    {
+      "id": "schubert/d-935-no-1",
+      "composer": "schubert",
+      "title": "Impromptu in F minor",
+      "catalog": "D. 935 No. 1",
+      "aliases": ["Op. 142 No. 1"]
+    },
+    {
+      "id": "schubert/d-935-no-2",
+      "composer": "schubert",
+      "title": "Impromptu in A-flat major",
+      "catalog": "D. 935 No. 2",
+      "aliases": ["Op. 142 No. 2"]
+    },
+    {
+      "id": "schubert/d-935-no-3",
+      "composer": "schubert",
+      "title": "Impromptu in B-flat major",
+      "catalog": "D. 935 No. 3",
+      "aliases": ["Op. 142 No. 3"]
+    },
+    {
+      "id": "schubert/d-935-no-4",
+      "composer": "schubert",
+      "title": "Impromptu in F minor",
+      "catalog": "D. 935 No. 4",
+      "aliases": ["Op. 142 No. 4"]
+    },
+    {
+      "id": "schubert/d-780-no-1",
+      "composer": "schubert",
+      "title": "Moment musical No. 1 in C major",
+      "catalog": "D. 780 No. 1",
+      "aliases": ["Moments musicaux", "Op. 94 No. 1"]
+    },
+    {
+      "id": "schubert/d-780-no-2",
+      "composer": "schubert",
+      "title": "Moment musical No. 2 in A-flat major",
+      "catalog": "D. 780 No. 2",
+      "aliases": ["Moments musicaux", "Op. 94 No. 2"]
+    },
+    {
+      "id": "schubert/d-780-no-3",
+      "composer": "schubert",
+      "title": "Moment musical No. 3 in F minor",
+      "catalog": "D. 780 No. 3",
+      "aliases": ["Moments musicaux", "Op. 94 No. 3"]
+    },
+    {
+      "id": "schubert/d-780-no-4",
+      "composer": "schubert",
+      "title": "Moment musical No. 4 in C-sharp minor",
+      "catalog": "D. 780 No. 4",
+      "aliases": ["Moments musicaux", "Op. 94 No. 4"]
+    },
+    {
+      "id": "schubert/d-780-no-5",
+      "composer": "schubert",
+      "title": "Moment musical No. 5 in F minor",
+      "catalog": "D. 780 No. 5",
+      "aliases": ["Moments musicaux", "Op. 94 No. 5"]
+    },
+    {
+      "id": "schubert/d-780-no-6",
+      "composer": "schubert",
+      "title": "Moment musical No. 6 in A-flat major",
+      "catalog": "D. 780 No. 6",
+      "aliases": ["Moments musicaux", "Op. 94 No. 6"]
+    },
+    {
+      "id": "schubert/d-664",
+      "composer": "schubert",
+      "title": "Piano Sonata in A major",
+      "catalog": "D. 664"
+    },
+    {
+      "id": "schubert/d-784",
+      "composer": "schubert",
+      "title": "Piano Sonata in A minor",
+      "catalog": "D. 784"
+    },
+    {
+      "id": "schubert/d-850",
+      "composer": "schubert",
+      "title": "Piano Sonata in D major",
+      "catalog": "D. 850"
+    },
+    {
+      "id": "schubert/d-894",
+      "composer": "schubert",
+      "title": "Piano Sonata in G major",
+      "catalog": "D. 894"
+    },
+    {
+      "id": "schubert/d-958",
+      "composer": "schubert",
+      "title": "Piano Sonata in C minor",
+      "catalog": "D. 958"
+    },
+    {
+      "id": "schubert/d-959",
+      "composer": "schubert",
+      "title": "Piano Sonata in A major",
+      "catalog": "D. 959"
+    },
+    {
+      "id": "schubert/d-960",
+      "composer": "schubert",
+      "title": "Piano Sonata in B-flat major",
+      "catalog": "D. 960"
+    },
+    {
+      "id": "schubert/d-760",
+      "composer": "schubert",
+      "title": "Wanderer Fantasy in C major",
+      "catalog": "D. 760"
+    },
+    {
+      "id": "schubert/d-946",
+      "composer": "schubert",
+      "title": "Drei Klavierstücke",
+      "catalog": "D. 946",
+      "aliases": ["Three Piano Pieces"]
+    },
+    {
+      "id": "liszt/s-541-no-3",
+      "composer": "liszt",
+      "title": "Liebestraum No. 3 in A-flat major",
+      "catalog": "S. 541 No. 3",
+      "aliases": ["Liebesträume", "Love Dream"]
+    },
+    {
+      "id": "liszt/s-172-no-3",
+      "composer": "liszt",
+      "title": "Consolation No. 3 in D-flat major",
+      "catalog": "S. 172 No. 3"
+    },
+    {
+      "id": "liszt/s-141-no-3",
+      "composer": "liszt",
+      "title": "La campanella",
+      "catalog": "S. 141 No. 3",
+      "aliases": ["Paganini Étude No. 3"]
+    },
+    {
+      "id": "liszt/s-144-no-3",
+      "composer": "liszt",
+      "title": "Un sospiro",
+      "catalog": "S. 144 No. 3",
+      "aliases": ["Concert Étude No. 3"]
+    },
+    {
+      "id": "liszt/s-244-no-2",
+      "composer": "liszt",
+      "title": "Hungarian Rhapsody No. 2",
+      "catalog": "S. 244 No. 2"
+    },
+    {
+      "id": "liszt/s-560-no-7",
+      "composer": "liszt",
+      "title": "Ständchen (Schubert)",
+      "catalog": "S. 560 No. 7",
+      "aliases": ["Serenade", "Schwanengesang"]
+    },
+    {
+      "id": "liszt/s-178",
+      "composer": "liszt",
+      "title": "Piano Sonata in B minor",
+      "catalog": "S. 178"
+    },
+    {
+      "id": "liszt/s-514",
+      "composer": "liszt",
+      "title": "Mephisto Waltz No. 1",
+      "catalog": "S. 514"
+    },
+    {
+      "id": "liszt/s-160-no-4",
+      "composer": "liszt",
+      "title": "Au bord d’une source (Années de pèlerinage I)",
+      "catalog": "S. 160 No. 4"
+    },
+    {
+      "id": "liszt/s-173-no-3",
+      "composer": "liszt",
+      "title": "Bénédiction de Dieu dans la solitude",
+      "catalog": "S. 173 No. 3",
+      "aliases": ["Harmonies poétiques et religieuses"]
+    },
+    {
+      "id": "liszt/s-139-no-4",
+      "composer": "liszt",
+      "title": "Transcendental Étude No. 4 “Mazeppa”",
+      "catalog": "S. 139 No. 4"
+    },
+    {
+      "id": "liszt/s-215-no-1",
+      "composer": "liszt",
+      "title": "Valse oubliée No. 1",
+      "catalog": "S. 215 No. 1"
+    },
+    {
+      "id": "satie/gymnopedie-no-1",
+      "composer": "satie",
+      "title": "Gymnopédie No. 1",
+      "aliases": ["Gymnopedie"]
+    },
+    {
+      "id": "satie/gymnopedie-no-2",
+      "composer": "satie",
+      "title": "Gymnopédie No. 2",
+      "aliases": ["Gymnopedie"]
+    },
+    {
+      "id": "satie/gymnopedie-no-3",
+      "composer": "satie",
+      "title": "Gymnopédie No. 3",
+      "aliases": ["Gymnopedie"]
+    },
+    {
+      "id": "satie/gnossienne-no-1",
+      "composer": "satie",
+      "title": "Gnossienne No. 1"
+    },
+    {
+      "id": "satie/gnossienne-no-2",
+      "composer": "satie",
+      "title": "Gnossienne No. 2"
+    },
+    {
+      "id": "satie/gnossienne-no-3",
+      "composer": "satie",
+      "title": "Gnossienne No. 3"
+    },
+    {
+      "id": "satie/gnossienne-no-4",
+      "composer": "satie",
+      "title": "Gnossienne No. 4"
+    },
+    {
+      "id": "satie/gnossienne-no-5",
+      "composer": "satie",
+      "title": "Gnossienne No. 5"
+    },
+    {
+      "id": "satie/gnossienne-no-6",
+      "composer": "satie",
+      "title": "Gnossienne No. 6"
+    },
+    {
+      "id": "satie/je-te-veux",
+      "composer": "satie",
+      "title": "Je te veux"
+    },
+    {
+      "id": "rachmaninoff/op-3-no-2",
+      "composer": "rachmaninoff",
+      "title": "Prelude in C-sharp minor",
+      "catalog": "Op. 3 No. 2",
+      "aliases": ["Bells of Moscow"]
+    },
+    {
+      "id": "rachmaninoff/op-23-no-5",
+      "composer": "rachmaninoff",
+      "title": "Prelude in G minor",
+      "catalog": "Op. 23 No. 5"
+    },
+    {
+      "id": "rachmaninoff/op-3-no-1",
+      "composer": "rachmaninoff",
+      "title": "Élégie in E-flat minor",
+      "catalog": "Op. 3 No. 1",
+      "aliases": ["Elegie"]
+    },
+    {
+      "id": "rachmaninoff/op-23-no-4",
+      "composer": "rachmaninoff",
+      "title": "Prelude in D major",
+      "catalog": "Op. 23 No. 4"
+    },
+    {
+      "id": "rachmaninoff/op-23-no-6",
+      "composer": "rachmaninoff",
+      "title": "Prelude in E-flat major",
+      "catalog": "Op. 23 No. 6"
+    },
+    {
+      "id": "rachmaninoff/op-32-no-5",
+      "composer": "rachmaninoff",
+      "title": "Prelude in G major",
+      "catalog": "Op. 32 No. 5"
+    },
+    {
+      "id": "rachmaninoff/op-32-no-10",
+      "composer": "rachmaninoff",
+      "title": "Prelude in B minor",
+      "catalog": "Op. 32 No. 10"
+    },
+    {
+      "id": "rachmaninoff/op-32-no-12",
+      "composer": "rachmaninoff",
+      "title": "Prelude in G-sharp minor",
+      "catalog": "Op. 32 No. 12"
+    },
+    {
+      "id": "rachmaninoff/op-16",
+      "composer": "rachmaninoff",
+      "title": "Moments musicaux",
+      "catalog": "Op. 16"
+    },
+    {
+      "id": "rachmaninoff/op-33",
+      "composer": "rachmaninoff",
+      "title": "Études-tableaux",
+      "catalog": "Op. 33"
+    },
+    {
+      "id": "rachmaninoff/op-39",
+      "composer": "rachmaninoff",
+      "title": "Études-tableaux",
+      "catalog": "Op. 39"
+    },
+    {
+      "id": "rachmaninoff/op-34-no-14",
+      "composer": "rachmaninoff",
+      "title": "Vocalise (piano arrangement)",
+      "catalog": "Op. 34 No. 14"
+    },
+    {
+      "id": "rachmaninoff/italian-polka",
+      "composer": "rachmaninoff",
+      "title": "Italian Polka"
+    },
+    {
+      "id": "brahms/op-118-no-2",
+      "composer": "brahms",
+      "title": "Intermezzo in A major",
+      "catalog": "Op. 118 No. 2"
+    },
+    {
+      "id": "brahms/op-39-no-15",
+      "composer": "brahms",
+      "title": "Waltz in A-flat major",
+      "catalog": "Op. 39 No. 15"
+    },
+    {
+      "id": "brahms/op-117-no-1",
+      "composer": "brahms",
+      "title": "Intermezzo in E-flat major",
+      "catalog": "Op. 117 No. 1"
+    },
+    {
+      "id": "brahms/op-79-no-2",
+      "composer": "brahms",
+      "title": "Rhapsody in G minor",
+      "catalog": "Op. 79 No. 2"
+    },
+    {
+      "id": "brahms/op-79-no-1",
+      "composer": "brahms",
+      "title": "Rhapsody in B minor",
+      "catalog": "Op. 79 No. 1"
+    },
+    {
+      "id": "brahms/op-118-no-1",
+      "composer": "brahms",
+      "title": "Intermezzo in A minor",
+      "catalog": "Op. 118 No. 1"
+    },
+    {
+      "id": "brahms/op-118-no-3",
+      "composer": "brahms",
+      "title": "Ballade in G minor",
+      "catalog": "Op. 118 No. 3"
+    },
+    {
+      "id": "brahms/op-118-no-5",
+      "composer": "brahms",
+      "title": "Romance in F major",
+      "catalog": "Op. 118 No. 5"
+    },
+    {
+      "id": "brahms/op-118-no-6",
+      "composer": "brahms",
+      "title": "Intermezzo in E-flat minor",
+      "catalog": "Op. 118 No. 6"
+    },
+    {
+      "id": "brahms/op-117-no-2",
+      "composer": "brahms",
+      "title": "Intermezzo in B-flat minor",
+      "catalog": "Op. 117 No. 2"
+    },
+    {
+      "id": "brahms/op-117-no-3",
+      "composer": "brahms",
+      "title": "Intermezzo in C-sharp minor",
+      "catalog": "Op. 117 No. 3"
+    },
+    {
+      "id": "brahms/op-119-no-1",
+      "composer": "brahms",
+      "title": "Intermezzo in B minor",
+      "catalog": "Op. 119 No. 1"
+    },
+    {
+      "id": "brahms/op-119-no-4",
+      "composer": "brahms",
+      "title": "Rhapsody in E-flat major",
+      "catalog": "Op. 119 No. 4"
+    },
+    {
+      "id": "brahms/op-10-no-1",
+      "composer": "brahms",
+      "title": "Ballade in D minor “Edward”",
+      "catalog": "Op. 10 No. 1"
+    },
+    {
+      "id": "brahms/op-116-no-3",
+      "composer": "brahms",
+      "title": "Capriccio in G minor",
+      "catalog": "Op. 116 No. 3"
+    },
+    {
+      "id": "brahms/op-116",
+      "composer": "brahms",
+      "title": "Fantasien",
+      "catalog": "Op. 116"
+    },
+    {
+      "id": "mendelssohn/op-62-no-6",
+      "composer": "mendelssohn",
+      "title": "Spring Song (Song without Words)",
+      "catalog": "Op. 62 No. 6",
+      "aliases": ["Songs without Words", "Lieder ohne Worte"]
+    },
+    {
+      "id": "mendelssohn/op-19-no-6",
+      "composer": "mendelssohn",
+      "title": "Venetian Boat Song No. 1 (Song without Words)",
+      "catalog": "Op. 19 No. 6",
+      "aliases": ["Songs without Words", "Lieder ohne Worte"]
+    },
+    {
+      "id": "mendelssohn/op-19-no-1",
+      "composer": "mendelssohn",
+      "title": "Sweet Remembrance (Song without Words)",
+      "catalog": "Op. 19 No. 1",
+      "aliases": ["Songs without Words", "Lieder ohne Worte"]
+    },
+    {
+      "id": "mendelssohn/op-30-no-6",
+      "composer": "mendelssohn",
+      "title": "Venetian Boat Song No. 2 (Song without Words)",
+      "catalog": "Op. 30 No. 6",
+      "aliases": ["Songs without Words", "Lieder ohne Worte"]
+    },
+    {
+      "id": "mendelssohn/op-62-no-5",
+      "composer": "mendelssohn",
+      "title": "Venetian Boat Song No. 3 (Song without Words)",
+      "catalog": "Op. 62 No. 5",
+      "aliases": ["Songs without Words", "Lieder ohne Worte"]
+    },
+    {
+      "id": "mendelssohn/op-67-no-4",
+      "composer": "mendelssohn",
+      "title": "Spinning Song (Song without Words)",
+      "catalog": "Op. 67 No. 4",
+      "aliases": ["Songs without Words", "Lieder ohne Worte"]
+    },
+    {
+      "id": "mendelssohn/op-38-no-6",
+      "composer": "mendelssohn",
+      "title": "Duetto (Song without Words)",
+      "catalog": "Op. 38 No. 6",
+      "aliases": ["Songs without Words", "Lieder ohne Worte"]
+    },
+    {
+      "id": "mendelssohn/op-14",
+      "composer": "mendelssohn",
+      "title": "Rondo capriccioso",
+      "catalog": "Op. 14"
+    },
+    {
+      "id": "mendelssohn/op-54",
+      "composer": "mendelssohn",
+      "title": "Variations sérieuses",
+      "catalog": "Op. 54"
+    },
+    {
+      "id": "mendelssohn/op-35-no-1",
+      "composer": "mendelssohn",
+      "title": "Prelude and Fugue in E minor",
+      "catalog": "Op. 35 No. 1"
+    },
+    {
+      "id": "grieg/op-12-no-1",
+      "composer": "grieg",
+      "title": "Arietta (Lyric Pieces)",
+      "catalog": "Op. 12 No. 1",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-65-no-6",
+      "composer": "grieg",
+      "title": "Wedding Day at Troldhaugen (Lyric Pieces)",
+      "catalog": "Op. 65 No. 6",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-54-no-3",
+      "composer": "grieg",
+      "title": "March of the Trolls (Lyric Pieces)",
+      "catalog": "Op. 54 No. 3",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-43-no-6",
+      "composer": "grieg",
+      "title": "To Spring (Lyric Pieces)",
+      "catalog": "Op. 43 No. 6",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-43-no-1",
+      "composer": "grieg",
+      "title": "Butterfly (Lyric Pieces)",
+      "catalog": "Op. 43 No. 1",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-54-no-4",
+      "composer": "grieg",
+      "title": "Notturno (Lyric Pieces)",
+      "catalog": "Op. 54 No. 4",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-12-no-2",
+      "composer": "grieg",
+      "title": "Waltz (Lyric Pieces)",
+      "catalog": "Op. 12 No. 2",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-12-no-4",
+      "composer": "grieg",
+      "title": "Elves’ Dance (Lyric Pieces)",
+      "catalog": "Op. 12 No. 4",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-71-no-3",
+      "composer": "grieg",
+      "title": "Puck (Lyric Pieces)",
+      "catalog": "Op. 71 No. 3",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-71-no-7",
+      "composer": "grieg",
+      "title": "Remembrances (Lyric Pieces)",
+      "catalog": "Op. 71 No. 7",
+      "aliases": ["Lyric Pieces"]
+    },
+    {
+      "id": "grieg/op-40",
+      "composer": "grieg",
+      "title": "Holberg Suite",
+      "catalog": "Op. 40"
+    },
+    {
+      "id": "grieg/op-7",
+      "composer": "grieg",
+      "title": "Piano Sonata in E minor",
+      "catalog": "Op. 7"
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-6",
+      "composer": "tchaikovsky",
+      "title": "June: Barcarolle (The Seasons)",
+      "catalog": "Op. 37a No. 6",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a",
+      "composer": "tchaikovsky",
+      "title": "The Seasons",
+      "catalog": "Op. 37a"
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-1",
+      "composer": "tchaikovsky",
+      "title": "January: At the Fireside (The Seasons)",
+      "catalog": "Op. 37a No. 1",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-2",
+      "composer": "tchaikovsky",
+      "title": "February: Carnival (The Seasons)",
+      "catalog": "Op. 37a No. 2",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-3",
+      "composer": "tchaikovsky",
+      "title": "March: Song of the Lark (The Seasons)",
+      "catalog": "Op. 37a No. 3",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-4",
+      "composer": "tchaikovsky",
+      "title": "April: Snowdrop (The Seasons)",
+      "catalog": "Op. 37a No. 4",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-5",
+      "composer": "tchaikovsky",
+      "title": "May: White Nights (The Seasons)",
+      "catalog": "Op. 37a No. 5",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-7",
+      "composer": "tchaikovsky",
+      "title": "July: Song of the Reaper (The Seasons)",
+      "catalog": "Op. 37a No. 7",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-8",
+      "composer": "tchaikovsky",
+      "title": "August: Harvest (The Seasons)",
+      "catalog": "Op. 37a No. 8",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-9",
+      "composer": "tchaikovsky",
+      "title": "September: The Hunt (The Seasons)",
+      "catalog": "Op. 37a No. 9",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-10",
+      "composer": "tchaikovsky",
+      "title": "October: Autumn Song (The Seasons)",
+      "catalog": "Op. 37a No. 10",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-11",
+      "composer": "tchaikovsky",
+      "title": "November: Troika (The Seasons)",
+      "catalog": "Op. 37a No. 11",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-37a-no-12",
+      "composer": "tchaikovsky",
+      "title": "December: Christmas (The Seasons)",
+      "catalog": "Op. 37a No. 12",
+      "aliases": ["The Seasons"]
+    },
+    {
+      "id": "tchaikovsky/op-39",
+      "composer": "tchaikovsky",
+      "title": "Album for the Young",
+      "catalog": "Op. 39"
+    },
+    {
+      "id": "tchaikovsky/op-39-no-16",
+      "composer": "tchaikovsky",
+      "title": "Old French Song (Album for the Young)",
+      "catalog": "Op. 39 No. 16"
+    },
+    {
+      "id": "tchaikovsky/op-39-no-21",
+      "composer": "tchaikovsky",
+      "title": "Sweet Dream (Album for the Young)",
+      "catalog": "Op. 39 No. 21"
+    },
+    {
+      "id": "haydn/hob-xvi-35",
+      "composer": "haydn",
+      "title": "Piano Sonata in C major",
+      "catalog": "Hob. XVI:35"
+    },
+    {
+      "id": "haydn/hob-xvi-34",
+      "composer": "haydn",
+      "title": "Piano Sonata in E minor",
+      "catalog": "Hob. XVI:34"
+    },
+    {
+      "id": "haydn/hob-xvi-37",
+      "composer": "haydn",
+      "title": "Piano Sonata in D major",
+      "catalog": "Hob. XVI:37"
+    },
+    {
+      "id": "haydn/hob-xvi-52",
+      "composer": "haydn",
+      "title": "Piano Sonata in E-flat major",
+      "catalog": "Hob. XVI:52"
+    },
+    {
+      "id": "haydn/hob-xvi-50",
+      "composer": "haydn",
+      "title": "Piano Sonata in C major",
+      "catalog": "Hob. XVI:50"
+    },
+    {
+      "id": "haydn/hob-xvi-20",
+      "composer": "haydn",
+      "title": "Piano Sonata in C minor",
+      "catalog": "Hob. XVI:20"
+    },
+    {
+      "id": "haydn/hob-xvi-49",
+      "composer": "haydn",
+      "title": "Piano Sonata in E-flat major",
+      "catalog": "Hob. XVI:49"
+    },
+    {
+      "id": "haydn/hob-xvii-6",
+      "composer": "haydn",
+      "title": "Variations in F minor",
+      "catalog": "Hob. XVII:6",
+      "aliases": ["Andante con variazioni"]
+    },
+    {
+      "id": "ravel/pavane-pour-une-infante-defunte",
+      "composer": "ravel",
+      "title": "Pavane pour une infante défunte"
+    },
+    {
+      "id": "ravel/sonatine",
+      "composer": "ravel",
+      "title": "Sonatine"
+    },
+    {
+      "id": "ravel/jeux-deau",
+      "composer": "ravel",
+      "title": "Jeux d’eau"
+    },
+    {
+      "id": "ravel/menuet-sur-le-nom-dhaydn",
+      "composer": "ravel",
+      "title": "Menuet sur le nom d’Haydn"
+    },
+    {
+      "id": "ravel/menuet-antique",
+      "composer": "ravel",
+      "title": "Menuet antique"
+    },
+    {
+      "id": "ravel/prelude-in-a-minor",
+      "composer": "ravel",
+      "title": "Prélude in A minor"
+    },
+    {
+      "id": "ravel/le-tombeau-de-couperin",
+      "composer": "ravel",
+      "title": "Le tombeau de Couperin"
+    },
+    {
+      "id": "ravel/miroirs",
+      "composer": "ravel",
+      "title": "Miroirs"
+    },
+    {
+      "id": "ravel/gaspard-de-la-nuit",
+      "composer": "ravel",
+      "title": "Gaspard de la nuit"
+    },
+    {
+      "id": "ravel/valses-nobles-et-sentimentales",
+      "composer": "ravel",
+      "title": "Valses nobles et sentimentales"
+    },
+    {
+      "id": "scriabin/op-2-no-1",
+      "composer": "scriabin",
+      "title": "Étude in C-sharp minor",
+      "catalog": "Op. 2 No. 1"
+    },
+    {
+      "id": "scriabin/op-8-no-12",
+      "composer": "scriabin",
+      "title": "Étude in D-sharp minor",
+      "catalog": "Op. 8 No. 12"
+    },
+    {
+      "id": "scriabin/op-9-no-1",
+      "composer": "scriabin",
+      "title": "Prelude for the Left Hand",
+      "catalog": "Op. 9 No. 1"
+    },
+    {
+      "id": "scriabin/op-9-no-2",
+      "composer": "scriabin",
+      "title": "Nocturne for the Left Hand",
+      "catalog": "Op. 9 No. 2"
+    },
+    {
+      "id": "scriabin/op-11",
+      "composer": "scriabin",
+      "title": "24 Preludes",
+      "catalog": "Op. 11"
+    },
+    {
+      "id": "scriabin/op-19",
+      "composer": "scriabin",
+      "title": "Piano Sonata No. 2 “Sonata-Fantasy”",
+      "catalog": "Op. 19"
+    },
+    {
+      "id": "clementi/op-36-no-1",
+      "composer": "clementi",
+      "title": "Sonatina in C major",
+      "catalog": "Op. 36 No. 1"
+    },
+    {
+      "id": "clementi/op-36-no-2",
+      "composer": "clementi",
+      "title": "Sonatina in G major",
+      "catalog": "Op. 36 No. 2"
+    },
+    {
+      "id": "clementi/op-36-no-3",
+      "composer": "clementi",
+      "title": "Sonatina in C major",
+      "catalog": "Op. 36 No. 3"
+    },
+    {
+      "id": "clementi/op-36-no-4",
+      "composer": "clementi",
+      "title": "Sonatina in F major",
+      "catalog": "Op. 36 No. 4"
+    },
+    {
+      "id": "clementi/op-36-no-5",
+      "composer": "clementi",
+      "title": "Sonatina in G major",
+      "catalog": "Op. 36 No. 5"
+    },
+    {
+      "id": "clementi/op-36-no-6",
+      "composer": "clementi",
+      "title": "Sonatina in D major",
+      "catalog": "Op. 36 No. 6"
+    },
+    {
+      "id": "kuhlau/op-20-no-1",
+      "composer": "kuhlau",
+      "title": "Sonatina in C major",
+      "catalog": "Op. 20 No. 1"
+    },
+    {
+      "id": "kuhlau/op-55-no-1",
+      "composer": "kuhlau",
+      "title": "Sonatina in C major",
+      "catalog": "Op. 55 No. 1"
+    },
+    {
+      "id": "diabelli/op-168",
+      "composer": "diabelli",
+      "title": "Seven Sonatinas",
+      "catalog": "Op. 168"
+    },
+    {
+      "id": "burgmuller/op-100-no-1",
+      "composer": "burgmuller",
+      "title": "La candeur (25 Easy Studies)",
+      "catalog": "Op. 100 No. 1",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-2",
+      "composer": "burgmuller",
+      "title": "Arabesque (25 Easy Studies)",
+      "catalog": "Op. 100 No. 2",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-3",
+      "composer": "burgmuller",
+      "title": "Pastorale (25 Easy Studies)",
+      "catalog": "Op. 100 No. 3",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-4",
+      "composer": "burgmuller",
+      "title": "La petite réunion (25 Easy Studies)",
+      "catalog": "Op. 100 No. 4",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-5",
+      "composer": "burgmuller",
+      "title": "Innocence (25 Easy Studies)",
+      "catalog": "Op. 100 No. 5",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-6",
+      "composer": "burgmuller",
+      "title": "Progrès (25 Easy Studies)",
+      "catalog": "Op. 100 No. 6",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-7",
+      "composer": "burgmuller",
+      "title": "Le courant limpide (25 Easy Studies)",
+      "catalog": "Op. 100 No. 7",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-8",
+      "composer": "burgmuller",
+      "title": "La gracieuse (25 Easy Studies)",
+      "catalog": "Op. 100 No. 8",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-9",
+      "composer": "burgmuller",
+      "title": "La chasse (25 Easy Studies)",
+      "catalog": "Op. 100 No. 9",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-10",
+      "composer": "burgmuller",
+      "title": "Tendre fleur (25 Easy Studies)",
+      "catalog": "Op. 100 No. 10",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-11",
+      "composer": "burgmuller",
+      "title": "La bergeronnette (25 Easy Studies)",
+      "catalog": "Op. 100 No. 11",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-12",
+      "composer": "burgmuller",
+      "title": "L’adieu (25 Easy Studies)",
+      "catalog": "Op. 100 No. 12",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-13",
+      "composer": "burgmuller",
+      "title": "Consolation (25 Easy Studies)",
+      "catalog": "Op. 100 No. 13",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-14",
+      "composer": "burgmuller",
+      "title": "La styrienne (25 Easy Studies)",
+      "catalog": "Op. 100 No. 14",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-15",
+      "composer": "burgmuller",
+      "title": "Ballade (25 Easy Studies)",
+      "catalog": "Op. 100 No. 15",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-16",
+      "composer": "burgmuller",
+      "title": "Douce plainte (25 Easy Studies)",
+      "catalog": "Op. 100 No. 16",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-17",
+      "composer": "burgmuller",
+      "title": "La babillarde (25 Easy Studies)",
+      "catalog": "Op. 100 No. 17",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-18",
+      "composer": "burgmuller",
+      "title": "Inquiétude (25 Easy Studies)",
+      "catalog": "Op. 100 No. 18",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-19",
+      "composer": "burgmuller",
+      "title": "Ave Maria (25 Easy Studies)",
+      "catalog": "Op. 100 No. 19",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-20",
+      "composer": "burgmuller",
+      "title": "La tarentelle (25 Easy Studies)",
+      "catalog": "Op. 100 No. 20",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-21",
+      "composer": "burgmuller",
+      "title": "L’harmonie des anges (25 Easy Studies)",
+      "catalog": "Op. 100 No. 21",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-22",
+      "composer": "burgmuller",
+      "title": "Barcarolle (25 Easy Studies)",
+      "catalog": "Op. 100 No. 22",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-23",
+      "composer": "burgmuller",
+      "title": "Le retour (25 Easy Studies)",
+      "catalog": "Op. 100 No. 23",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-24",
+      "composer": "burgmuller",
+      "title": "L’hirondelle (25 Easy Studies)",
+      "catalog": "Op. 100 No. 24",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "burgmuller/op-100-no-25",
+      "composer": "burgmuller",
+      "title": "La chevaleresque (25 Easy Studies)",
+      "catalog": "Op. 100 No. 25",
+      "aliases": ["25 Etudes faciles"]
+    },
+    {
+      "id": "czerny/op-599",
+      "composer": "czerny",
+      "title": "Practical Method for Beginners",
+      "catalog": "Op. 599"
+    },
+    {
+      "id": "czerny/op-299",
+      "composer": "czerny",
+      "title": "The School of Velocity",
+      "catalog": "Op. 299"
+    },
+    {
+      "id": "czerny/op-740",
+      "composer": "czerny",
+      "title": "The Art of Finger Dexterity",
+      "catalog": "Op. 740"
+    },
+    {
+      "id": "czerny/op-849",
+      "composer": "czerny",
+      "title": "30 New Studies in Technique",
+      "catalog": "Op. 849"
+    },
+    {
+      "id": "handel/hwv-430",
+      "composer": "handel",
+      "title": "Suite No. 5 in E major “The Harmonious Blacksmith”",
+      "catalog": "HWV 430"
+    },
+    {
+      "id": "handel/hwv-437",
+      "composer": "handel",
+      "title": "Sarabande (Suite in D minor)",
+      "catalog": "HWV 437"
+    },
+    {
+      "id": "handel/hwv-432",
+      "composer": "handel",
+      "title": "Passacaglia (Suite in G minor)",
+      "catalog": "HWV 432"
+    },
+    {
+      "id": "scarlatti/k-9",
+      "composer": "scarlatti",
+      "title": "Sonata in D minor “Pastorale”",
+      "catalog": "K. 9"
+    },
+    {
+      "id": "scarlatti/k-141",
+      "composer": "scarlatti",
+      "title": "Sonata in D minor",
+      "catalog": "K. 141"
+    },
+    {
+      "id": "scarlatti/k-380",
+      "composer": "scarlatti",
+      "title": "Sonata in E major",
+      "catalog": "K. 380"
+    },
+    {
+      "id": "scarlatti/k-466",
+      "composer": "scarlatti",
+      "title": "Sonata in F minor",
+      "catalog": "K. 466"
+    },
+    {
+      "id": "scarlatti/k-1",
+      "composer": "scarlatti",
+      "title": "Sonata in D minor",
+      "catalog": "K. 1"
+    },
+    {
+      "id": "scarlatti/k-11",
+      "composer": "scarlatti",
+      "title": "Sonata in C minor",
+      "catalog": "K. 11"
+    },
+    {
+      "id": "scarlatti/k-27",
+      "composer": "scarlatti",
+      "title": "Sonata in B minor",
+      "catalog": "K. 27"
+    },
+    {
+      "id": "scarlatti/k-159",
+      "composer": "scarlatti",
+      "title": "Sonata in C major",
+      "catalog": "K. 159"
+    },
+    {
+      "id": "scarlatti/k-213",
+      "composer": "scarlatti",
+      "title": "Sonata in D minor",
+      "catalog": "K. 213"
+    },
+    {
+      "id": "couperin/6e-ordre",
+      "composer": "couperin",
+      "title": "Les Barricades mystérieuses",
+      "catalog": "6e Ordre"
+    },
+    {
+      "id": "couperin/18e-ordre",
+      "composer": "couperin",
+      "title": "Le Tic-Toc-Choc",
+      "catalog": "18e Ordre"
+    },
+    {
+      "id": "rameau/le-rappel-des-oiseaux",
+      "composer": "rameau",
+      "title": "Le Rappel des oiseaux"
+    },
+    {
+      "id": "rameau/les-sauvages",
+      "composer": "rameau",
+      "title": "Les Sauvages"
+    },
+    {
+      "id": "rameau/tambourin",
+      "composer": "rameau",
+      "title": "Tambourin"
+    },
+    {
+      "id": "rameau/gavotte-et-six-doubles",
+      "composer": "rameau",
+      "title": "Gavotte et six doubles"
+    },
+    {
+      "id": "bartok/sz-56",
+      "composer": "bartok",
+      "title": "Romanian Folk Dances",
+      "catalog": "Sz. 56"
+    },
+    {
+      "id": "bartok/sz-107",
+      "composer": "bartok",
+      "title": "Mikrokosmos",
+      "catalog": "Sz. 107"
+    },
+    {
+      "id": "bartok/sz-42",
+      "composer": "bartok",
+      "title": "For Children",
+      "catalog": "Sz. 42"
+    },
+    {
+      "id": "bartok/sz-39-no-5",
+      "composer": "bartok",
+      "title": "Evening in Transylvania (Ten Easy Pieces)",
+      "catalog": "Sz. 39 No. 5"
+    },
+    {
+      "id": "bartok/sz-49",
+      "composer": "bartok",
+      "title": "Allegro barbaro",
+      "catalog": "Sz. 49"
+    },
+    {
+      "id": "bartok/sz-55",
+      "composer": "bartok",
+      "title": "Sonatina",
+      "catalog": "Sz. 55"
+    },
+    {
+      "id": "bartok/op-14-sz-62",
+      "composer": "bartok",
+      "title": "Suite",
+      "catalog": "Op. 14, Sz. 62"
+    },
+    {
+      "id": "prokofiev/op-11",
+      "composer": "prokofiev",
+      "title": "Toccata in D minor",
+      "catalog": "Op. 11"
+    },
+    {
+      "id": "prokofiev/op-75-no-6",
+      "composer": "prokofiev",
+      "title": "Montagues and Capulets (Romeo and Juliet)",
+      "catalog": "Op. 75 No. 6",
+      "aliases": ["Dance of the Knights"]
+    },
+    {
+      "id": "prokofiev/op-65",
+      "composer": "prokofiev",
+      "title": "Music for Children",
+      "catalog": "Op. 65"
+    },
+    {
+      "id": "prokofiev/op-83",
+      "composer": "prokofiev",
+      "title": "Piano Sonata No. 7 in B-flat major",
+      "catalog": "Op. 83"
+    },
+    {
+      "id": "shostakovich/op-34",
+      "composer": "shostakovich",
+      "title": "24 Preludes",
+      "catalog": "Op. 34"
+    },
+    {
+      "id": "shostakovich/op-5",
+      "composer": "shostakovich",
+      "title": "Three Fantastic Dances",
+      "catalog": "Op. 5"
+    },
+    {
+      "id": "kabalevsky/op-27-no-12",
+      "composer": "kabalevsky",
+      "title": "Toccatina",
+      "catalog": "Op. 27 No. 12"
+    },
+    {
+      "id": "kabalevsky/op-27",
+      "composer": "kabalevsky",
+      "title": "30 Children’s Pieces",
+      "catalog": "Op. 27"
+    },
+    {
+      "id": "kabalevsky/op-39",
+      "composer": "kabalevsky",
+      "title": "24 Pieces for Children",
+      "catalog": "Op. 39"
+    },
+    {
+      "id": "kabalevsky/op-13-no-1",
+      "composer": "kabalevsky",
+      "title": "Sonatina in C major",
+      "catalog": "Op. 13 No. 1"
+    },
+    {
+      "id": "khachaturian/toccata",
+      "composer": "khachaturian",
+      "title": "Toccata"
+    },
+    {
+      "id": "mussorgsky/pictures-at-an-exhibition",
+      "composer": "mussorgsky",
+      "title": "Pictures at an Exhibition"
+    },
+    {
+      "id": "albeniz/op-47-no-5",
+      "composer": "albeniz",
+      "title": "Asturias (Leyenda)",
+      "catalog": "Op. 47 No. 5",
+      "aliases": ["Suite española"]
+    },
+    {
+      "id": "albeniz/op-165-no-2",
+      "composer": "albeniz",
+      "title": "Tango in D major",
+      "catalog": "Op. 165 No. 2",
+      "aliases": ["España"]
+    },
+    {
+      "id": "granados/op-37-no-5",
+      "composer": "granados",
+      "title": "Spanish Dance No. 5 “Andaluza”",
+      "catalog": "Op. 37 No. 5",
+      "aliases": ["Danza española"]
+    },
+    {
+      "id": "dvorak/op-101-no-7",
+      "composer": "dvorak",
+      "title": "Humoresque in G-flat major",
+      "catalog": "Op. 101 No. 7"
+    },
+    {
+      "id": "weber/op-65",
+      "composer": "weber",
+      "title": "Invitation to the Dance",
+      "catalog": "Op. 65",
+      "aliases": ["Aufforderung zum Tanz"]
+    },
+    {
+      "id": "joplin/the-entertainer",
+      "composer": "joplin",
+      "title": "The Entertainer",
+      "aliases": ["Ragtime", "Rag"]
+    },
+    {
+      "id": "joplin/maple-leaf-rag",
+      "composer": "joplin",
+      "title": "Maple Leaf Rag",
+      "aliases": ["Ragtime", "Rag"]
+    },
+    {
+      "id": "joplin/solace",
+      "composer": "joplin",
+      "title": "Solace",
+      "aliases": ["Ragtime", "Rag"]
+    },
+    {
+      "id": "joplin/the-easy-winners",
+      "composer": "joplin",
+      "title": "The Easy Winners",
+      "aliases": ["Ragtime", "Rag"]
+    },
+    {
+      "id": "joplin/elite-syncopations",
+      "composer": "joplin",
+      "title": "Elite Syncopations",
+      "aliases": ["Ragtime", "Rag"]
+    },
+    {
+      "id": "joplin/bethena",
+      "composer": "joplin",
+      "title": "Bethena",
+      "aliases": ["Ragtime", "Rag"]
+    },
+    {
+      "id": "gershwin/three-preludes",
+      "composer": "gershwin",
+      "title": "Three Preludes"
+    },
+    {
+      "id": "gershwin/rhapsody-in-blue-solo-piano",
+      "composer": "gershwin",
+      "title": "Rhapsody in Blue (solo piano)"
+    },
+    {
+      "id": "einaudi/nuvole-bianche",
+      "composer": "einaudi",
+      "title": "Nuvole bianche"
+    },
+    {
+      "id": "einaudi/una-mattina",
+      "composer": "einaudi",
+      "title": "Una mattina"
+    },
+    {
+      "id": "einaudi/i-giorni",
+      "composer": "einaudi",
+      "title": "I giorni"
+    },
+    {
+      "id": "einaudi/le-onde",
+      "composer": "einaudi",
+      "title": "Le onde"
+    },
+    {
+      "id": "einaudi/divenire",
+      "composer": "einaudi",
+      "title": "Divenire"
+    },
+    {
+      "id": "tiersen/comptine-dun-autre-ete-lapres-midi",
+      "composer": "tiersen",
+      "title": "Comptine d’un autre été : l’après-midi",
+      "aliases": ["Amélie"]
+    },
+    {
+      "id": "tiersen/la-valse-damelie",
+      "composer": "tiersen",
+      "title": "La valse d’Amélie",
+      "aliases": ["Amélie"]
+    },
+    {
+      "id": "yiruma/river-flows-in-you",
+      "composer": "yiruma",
+      "title": "River Flows in You"
+    },
+    {
+      "id": "yiruma/kiss-the-rain",
+      "composer": "yiruma",
+      "title": "Kiss the Rain"
+    },
+    {
+      "id": "sakamoto/merry-christmas-mr-lawrence",
+      "composer": "sakamoto",
+      "title": "Merry Christmas Mr. Lawrence"
+    },
+    {
+      "id": "glass/metamorphosis-one",
+      "composer": "glass",
+      "title": "Metamorphosis One"
+    },
+    {
+      "id": "glass/opening-glassworks",
+      "composer": "glass",
+      "title": "Opening (Glassworks)"
+    },
+    {
+      "id": "part/fur-alina",
+      "composer": "part",
+      "title": "Für Alina"
+    },
+    {
+      "id": "part/variationen-zur-gesundung-von-arinuschka",
+      "composer": "part",
+      "title": "Variationen zur Gesundung von Arinuschka"
+    }
+  ]
+}

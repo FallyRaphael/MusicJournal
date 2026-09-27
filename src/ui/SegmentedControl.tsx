@@ -5,6 +5,8 @@ interface Option<T extends string> {
   value: T;
   label: string;
   icon?: ReactNode;
+  /** Small number shown after the label, e.g. how many items the option contains. */
+  count?: number;
 }
 
 interface SegmentedControlProps<T extends string> {
@@ -41,6 +43,9 @@ export function SegmentedControl<T extends string>({
           <span className={styles.label}>
             {option.icon}
             {option.label}
+            {option.count !== undefined && (
+              <span className={`${styles.count} tabular`}>{option.count}</span>
+            )}
           </span>
         </label>
       ))}

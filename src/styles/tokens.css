@@ -31,6 +31,8 @@
   --bg: #f4f5f2;
   --surface: #ffffff;
   --surface-2: #eceeea;
+  /* Selected segment, raised above a surface-2 track. */
+  --surface-raised: #ffffff;
   --border: #e2e4e0;
   --border-strong: #d5d9d3;
   --text: #1b1f24;
@@ -43,6 +45,7 @@
   --focus-soft: #fbf1e8;
   --focus-text: #6e3510;
   --danger: #b3261e;
+  --on-danger: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,6 +54,7 @@
     --bg: #111418;
     --surface: #1a1f26;
     --surface-2: #262d36;
+    --surface-raised: #3a4350;
     --border: #2c343e;
     --border-strong: #343d48;
     --text: #e8ecf1;
@@ -63,6 +67,7 @@
     --focus-soft: #2a1e14;
     --focus-text: #f2c9a0;
     --danger: #f2b8b5;
+    --on-danger: #601410;
   }
 }
 
@@ -71,6 +76,7 @@
   --bg: #111418;
   --surface: #1a1f26;
   --surface-2: #262d36;
+  --surface-raised: #3a4350;
   --border: #2c343e;
   --border-strong: #343d48;
   --text: #e8ecf1;
@@ -83,4 +89,5 @@
   --focus-soft: #2a1e14;
   --focus-text: #f2c9a0;
   --danger: #f2b8b5;
+  --on-danger: #601410;
 }

@@ -1,0 +1,151 @@
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: -20px -10px -8px 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.composer {
+  color: var(--text-muted);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.stat dt {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.stat dd {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 32px;
+  margin: -6px -10px -6px 0;
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.focusIcon {
+  color: var(--focus);
+}
+
+.note {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.placeholder {
+  color: var(--text-muted);
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.statusActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.periods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 4px 0 0;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--border);
+  list-style: none;
+}
+
+.period {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: var(--text-sm);
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--border-strong);
+}
+
+.dotCurrent {
+  background: var(--accent);
+}
+
+.periodText {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.periodLabel {
+  font-weight: 600;
+}
+
+.sessions {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sessionRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+
+.sessionRow:first-child {
+  border-top: none;
+  padding-top: 0;
+}

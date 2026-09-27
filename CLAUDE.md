@@ -6,7 +6,7 @@ The user decides product/UX questions; propose options with trade-offs before la
 ## Build plan
 
 1. Foundation (done): setup, PWA, database, themes, tab navigation
-2. Pieces: list/filter/sort, add with catalog suggestions, piece page, statuses & periods, shelving
+2. Pieces (done): list/filter/sort, add with catalog suggestions, piece page, statuses & periods, shelving
 3. Sessions: technique items, templates, planning, timer, quick log, finish summary, log afterwards
 4. Dashboard & cycles: weekly target/streak, cycles, goals with automatic progress, end review
 5. Backup: export, import (replace or merge) with preview, undo, backup reminder
@@ -27,4 +27,10 @@ timer, prev/pause/next, method buttons, a BPM stepper and an "All items" overvie
 - Schema changes: add a new `this.version(n)` in `src/db/database.ts`, never edit old versions.
 - Colours only via the CSS variables in `src/styles/tokens.css`; touch targets ≥ 44px.
 - Screens use `Screen`/`PageHeader` from `src/ui/Screen.tsx`; icons from `lucide-react`.
+- Sheets (`src/ui/Sheet.tsx`) are native modal dialogs; focus a field on open with
+  `data-autofocus` (React's `autoFocus` fires before the dialog is visible).
+- Don't call `Date.now()` during render (react-hooks purity rule); use `useNow()`.
+- The work catalog (`src/catalog/catalog.json`) is generated data; only add entries whose
+  catalog numbers and keys are certain. Search normalisation lives in `src/domain/search.ts`.
+- UI copy uses US spelling ("practiced"), dates are formatted en-GB ("27 Sept 2026").
 - Before finishing a change: `npx tsc -b`, `npm test`, `npm run lint`, `npx prettier --check .`.

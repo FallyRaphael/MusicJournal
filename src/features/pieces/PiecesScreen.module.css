@@ -1,0 +1,19 @@
+.toolbar {
+  display: flex;
+  gap: 8px;
+}
+
+.filterActive {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

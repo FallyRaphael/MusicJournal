@@ -1,0 +1,13 @@
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: var(--tap-target);
+  margin-left: -8px;
+  padding: 0 8px 0 2px;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: var(--text-md);
+  font-weight: 600;
+}

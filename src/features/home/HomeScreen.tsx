@@ -6,6 +6,7 @@ import { useSettings } from '../../db/settings';
 import { toDateKey, weekDays } from '../../domain/dates';
 import { summarizeWeek } from '../../domain/week';
 import { formatLongDate } from '../../lib/format';
+import { useNow } from '../../lib/useNow';
 import { Button } from '../../ui/Button';
 import { EmptyState, PageHeader, Screen } from '../../ui/Screen';
 import { WeekCard } from './WeekCard';
@@ -14,7 +15,7 @@ export function HomeScreen() {
   const navigate = useNavigate();
   const settings = useSettings();
 
-  const now = new Date();
+  const now = new Date(useNow());
   const today = toDateKey(now);
   const days = weekDays(now);
   const [first, last] = [days[0], days[6]];

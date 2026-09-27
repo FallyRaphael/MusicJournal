@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html:has(dialog[open]) {
+  /* Keep the page behind an open sheet from scrolling. */
+  overflow: hidden;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
