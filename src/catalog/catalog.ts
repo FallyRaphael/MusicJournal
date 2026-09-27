@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { matchScore, tokenize } from '../domain/search';
 
 export interface CatalogComposer {
@@ -31,22 +31,51 @@ let loading: Promise<Catalog> | undefined;
 
 /** Loads the built-in catalog (a separate file, fetched the first time it's needed). */
 export function loadCatalog(): Promise<Catalog> {
-  loading ??= import('./catalog.json').then((module) => module.default as Catalog);
+  loading ??= import('./catalog.json').then(
+    (module) => module.default as Catalog,
+    (error: unknown) => {
+      // Forget the failed attempt, so the next call tries again.
+      loading = undefined;
+      throw error;
+    },
+  );
   return loading;
 }
 
-export function useCatalog(): Catalog | undefined {
+export interface CatalogState {
+  catalog?: Catalog;
+  /** Loading failed; `retry` tries again. */
+  failed: boolean;
+  retry: () => void;
+}
+
+export function useCatalog(): CatalogState {
   const [catalog, setCatalog] = useState<Catalog>();
+  const [failed, setFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+
   useEffect(() => {
     let active = true;
-    void loadCatalog().then((loaded) => {
-      if (active) setCatalog(loaded);
-    });
+    loadCatalog().then(
+      (loaded) => {
+        if (active) setCatalog(loaded);
+      },
+      (error: unknown) => {
+        console.error('Could not load the piece catalog', error);
+        if (active) setFailed(true);
+      },
+    );
     return () => {
       active = false;
     };
+  }, [attempt]);
+
+  const retry = useCallback(() => {
+    setFailed(false);
+    setAttempt((n) => n + 1);
   }, []);
-  return catalog;
+
+  return { catalog, failed, retry };
 }
 
 interface IndexedWork extends CatalogMatch {

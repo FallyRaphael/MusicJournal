@@ -35,7 +35,7 @@ interface PieceFormProps {
 
 export function PieceForm(props: PieceFormProps) {
   const { initial, initialStatus } = props;
-  const catalog = useCatalog();
+  const { catalog, failed: catalogFailed, retry: retryCatalog } = useCatalog();
 
   const [details, setDetails] = useState<PieceDetails>(initial);
   const [status, setStatus] = useState<PieceStatus | undefined>(initialStatus);
@@ -130,8 +130,18 @@ export function PieceForm(props: PieceFormProps) {
             onChange={(event) => {
               set({ title: event.target.value, catalogId: undefined });
               setShowSuggestions(true);
+              if (catalogFailed) retryCatalog();
             }}
           />
+          {catalogFailed && showSuggestions && (
+            <p className={styles.catalogError} role="status">
+              The catalog couldn’t be loaded, so there are no suggestions. You can still type the
+              title yourself.{' '}
+              <button type="button" className={styles.linkButton} onClick={retryCatalog}>
+                Try again
+              </button>
+            </p>
+          )}
           {suggestions.length > 0 && (
             <div className={styles.suggestions}>
               <span className={styles.suggestionsLabel}>From the catalog</span>
