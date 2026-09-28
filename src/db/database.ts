@@ -1,4 +1,5 @@
 import Dexie, { type EntityTable } from 'dexie';
+import type { BackupData } from '../domain/backup';
 import type {
   Cycle,
   Piece,
@@ -7,11 +8,19 @@ import type {
   SessionTemplate,
   Settings,
   TechniqueItem,
+  Timestamp,
   Tombstone,
 } from '../domain/model';
 import { defaultSectionTypes, defaultSettings } from './defaults';
 
 export const DB_NAME = 'practice-journal';
+
+/** A copy of all data taken right before an import, so the import can be undone. */
+export interface Snapshot {
+  id: string;
+  takenAt: Timestamp;
+  data: BackupData;
+}
 
 export class PracticeDatabase extends Dexie {
   pieces!: EntityTable<Piece, 'id'>;
@@ -22,6 +31,7 @@ export class PracticeDatabase extends Dexie {
   cycles!: EntityTable<Cycle, 'id'>;
   settings!: EntityTable<Settings, 'id'>;
   tombstones!: EntityTable<Tombstone, 'id'>;
+  snapshots!: EntityTable<Snapshot, 'id'>;
 
   constructor(name = DB_NAME) {
     super(name);
@@ -39,6 +49,9 @@ export class PracticeDatabase extends Dexie {
       settings: 'id',
       tombstones: 'id, table',
     });
+
+    // v2: snapshot before an import (not part of backups).
+    this.version(2).stores({ snapshots: 'id' });
 
     // Runs once, when the database is first created on a device.
     this.on('populate', (tx) => {

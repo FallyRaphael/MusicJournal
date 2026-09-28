@@ -187,6 +187,8 @@ export interface Settings extends BaseRecord {
   /** What happens when an item's time budget is used up. Default: sound and vibration. */
   budgetSignal?: BudgetSignal;
   lastBackupAt?: Timestamp;
+  /** The backup reminder stays hidden until then ("Later"). */
+  backupReminderSnoozedUntil?: Timestamp;
 }
 
 export type BudgetSignal = 'soundAndVibration' | 'vibration' | 'off';

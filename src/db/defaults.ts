@@ -1,4 +1,3 @@
-import { newId } from '../domain/ids';
 import { SETTINGS_ID, type SectionType, type Settings, type Timestamp } from '../domain/model';
 
 export const DEFAULT_SECTION_NAMES = [
@@ -18,9 +17,19 @@ export const DEFAULT_METHODS = [
   'Play-through',
 ];
 
+/**
+ * Fixed ids, so the defaults are the same records on every device: merging a backup into a
+ * fresh install then doesn't create "Warm-up" twice.
+ */
+const sectionTypeId = (name: string) =>
+  `section-${name
+    .toLowerCase()
+    .replace(/[^a-z]+/g, '-')
+    .replace(/-$/, '')}`;
+
 export function defaultSectionTypes(now: Timestamp): SectionType[] {
   return DEFAULT_SECTION_NAMES.map((name, order) => ({
-    id: newId(),
+    id: sectionTypeId(name),
     createdAt: now,
     updatedAt: now,
     name,

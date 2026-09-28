@@ -1,7 +1,6 @@
 import {
   ChevronRight,
   Dumbbell,
-  HardDriveDownload,
   History,
   ListChecks,
   Monitor,
@@ -22,6 +21,7 @@ import { FieldGroup } from '../../ui/Field';
 import { PageHeader, Screen } from '../../ui/Screen';
 import { SegmentedControl } from '../../ui/SegmentedControl';
 import { Stepper } from '../../ui/Stepper';
+import { BackupCard } from './BackupCard';
 import { MethodsSheet, SectionTypesSheet } from './ListEditSheets';
 import styles from './MoreScreen.module.css';
 
@@ -140,11 +140,9 @@ export function MoreScreen() {
           )}
           <span>{storage ? STORAGE_TEXT[storage] : 'Checking storage…'}</span>
         </div>
-        <div className={styles.infoRow}>
-          <HardDriveDownload size={20} className={styles.mutedIcon} aria-hidden="true" />
-          <span className={styles.rowHint}>Backup &amp; restore arrive in a later build.</span>
-        </div>
       </Card>
+
+      <BackupCard />
 
       <p className={styles.footer}>Practice Journal · version {__APP_VERSION__}</p>
 

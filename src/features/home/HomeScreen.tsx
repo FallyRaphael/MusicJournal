@@ -27,6 +27,7 @@ import {
   sessionFromTemplate,
   sessionLike,
 } from '../session/starters';
+import { BackupReminder } from './BackupReminder';
 import { CycleCard, FocusCard } from './HomeCards';
 import styles from './HomeScreen.module.css';
 import { StartSheet } from './StartSheet';
@@ -93,6 +94,16 @@ export function HomeScreen() {
           </IconButton>
         </div>
       )}
+
+      <BackupReminder
+        now={nowMs}
+        onBackedUp={(name) =>
+          void navigate(location.pathname, {
+            replace: true,
+            state: { toast: `Backup saved: ${name}` },
+          })
+        }
+      />
 
       {running && lookups.loaded && <RunningCard session={running} lookups={lookups} now={nowMs} />}
 
