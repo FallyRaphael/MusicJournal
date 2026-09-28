@@ -10,7 +10,7 @@ The user decides product/UX questions; propose options with trade-offs before la
 3. Sessions (done): technique items, templates, planning, timer, quick log, finish summary, log afterwards
 4. Dashboard & cycles (done): weekly target/streak, cycles, goals with automatic progress, end review
 5. Backup (done): export, import (replace or merge) with preview, undo, backup reminder
-6. Polish & deploy: tempo chart, details, hosting (host not chosen yet – ask)
+6. Polish & deploy: tempo chart, details, hosting on GitHub Pages (public repository)
 
 UX direction: bottom tabs (Home / Pieces / Cycle / More) in a light, neutral look with a blue
 accent; the session screen is a full-screen "stage" mode showing one item at a time with a big

@@ -20,6 +20,13 @@ Testing on the phone: run `npm run dev` and open the "Network" address it prints
 Chrome on the phone. Offline mode and installing only work over HTTPS, i.e. once the app
 is hosted (or via `npm run preview` on the laptop itself).
 
+## Deploy
+
+Every push to `main` runs `.github/workflows/deploy.yml` on GitHub: lint, tests and the
+build, then it publishes `dist/` to GitHub Pages at `https://<user>.github.io/<repository>/`.
+Install the app from there; it shows an update prompt whenever a new version is deployed.
+Data is stored per address, so moving to another address means Back up → Restore.
+
 ## Stack
 
 React + TypeScript, built with Vite. Data lives in IndexedDB via Dexie.js;
