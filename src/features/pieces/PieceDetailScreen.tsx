@@ -1,6 +1,6 @@
 import { Ellipsis, Flag, Pencil, RefreshCw, Trash2 } from 'lucide-react';
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import {
   changePieceStatus,
   deletePiece,
@@ -23,9 +23,10 @@ import { ChipRow, Pill } from '../../ui/Chip';
 import { NoBreakKeys } from '../../ui/NoBreakKeys';
 import { EmptyState, Screen } from '../../ui/Screen';
 import { Sheet } from '../../ui/Sheet';
+import { TextSheet } from '../../ui/TextSheet';
 import { composerLine, FEEL_LABELS, OUTCOME_LABELS, STATUS_LABELS } from './labels';
 import styles from './PieceDetailScreen.module.css';
-import { NoteSheet, StatusSheet } from './PieceSheets';
+import { StatusSheet } from './PieceSheets';
 
 type OpenSheet =
   { kind: 'menu' | 'focus' | 'notes' | 'delete' } | { kind: 'status'; preset: PieceStatus };
@@ -198,9 +199,11 @@ function PieceDetail({ piece }: { piece: Piece }) {
         ) : (
           <ul className={styles.sessions}>
             {recent.map((entry) => (
-              <li key={entry.sessionId} className={styles.sessionRow}>
-                <span>{formatMediumDate(entry.at)}</span>
-                <span className="tabular">{formatDuration(entry.seconds)}</span>
+              <li key={entry.sessionId}>
+                <Link to={`/sessions/${entry.sessionId}`} className={styles.sessionRow}>
+                  <span>{formatMediumDate(entry.at)}</span>
+                  <span className="tabular">{formatDuration(entry.seconds)}</span>
+                </Link>
               </li>
             ))}
           </ul>
@@ -245,7 +248,7 @@ function PieceDetail({ piece }: { piece: Piece }) {
         }}
       />
 
-      <NoteSheet
+      <TextSheet
         key={`focus-${sheetKey}`}
         open={sheet?.kind === 'focus'}
         onClose={close}
@@ -259,7 +262,7 @@ function PieceDetail({ piece }: { piece: Piece }) {
         }}
       />
 
-      <NoteSheet
+      <TextSheet
         key={`notes-${sheetKey}`}
         open={sheet?.kind === 'notes'}
         onClose={close}

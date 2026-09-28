@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 28px;
+}
+
+.title {
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.count {
+  min-height: var(--tap-target);
+  margin: -8px -8px -8px 0;
+  padding: 0 8px;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.bpm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bpmValue {
+  min-width: 96px;
+  text-align: center;
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.bpmUnit {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.noteRow {
+  display: flex;
+  gap: 8px;
+}
+
+.noteRow > button {
+  flex-shrink: 0;
+  min-width: 80px;
+}

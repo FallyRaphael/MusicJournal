@@ -130,14 +130,20 @@ export interface SessionSection {
 export type SessionStatus = 'planned' | 'running' | 'finished';
 
 export interface Session extends BaseRecord {
-  /** The day the session counts for. */
+  /** The day the session counts for (set to the start day when it starts). */
   date: DateKey;
   status: SessionStatus;
+  /** Optional title, e.g. the name of the template it was created from. */
+  name?: string;
   templateId?: Id;
   sections: SessionSection[];
   note: string;
   startedAt?: Timestamp;
   finishedAt?: Timestamp;
+  /** The item shown on the session screen (running or paused). */
+  currentItemId?: Id;
+  /** Last time the user did anything in the session; used to detect a forgotten timer. */
+  lastActivityAt?: Timestamp;
   /** Search index only: ids of all pieces in `sections`, kept in sync on every save. */
   pieceIds: Id[];
   /** Search index only: ids of all technique items in `sections`. */
@@ -178,8 +184,12 @@ export interface Settings extends BaseRecord {
   weeklyTarget: number;
   /** Practice methods offered as quick-log buttons, in display order. */
   methods: string[];
+  /** What happens when an item's time budget is used up. Default: sound and vibration. */
+  budgetSignal?: BudgetSignal;
   lastBackupAt?: Timestamp;
 }
+
+export type BudgetSignal = 'soundAndVibration' | 'vibration' | 'off';
 
 /** Remembers a deletion, so merging an older backup doesn't bring the record back. */
 export interface Tombstone {

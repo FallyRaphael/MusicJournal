@@ -1,0 +1,97 @@
+.page {
+  max-width: 560px;
+  min-height: 100dvh;
+  margin: 0 auto;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  padding: calc(8px + env(safe-area-inset-top)) var(--page-gutter) 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px var(--page-gutter) calc(32px + env(safe-area-inset-bottom));
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 0;
+  text-align: center;
+}
+
+.heading {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.total {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.cardTitle {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.times {
+  display: flex;
+  flex-direction: column;
+  margin: 0 -8px;
+  padding: 0;
+  list-style: none;
+}
+
+.timeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  padding: 6px 8px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--text);
+  font-size: var(--text-md);
+  text-align: left;
+}
+
+.timeRow:active {
+  background: var(--surface-2);
+}
+
+.timeTitle {
+  min-width: 0;
+  font-weight: 600;
+}
+
+.hint {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 8px;
+}
+
+.discard {
+  color: var(--danger);
+}

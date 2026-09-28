@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import type { Session, SessionItem } from './model';
-import { lastPracticedByPiece, pieceSessionSummaries, pieceStats } from './pieceStats';
+import {
+  isPiece,
+  lastBpm,
+  lastPracticedByPiece,
+  pieceSessionSummaries,
+  pieceStats,
+} from './pieceStats';
 import { statusPeriods } from './pieces';
 
 const MIN = 60_000;
@@ -84,5 +90,22 @@ describe('lastPracticedByPiece', () => {
     const last = lastPracticedByPiece(sessions);
     expect(last.get('nocturne')).toBe(5_000);
     expect(last.get('clair')).toBe(9_000);
+  });
+});
+
+describe('lastBpm', () => {
+  it('finds the latest BPM logged for a piece', () => {
+    const withEntries = sessions.map((s, i) => ({
+      ...s,
+      sections: s.sections.map((section) => ({
+        ...section,
+        items: section.items.map((it) => ({
+          ...it,
+          entries: [{ id: `e${i}`, at: i * 10, method: 'Metronome', bpm: 60 + i, note: '' }],
+        })),
+      })),
+    }));
+    expect(lastBpm(isPiece('clair'), withEntries)).toBe(62);
+    expect(lastBpm(isPiece('unknown'), withEntries)).toBeUndefined();
   });
 });

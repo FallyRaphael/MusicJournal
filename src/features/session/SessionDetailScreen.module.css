@@ -1,0 +1,137 @@
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: -20px -10px -8px 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sectionTitle {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+  text-align: left;
+}
+
+.item:active {
+  background: var(--surface-2);
+}
+
+.itemHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.itemTitle {
+  font-weight: 600;
+}
+
+.itemTime {
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.entry,
+.note {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.focus {
+  font-size: var(--text-sm);
+  color: var(--focus-text);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 32px;
+  margin: -6px -10px -6px 0;
+}
+
+.cardTitle {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.noteText {
+  white-space: pre-wrap;
+}
+
+.entriesBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.entryList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entryRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.entryRow:first-child {
+  border-top: none;
+}
+
+.entryText {
+  flex-grow: 1;
+  font-size: var(--text-sm);
+}

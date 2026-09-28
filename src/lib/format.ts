@@ -39,8 +39,9 @@ export function formatMonthYear(date: Date | number): string {
   return monthYear.format(date);
 }
 
-/** "0 min", "45 min", "17 h 25 m" */
+/** "0 min", "< 1 min", "45 min", "17 h 25 m" */
 export function formatDuration(seconds: number): string {
+  if (seconds > 0 && seconds < 60) return '< 1 min';
   const totalMinutes = Math.floor(seconds / 60);
   if (totalMinutes < 60) return `${totalMinutes} min`;
   const hours = Math.floor(totalMinutes / 60);
@@ -55,4 +56,36 @@ export function formatRelativeDay(date: Date | number, now: Date = new Date()): 
   if (days === 1) return 'Yesterday';
   if (days < 7) return `${days} days ago`;
   return formatShortDate(date);
+}
+
+/** "08:42", or "1:02:03" from one hour on. */
+export function formatClock(seconds: number): string {
+  const s = Math.max(0, Math.floor(seconds));
+  const hours = Math.floor(s / 3600);
+  const minutes = Math.floor((s % 3600) / 60);
+  const rest = String(s % 60).padStart(2, '0');
+  return hours > 0
+    ? `${hours}:${String(minutes).padStart(2, '0')}:${rest}`
+    : `${String(minutes).padStart(2, '0')}:${rest}`;
+}
+
+const dayLabel = new Intl.DateTimeFormat('en-GB', {
+  weekday: 'short',
+  day: 'numeric',
+  month: 'short',
+});
+const monthLong = new Intl.DateTimeFormat('en-GB', { month: 'long', year: 'numeric' });
+
+/** "Today", "Tomorrow", "Yesterday", or "Tue 29 Sept". */
+export function formatDayLabel(date: Date, now: Date = new Date()): string {
+  const days = differenceInCalendarDays(date, now);
+  if (days === 0) return 'Today';
+  if (days === 1) return 'Tomorrow';
+  if (days === -1) return 'Yesterday';
+  return dayLabel.format(date);
+}
+
+/** "September 2026" */
+export function formatMonthLong(date: Date | number): string {
+  return monthLong.format(date);
 }

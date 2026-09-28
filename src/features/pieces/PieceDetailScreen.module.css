@@ -140,12 +140,14 @@
 
 .sessionRow {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  min-height: var(--tap-target);
   border-top: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
 }
 
-.sessionRow:first-child {
+.sessions li:first-child .sessionRow {
   border-top: none;
-  padding-top: 0;
 }

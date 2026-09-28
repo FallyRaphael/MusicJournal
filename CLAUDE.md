@@ -7,7 +7,7 @@ The user decides product/UX questions; propose options with trade-offs before la
 
 1. Foundation (done): setup, PWA, database, themes, tab navigation
 2. Pieces (done): list/filter/sort, add with catalog suggestions, piece page, statuses & periods, shelving
-3. Sessions: technique items, templates, planning, timer, quick log, finish summary, log afterwards
+3. Sessions (done): technique items, templates, planning, timer, quick log, finish summary, log afterwards
 4. Dashboard & cycles: weekly target/streak, cycles, goals with automatic progress, end review
 5. Backup: export, import (replace or merge) with preview, undo, backup reminder
 6. Polish & deploy: tempo chart, details, hosting (host not chosen yet – ask)
@@ -29,7 +29,13 @@ timer, prev/pause/next, method buttons, a BPM stepper and an "All items" overvie
 - Screens use `Screen`/`PageHeader` from `src/ui/Screen.tsx`; icons from `lucide-react`.
 - Sheets (`src/ui/Sheet.tsx`) are native modal dialogs; focus a field on open with
   `data-autofocus` (React's `autoFocus` fires before the dialog is visible).
-- Don't call `Date.now()` during render (react-hooks purity rule); use `useNow()`.
+- Don't call `Date.now()` during render or in handlers defined in the component body
+  (react-hooks purity rule); use `useNow()`, and counters for sheet `key`s.
+- Session and template changes go through `mutateSession` / `mutateTemplate` (read–change–write
+  in one transaction). Editors pass _updater functions_ (`PlanEditor.onChange`,
+  `BudgetControl.onChange`) so quick repeated taps don't overwrite each other.
+- Session items reference pieces/technique/free text via `ItemRef`; compare with `sameRef` /
+  `refKey` from `src/domain/refs.ts`. Section order follows the section types' `order`.
 - The work catalog (`src/catalog/catalog.json`) is generated data; only add entries whose
   catalog numbers and keys are certain. Search normalisation lives in `src/domain/search.ts`.
 - UI copy uses US spelling ("practiced"), dates are formatted en-GB ("27 Sept 2026").

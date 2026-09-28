@@ -3,7 +3,7 @@ import type { PieceStatus, ShelveOutcome } from '../../domain/model';
 import { Button } from '../../ui/Button';
 import { ChipRow, ToggleChip } from '../../ui/Chip';
 import { ChoiceList } from '../../ui/ChoiceList';
-import { FieldGroup, TextArea } from '../../ui/Field';
+import { FieldGroup } from '../../ui/Field';
 import { Sheet } from '../../ui/Sheet';
 import { OUTCOME_LABELS, STATUS_DESCRIPTIONS, STATUS_LABELS } from './labels';
 
@@ -72,53 +72,6 @@ export function StatusSheet({
           </ChipRow>
         </FieldGroup>
       )}
-    </Sheet>
-  );
-}
-
-interface NoteSheetProps {
-  open: boolean;
-  onClose: () => void;
-  title: string;
-  label: string;
-  placeholder?: string;
-  initial: string;
-  onSave: (text: string) => void;
-}
-
-/** Edits a single text note. Mount with a changing `key` to reset it on open. */
-export function NoteSheet({
-  open,
-  onClose,
-  title,
-  label,
-  placeholder,
-  initial,
-  onSave,
-}: NoteSheetProps) {
-  const [text, setText] = useState(initial);
-  return (
-    <Sheet
-      open={open}
-      onClose={onClose}
-      title={title}
-      footer={
-        <>
-          <Button onClick={onClose}>Cancel</Button>
-          <Button variant="primary" onClick={() => onSave(text.trim())}>
-            Save
-          </Button>
-        </>
-      }
-    >
-      <TextArea
-        label={label}
-        value={text}
-        placeholder={placeholder}
-        rows={5}
-        data-autofocus
-        onChange={(event) => setText(event.target.value)}
-      />
     </Sheet>
   );
 }

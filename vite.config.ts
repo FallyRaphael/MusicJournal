@@ -39,6 +39,11 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    // The app is installed and precached by the service worker, so after the first visit
+    // it loads from the phone, not the network; splitting the bundle would gain little.
+    chunkSizeWarningLimit: 800,
+  },
   test: {
     environment: 'node',
     setupFiles: ['fake-indexeddb/auto'],

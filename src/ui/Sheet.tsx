@@ -33,8 +33,12 @@ export function Sheet({ open, onClose, title, children, footer }: SheetProps) {
       const field = dialog.querySelector<HTMLElement>('[data-autofocus]');
       field?.focus();
       if (field instanceof HTMLTextAreaElement || field instanceof HTMLInputElement) {
-        // Continue typing after existing text rather than before it.
-        field.setSelectionRange(field.value.length, field.value.length);
+        try {
+          // Continue typing after existing text rather than before it.
+          field.setSelectionRange(field.value.length, field.value.length);
+        } catch {
+          // Number and date inputs have no text cursor; plain focus is enough there.
+        }
       }
     }
     if (!open && dialog.open) {

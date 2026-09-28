@@ -1,5 +1,5 @@
 import { fromDateKey } from './dates';
-import type { Id, Session, Timestamp } from './model';
+import type { Id, ItemRef, Session, Timestamp } from './model';
 import type { StatusPeriod } from './pieces';
 import { itemSeconds } from './timer';
 
@@ -18,9 +18,22 @@ export interface PieceSessionSummary {
   seconds: number;
 }
 
-/** The practiced sessions that include the piece, newest first. */
-export function pieceSessionSummaries(
-  pieceId: Id,
+/** Tells whether a session item is about a particular piece or technique item. */
+export type RefMatcher = (ref: ItemRef) => boolean;
+
+export const isPiece =
+  (pieceId: Id): RefMatcher =>
+  (ref) =>
+    ref.kind === 'piece' && ref.pieceId === pieceId;
+
+export const isTechnique =
+  (techniqueId: Id): RefMatcher =>
+  (ref) =>
+    ref.kind === 'technique' && ref.techniqueId === techniqueId;
+
+/** The practiced sessions with matching items, newest first. */
+export function sessionSummaries(
+  matches: RefMatcher,
   sessions: readonly Session[],
   now: Timestamp,
 ): PieceSessionSummary[] {
@@ -29,7 +42,7 @@ export function pieceSessionSummaries(
     if (!practiced(session)) continue;
     const items = session.sections
       .flatMap((section) => section.items)
-      .filter((item) => item.ref.kind === 'piece' && item.ref.pieceId === pieceId);
+      .filter((item) => matches(item.ref));
     if (items.length === 0) continue;
     summaries.push({
       sessionId: session.id,
@@ -38,6 +51,33 @@ export function pieceSessionSummaries(
     });
   }
   return summaries.sort((a, b) => b.at - a.at);
+}
+
+/** The practiced sessions that include the piece, newest first. */
+export function pieceSessionSummaries(
+  pieceId: Id,
+  sessions: readonly Session[],
+  now: Timestamp,
+): PieceSessionSummary[] {
+  return sessionSummaries(isPiece(pieceId), sessions, now);
+}
+
+/** The most recently logged BPM for matching items, across all given sessions. */
+export function lastBpm(matches: RefMatcher, sessions: readonly Session[]): number | undefined {
+  let latest: { at: Timestamp; bpm: number } | undefined;
+  for (const session of sessions) {
+    for (const section of session.sections) {
+      for (const item of section.items) {
+        if (!matches(item.ref)) continue;
+        for (const entry of item.entries) {
+          if (entry.bpm !== undefined && (!latest || entry.at > latest.at)) {
+            latest = { at: entry.at, bpm: entry.bpm };
+          }
+        }
+      }
+    }
+  }
+  return latest?.bpm;
 }
 
 export interface PieceStats {

@@ -1,0 +1,158 @@
+.toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 4px 4px 16px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.running {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.runningText {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.runningLabel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.runningItem {
+  font-weight: 600;
+}
+
+.runningTime {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+.resume {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap-target);
+  padding: 0 14px;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+}
+
+.start {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick > * {
+  flex: 1 1 auto;
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.planned {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plannedRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-top: 1px solid var(--border);
+}
+
+.plannedRow:first-child {
+  border-top: none;
+}
+
+.plannedText {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: 1px;
+  min-height: var(--tap-target);
+  padding: 6px 0;
+  border: none;
+  background: none;
+  color: var(--text);
+  text-align: left;
+}
+
+.plannedDay {
+  font-weight: 600;
+}
+
+.muted {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.recent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.allLink {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: var(--tap-target);
+  color: var(--accent);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.recentList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

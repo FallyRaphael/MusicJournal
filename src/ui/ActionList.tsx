@@ -3,6 +3,8 @@ import styles from './ActionList.module.css';
 
 export interface Action {
   label: string;
+  /** Optional second line, e.g. what the action will do. */
+  description?: string;
   icon: ReactNode;
   onSelect: () => void;
   danger?: boolean;
@@ -20,7 +22,12 @@ export function ActionList({ actions }: { actions: readonly Action[] }) {
             onClick={action.onSelect}
           >
             <span className={styles.icon}>{action.icon}</span>
-            {action.label}
+            <span className={styles.text}>
+              {action.label}
+              {action.description && (
+                <span className={styles.description}>{action.description}</span>
+              )}
+            </span>
           </button>
         </li>
       ))}

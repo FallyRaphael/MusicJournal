@@ -1,0 +1,16 @@
+.details {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.details summary {
+  min-height: var(--tap-target);
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.message {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
