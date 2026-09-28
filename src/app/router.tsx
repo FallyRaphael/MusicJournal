@@ -1,4 +1,6 @@
 import { createHashRouter, Navigate } from 'react-router';
+import { EditCycleScreen, NewCycleScreen } from '../features/cycle/CycleFormScreen';
+import { CycleReviewScreen, CycleSummaryScreen } from '../features/cycle/CycleReviewScreen';
 import { CycleScreen } from '../features/cycle/CycleScreen';
 import { HomeScreen } from '../features/home/HomeScreen';
 import { MoreScreen } from '../features/more/MoreScreen';
@@ -34,6 +36,7 @@ export const router = createHashRouter([
           { path: 'sessions', Component: SessionsScreen },
           { path: 'templates', Component: TemplatesScreen },
           { path: 'technique', Component: TechniqueScreen },
+          { path: 'cycles/:cycleId', Component: CycleSummaryScreen },
         ],
       },
       // Full-screen pages without the tab bar.
@@ -44,6 +47,9 @@ export const router = createHashRouter([
       { path: '/sessions/:sessionId/plan', Component: PlanScreen },
       { path: '/sessions/:sessionId/finish', Component: FinishScreen },
       { path: '/templates/:templateId', Component: TemplateEditorScreen },
+      { path: '/cycles/new', Component: NewCycleScreen },
+      { path: '/cycles/:cycleId/edit', Component: EditCycleScreen },
+      { path: '/cycles/:cycleId/review', Component: CycleReviewScreen },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

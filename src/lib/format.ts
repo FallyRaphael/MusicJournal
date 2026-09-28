@@ -85,6 +85,12 @@ export function formatDayLabel(date: Date, now: Date = new Date()): string {
   return dayLabel.format(date);
 }
 
+/** Like formatDayLabel, for use inside a sentence: "starts tomorrow", "ends Sun 25 Oct". */
+export function formatDayInSentence(date: Date, now: Date = new Date()): string {
+  const label = formatDayLabel(date, now);
+  return /^(Today|Tomorrow|Yesterday)$/.test(label) ? label.toLowerCase() : label;
+}
+
 /** "September 2026" */
 export function formatMonthLong(date: Date | number): string {
   return monthLong.format(date);

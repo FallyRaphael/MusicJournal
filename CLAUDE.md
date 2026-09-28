@@ -8,7 +8,7 @@ The user decides product/UX questions; propose options with trade-offs before la
 1. Foundation (done): setup, PWA, database, themes, tab navigation
 2. Pieces (done): list/filter/sort, add with catalog suggestions, piece page, statuses & periods, shelving
 3. Sessions (done): technique items, templates, planning, timer, quick log, finish summary, log afterwards
-4. Dashboard & cycles: weekly target/streak, cycles, goals with automatic progress, end review
+4. Dashboard & cycles (done): weekly target/streak, cycles, goals with automatic progress, end review
 5. Backup: export, import (replace or merge) with preview, undo, backup reminder
 6. Polish & deploy: tempo chart, details, hosting (host not chosen yet – ask)
 

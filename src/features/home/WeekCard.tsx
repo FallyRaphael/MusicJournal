@@ -10,15 +10,18 @@ interface WeekCardProps {
   today: DateKey;
   summary: WeekSummary;
   target: number;
+  /** Consecutive weeks that met the target. */
+  streak: number;
 }
 
-export function WeekCard({ days, today, summary, target }: WeekCardProps) {
+export function WeekCard({ days, today, summary, target, streak }: WeekCardProps) {
   return (
     <Card aria-labelledby="week-title">
       <div className={styles.header}>
         <h2 id="week-title" className={styles.title}>
           This week
         </h2>
+        {streak > 0 && <span className={styles.streak}>{streak}-week streak</span>}
       </div>
       <div className={styles.body}>
         <p className={`${styles.count} tabular`}>

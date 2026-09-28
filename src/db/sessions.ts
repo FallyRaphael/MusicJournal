@@ -134,3 +134,11 @@ export function useTechniqueSessions(techniqueId: Id): Session[] | undefined {
     [techniqueId],
   );
 }
+
+/** Sessions on the days from `start` to `end` (inclusive). */
+export function useSessionsBetween(start: DateKey, end: DateKey): Session[] | undefined {
+  return useLiveQuery(
+    () => db.sessions.where('date').between(start, end, true, true).toArray(),
+    [start, end],
+  );
+}

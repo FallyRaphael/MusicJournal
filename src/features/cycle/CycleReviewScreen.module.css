@@ -1,0 +1,121 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.muted {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.stats dt {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.stats dd {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.cardTitle {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.byRef {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.byRefRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+  font-size: var(--text-sm);
+}
+
+.byRefRow:first-child {
+  border-top: none;
+}
+
+.carry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--tap-target);
+  font-weight: 600;
+}
+
+.carry input {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  accent-color: var(--accent);
+}
+
+.carryText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.carryText .muted {
+  font-weight: 400;
+}
+
+.reflection {
+  white-space: pre-wrap;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 16px;
+}
+
+.delete {
+  align-self: flex-start;
+  color: var(--danger);
+}

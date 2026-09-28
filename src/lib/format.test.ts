@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatClock, formatDayLabel, formatDuration } from './format';
+import { formatClock, formatDayInSentence, formatDayLabel, formatDuration } from './format';
 
 describe('formatClock', () => {
   it('shows minutes and seconds, and hours when needed', () => {
@@ -25,5 +25,13 @@ describe('formatDayLabel', () => {
     expect(formatDayLabel(new Date(2026, 8, 28), now)).toBe('Tomorrow');
     expect(formatDayLabel(new Date(2026, 8, 26), now)).toBe('Yesterday');
     expect(formatDayLabel(new Date(2026, 8, 29), now)).toMatch(/^Tue 29 Sept?$/);
+  });
+});
+
+describe('formatDayInSentence', () => {
+  it('lower-cases relative days only', () => {
+    const now = new Date(2026, 8, 27);
+    expect(formatDayInSentence(new Date(2026, 8, 28), now)).toBe('tomorrow');
+    expect(formatDayInSentence(new Date(2026, 9, 25), now)).toMatch(/^Sun 25 Oct/);
   });
 });

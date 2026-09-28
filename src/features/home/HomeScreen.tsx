@@ -1,11 +1,13 @@
 import { useLiveQuery } from 'dexie-react-hooks';
-import { CalendarClock, ChevronRight, Play, Target, X } from 'lucide-react';
+import { CalendarClock, ChevronRight, Play, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
+import { useCycles } from '../../db/cycles';
 import { db } from '../../db/database';
 import { useFinishedSessions, usePlannedSessions, useRunningSession } from '../../db/sessions';
 import { useSettings } from '../../db/settings';
 import { useTemplates } from '../../db/templates';
+import { openCycle, weekStreak } from '../../domain/cycles';
 import { fromDateKey, toDateKey, weekDays } from '../../domain/dates';
 import type { Session } from '../../domain/model';
 import { currentItemId, findItem, runningItem, sessionSeconds } from '../../domain/session';
@@ -15,7 +17,7 @@ import { useNow } from '../../lib/useNow';
 import { Button, IconButton } from '../../ui/Button';
 import { Card } from '../../ui/Card';
 import { NoBreakKeys } from '../../ui/NoBreakKeys';
-import { EmptyState, PageHeader, Screen } from '../../ui/Screen';
+import { PageHeader, Screen } from '../../ui/Screen';
 import { useLookups, type Lookups } from '../session/lookups';
 import { SessionRow } from '../session/SessionsScreen';
 import {
@@ -25,6 +27,7 @@ import {
   sessionFromTemplate,
   sessionLike,
 } from '../session/starters';
+import { CycleCard, FocusCard } from './HomeCards';
 import styles from './HomeScreen.module.css';
 import { StartSheet } from './StartSheet';
 import { WeekCard } from './WeekCard';
@@ -43,6 +46,7 @@ export function HomeScreen() {
   const planned = usePlannedSessions();
   const finished = useFinishedSessions();
   const templates = useTemplates();
+  const cycles = useCycles();
   const [startOpen, setStartOpen] = useState(false);
 
   const nowMs = useNow(running ? 1000 : 60_000);
@@ -97,6 +101,7 @@ export function HomeScreen() {
         today={today}
         summary={summarizeWeek(weekSessions, days)}
         target={settings.weeklyTarget}
+        streak={weekStreak(finished ?? [], settings.weeklyTarget, now)}
       />
 
       {!running && (
@@ -161,9 +166,12 @@ export function HomeScreen() {
         </Card>
       )}
 
-      <EmptyState icon={<Target size={24} aria-hidden="true" />} title="No active cycle">
-        Plan the coming weeks with goals for your pieces and technique.
-      </EmptyState>
+      {cycles && lookups.loaded && (
+        <>
+          <CycleCard cycle={openCycle(cycles)} lookups={lookups} now={nowMs} />
+          <FocusCard cycle={openCycle(cycles)} lookups={lookups} />
+        </>
+      )}
 
       {finished && finished.length > 0 && lookups.loaded && (
         <section className={styles.recent} aria-labelledby="recent-title">
