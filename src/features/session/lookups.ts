@@ -14,6 +14,7 @@ import type {
 } from '../../domain/model';
 import type { SectionOrder } from '../../domain/session';
 import { formatRange } from '../../domain/books';
+import { passageLabel } from '../../domain/passages';
 import { composerLine } from '../pieces/labels';
 
 export interface ItemInfo {
@@ -77,6 +78,8 @@ export interface Lookups {
   pieces: Piece[];
   techniques: TechniqueItem[];
   books: Book[];
+  /** An entry as text, with its passage's name. */
+  describeEntry: (entry: PracticeEntry) => string;
 }
 
 /** Everything needed to show session items by name. */
@@ -90,6 +93,9 @@ export function useLookups(): Lookups {
     const pieceMap = new Map((pieces ?? []).map((p) => [p.id, p]));
     const techniqueMap = new Map((techniques ?? []).map((t) => [t.id, t]));
     const bookMap = new Map((books ?? []).map((b) => [b.id, b]));
+    const passageNames = new Map(
+      (pieces ?? []).flatMap((p) => (p.passages ?? []).map((x) => [x.id, passageLabel(x)])),
+    );
     const typeMap = new Map((sectionTypes ?? []).map((t) => [t.id, t]));
     return {
       loaded:
@@ -105,13 +111,20 @@ export function useLookups(): Lookups {
       pieces: pieces ?? [],
       techniques: techniques ?? [],
       books: books ?? [],
+      describeEntry: (entry: PracticeEntry) =>
+        describeEntry(entry, entry.passageId && passageNames.get(entry.passageId)),
     };
   }, [pieces, techniques, books, sectionTypes]);
 }
 
-/** "Slow practice · 60 BPM", or "No. 45–48" for a book */
-export function describeEntry(entry: PracticeEntry): string {
-  return [formatRange(entry), entry.method, entry.bpm !== undefined ? `${entry.bpm} BPM` : '']
+/** "Bars 13–16 · Slow practice · 60 BPM", or "No. 45–48" for a book */
+export function describeEntry(entry: PracticeEntry, passageName?: string): string {
+  return [
+    formatRange(entry),
+    passageName ?? '',
+    entry.method,
+    entry.bpm !== undefined ? `${entry.bpm} BPM` : '',
+  ]
     .filter(Boolean)
     .join(' · ');
 }

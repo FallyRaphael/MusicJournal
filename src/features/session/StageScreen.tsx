@@ -11,6 +11,13 @@ import {
 import { useSettings } from '../../db/settings';
 import type { Id, Session } from '../../domain/model';
 import { bookProgress } from '../../domain/books';
+import {
+  lastPassage,
+  passageLabel,
+  passageTempo,
+  sortPassages,
+  type PassageFilter,
+} from '../../domain/passages';
 import { lastBpm } from '../../domain/pieceStats';
 import { sameRef } from '../../domain/refs';
 import {
@@ -41,13 +48,24 @@ import { EmptyState } from '../../ui/Screen';
 import { Sheet } from '../../ui/Sheet';
 import { MinutesSheet, TextSheet } from '../../ui/TextSheet';
 import { NoBreakKeys } from '../../ui/NoBreakKeys';
+import { PassageSheet } from '../pieces/PassageSheet';
+import { updatePassage } from '../../db/pieces';
 import { ItemPicker } from './ItemPicker';
 import { useLookups } from './lookups';
 import { BookLog, QuickLog } from './QuickLog';
 import { AllItemsSheet, EntriesSheet } from './SessionSheets';
 import styles from './StageScreen.module.css';
 
-type OpenSheet = 'items' | 'entries' | 'note' | 'focus' | 'picker' | 'correct' | null;
+type OpenSheet =
+  | 'items'
+  | 'entries'
+  | 'note'
+  | 'focus'
+  | 'passageFocus'
+  | 'newPassage'
+  | 'picker'
+  | 'correct'
+  | null;
 
 interface StageState {
   /** Set when the session was created by a one-tap start and should vanish if never started. */
@@ -70,6 +88,8 @@ export function StageScreen({ session }: { session: Session }) {
   const [sheet, setSheet] = useState<OpenSheet>(null);
   const [sheetKey, setSheetKey] = useState(0);
   const [correcting, setCorrecting] = useState<{ itemId: Id; seconds: number } | null>(null);
+  // The passage chosen per item; items without a choice continue where the piece left off.
+  const [passageChoice, setPassageChoice] = useState<Record<Id, PassageFilter>>({});
 
   useWakeLock(true);
 
@@ -149,9 +169,31 @@ export function StageScreen({ session }: { session: Session }) {
     goBack();
   };
 
-  const defaultBpm = current
-    ? lastBpm((ref) => sameRef(ref, current.ref), recentSessions ?? [])
-    : undefined;
+  const pieceRef = current?.ref.kind === 'piece' ? current.ref : undefined;
+  const piece = pieceRef && lookups.pieces.find((p) => p.id === pieceRef.pieceId);
+  const allPassages = piece?.passages ?? [];
+  const known = new Set(allPassages.map((p) => p.id));
+  const activePassages = sortPassages(allPassages.filter((p) => !p.solid));
+  const fallbackPassage = (): PassageFilter => {
+    if (!piece || !current) return null;
+    const fromItem = [...current.entries].reverse().find((e) => e.passageId)?.passageId;
+    const last =
+      fromItem && known.has(fromItem)
+        ? fromItem
+        : lastPassage(piece.id, known, recentSessions ?? []);
+    return last && activePassages.some((p) => p.id === last) ? last : null;
+  };
+  const passageId: PassageFilter =
+    current && current.id in passageChoice ? passageChoice[current.id] : fallbackPassage();
+  const passage = allPassages.find((p) => p.id === passageId);
+
+  const defaultBpm = !current
+    ? undefined
+    : piece
+      ? passageTempo(piece.id, passageId, known, recentSessions ?? []).last
+      : lastBpm((ref) => sameRef(ref, current.ref), recentSessions ?? []);
+  const choosePassage = (id: PassageFilter) =>
+    current && setPassageChoice((all) => ({ ...all, [current.id]: id }));
 
   return (
     <div className={styles.screen}>
@@ -289,6 +331,15 @@ export function StageScreen({ session }: { session: Session }) {
               </span>
             </section>
           )}
+          {passage?.focusNote && (
+            <section className={styles.focus} aria-label="Focus for this passage">
+              <Flag size={18} className={styles.focusIcon} aria-hidden="true" />
+              <span className={styles.focusText}>
+                <span className={styles.focusLabel}>{passageLabel(passage)}</span>
+                {passage.focusNote}
+              </span>
+            </section>
+          )}
 
           {book ? (
             bookSessions !== undefined && (
@@ -306,6 +357,12 @@ export function StageScreen({ session }: { session: Session }) {
               key={current.id}
               methods={settings.methods}
               defaultBpm={defaultBpm}
+              {...(piece && {
+                passages: activePassages.map((p) => ({ id: p.id, label: passageLabel(p) })),
+                passage: passageId,
+                onPassageChange: choosePassage,
+                onAddPassage: () => open('newPassage'),
+              })}
               entryCount={current.entries.length}
               onShowEntries={() => open('entries')}
               onLog={(entry) => act((s, at) => logEntry(s, current.id, entry, at))}
@@ -324,9 +381,13 @@ export function StageScreen({ session }: { session: Session }) {
               <Button
                 variant="ghost"
                 icon={<Flag size={18} aria-hidden="true" />}
-                onClick={() => open('focus')}
+                onClick={() => open(passage ? 'passageFocus' : 'focus')}
               >
-                {current.focusNext ? 'Edit focus next time' : 'Focus next time'}
+                {passage
+                  ? `Focus for ${passageLabel(passage)}`
+                  : current.focusNext
+                    ? 'Edit focus next time'
+                    : 'Focus next time'}
               </Button>
             )}
           </div>
@@ -421,6 +482,7 @@ export function StageScreen({ session }: { session: Session }) {
             onClose={() => setSheet(null)}
             title={`Logged for ${info!.title}`}
             entries={current.entries}
+            describe={lookups.describeEntry}
             onDelete={(entryId) => act((s, at) => removeEntry(s, current.id, entryId, at))}
           />
           <TextSheet
@@ -436,6 +498,29 @@ export function StageScreen({ session }: { session: Session }) {
               setSheet(null);
             }}
           />
+          {piece && passage && (
+            <TextSheet
+              key={`passage-focus-${sheetKey}`}
+              open={sheet === 'passageFocus'}
+              onClose={() => setSheet(null)}
+              title={`Focus · ${passageLabel(passage)}`}
+              label="What to work on in this passage next time"
+              placeholder="e.g. Land the LH jumps early"
+              initial={passage.focusNote}
+              onSave={(focusNote) => {
+                void updatePassage(piece.id, passage.id, { focusNote });
+                setSheet(null);
+              }}
+            />
+          )}
+          {piece && sheet === 'newPassage' && (
+            <PassageSheet
+              key={`new-passage-${sheetKey}`}
+              pieceId={piece.id}
+              onClose={() => setSheet(null)}
+              onCreated={(created) => choosePassage(created.id)}
+            />
+          )}
           <TextSheet
             key={`focus-${sheetKey}`}
             open={sheet === 'focus'}

@@ -1,8 +1,17 @@
 import { useState, type KeyboardEvent, type MouseEvent } from 'react';
 import { Link } from 'react-router';
-import { tempoScale, type TempoPoint } from '../../domain/tempo';
+import type { Id, Passage, Session } from '../../domain/model';
+import {
+  entryMatches,
+  passageLabel,
+  sortPassages,
+  type PassageFilter,
+} from '../../domain/passages';
+import { isPiece } from '../../domain/pieceStats';
+import { tempoHistory, tempoScale, type TempoPoint } from '../../domain/tempo';
 import { formatMediumDate, formatShortDate } from '../../lib/format';
 import { Card } from '../../ui/Card';
+import { ChipRow, ToggleChip } from '../../ui/Chip';
 import styles from './TempoCard.module.css';
 
 // Chart geometry in viewBox units; the SVG scales to the card's width.
@@ -14,14 +23,70 @@ const BOTTOM = 124;
 const HEIGHT = 146;
 
 interface TempoCardProps {
-  /** The fastest tempo per session, oldest first; at least two. */
-  points: readonly TempoPoint[];
+  pieceId: Id;
+  passages: readonly Passage[];
+  /** Sessions with the piece. */
+  sessions: readonly Session[];
   /** Target tempo of the running cycle's goal for this piece. */
   goalBpm?: number;
 }
 
-/** Tempo progress: the fastest tempo of each session, with the cycle goal as a dashed line. */
-export function TempoCard({ points, goalBpm }: TempoCardProps) {
+/**
+ * Tempo progress of a piece: the fastest tempo of each session, for the whole piece or one
+ * passage, with the cycle goal as a dashed line. Shown once there are two sessions to compare.
+ */
+export function TempoCard({ pieceId, passages, sessions, goalBpm }: TempoCardProps) {
+  const [chosenKey, setChosenKey] = useState<PassageFilter>(null);
+  const known = new Set(passages.map((p) => p.id));
+  const options = [
+    { key: null, label: 'Whole piece' },
+    ...sortPassages(passages).map((p) => ({ key: p.id, label: passageLabel(p) })),
+  ]
+    .map((option) => ({
+      ...option,
+      points: tempoHistory(isPiece(pieceId), sessions, (entry) =>
+        entryMatches(entry, option.key, known),
+      ),
+    }))
+    .filter((option) => option.points.length >= 2);
+
+  if (options.length === 0) return null;
+  const option = options.find((o) => o.key === chosenKey) ?? options[0];
+
+  return (
+    <Card aria-labelledby="tempo-title">
+      <h2 id="tempo-title" className={styles.title}>
+        Tempo
+      </h2>
+      {options.length > 1 && (
+        <ChipRow>
+          {options.map((o) => (
+            <ToggleChip
+              key={o.key ?? 'whole'}
+              pressed={o.key === option.key}
+              onChange={() => setChosenKey(o.key)}
+            >
+              {o.label}
+            </ToggleChip>
+          ))}
+        </ChipRow>
+      )}
+      <TempoChart
+        key={option.key ?? 'whole'}
+        points={option.points}
+        goalBpm={option.key === null ? goalBpm : undefined}
+      />
+    </Card>
+  );
+}
+
+interface TempoChartProps {
+  /** The fastest tempo per session, oldest first; at least two. */
+  points: readonly TempoPoint[];
+  goalBpm?: number;
+}
+
+function TempoChart({ points, goalBpm }: TempoChartProps) {
   const [chosen, setChosen] = useState<number | null>(null);
   const last = points.length - 1;
   const selected = Math.min(chosen ?? last, last);
@@ -66,11 +131,8 @@ export function TempoCard({ points, goalBpm }: TempoCardProps) {
   const goalY = goalBpm ? y(goalBpm) : 0;
 
   return (
-    <Card aria-labelledby="tempo-title">
+    <>
       <div>
-        <h2 id="tempo-title" className={styles.title}>
-          Tempo
-        </h2>
         <p className={styles.current}>
           <span className={`${styles.bpm} tabular`}>{points[last].bpm}</span> BPM
         </p>
@@ -148,6 +210,6 @@ export function TempoCard({ points, goalBpm }: TempoCardProps) {
           Session
         </Link>
       </div>
-    </Card>
+    </>
   );
 }

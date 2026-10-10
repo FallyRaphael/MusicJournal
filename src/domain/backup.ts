@@ -101,6 +101,19 @@ const piece = z.looseObject({
   targetDate: dateKey.optional(),
   notes: z.string(),
   focusNote: z.string(),
+  passages: z
+    .array(
+      z.looseObject({
+        id,
+        createdAt: time,
+        name: z.string(),
+        fromBar: z.number().int().optional(),
+        toBar: z.number().int().optional(),
+        focusNote: z.string(),
+        solid: z.boolean(),
+      }),
+    )
+    .optional(),
 });
 
 const techniqueItem = z.looseObject({
@@ -153,6 +166,7 @@ const sessionItem = z.looseObject({
       at: time,
       method: z.string(),
       bpm: z.number().optional(),
+      passageId: id.optional(),
       from: z.number().int().optional(),
       to: z.number().int().optional(),
       note: z.string(),

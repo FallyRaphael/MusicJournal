@@ -309,6 +309,7 @@ export function logEntry(
     at: now,
     method: fields.method,
     ...(fields.bpm !== undefined ? { bpm: fields.bpm } : {}),
+    ...(fields.passageId !== undefined ? { passageId: fields.passageId } : {}),
     ...(fields.from !== undefined ? { from: fields.from } : {}),
     ...(fields.to !== undefined ? { to: fields.to } : {}),
     note: fields.note,

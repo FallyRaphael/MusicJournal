@@ -1,6 +1,14 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { db } from './database';
-import { changePieceStatus, createPiece, deletePiece, updatePiece } from './pieces';
+import {
+  changePieceStatus,
+  createPassage,
+  createPiece,
+  deletePassage,
+  deletePiece,
+  updatePassage,
+  updatePiece,
+} from './pieces';
 
 beforeEach(async () => {
   await db.delete();
@@ -46,5 +54,29 @@ describe('pieces in the database', () => {
     await deletePiece(piece.id);
     expect(await db.pieces.get(piece.id)).toBeUndefined();
     expect((await db.tombstones.get(piece.id))?.table).toBe('pieces');
+  });
+});
+
+describe('passages', () => {
+  it('adds, changes and removes passages, bumping the piece', async () => {
+    const piece = await createPiece(details, 'learning');
+    const passage = await createPassage(piece.id, { name: '', fromBar: 13, toBar: 16 });
+    await updatePassage(piece.id, passage.id, { focusNote: 'Land early', toBar: undefined });
+    let stored = await db.pieces.get(piece.id);
+    expect(stored?.passages).toEqual([
+      {
+        id: passage.id,
+        createdAt: passage.createdAt,
+        name: '',
+        fromBar: 13,
+        focusNote: 'Land early',
+        solid: false,
+      },
+    ]);
+    expect(stored!.updatedAt).toBeGreaterThanOrEqual(piece.updatedAt);
+
+    await deletePassage(piece.id, passage.id);
+    stored = await db.pieces.get(piece.id);
+    expect(stored?.passages).toEqual([]);
   });
 });

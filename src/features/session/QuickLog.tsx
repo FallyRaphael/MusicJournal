@@ -1,5 +1,6 @@
 import { Minus, Plus, X } from 'lucide-react';
 import { useState } from 'react';
+import type { Id } from '../../domain/model';
 import { Button, IconButton } from '../../ui/Button';
 import { Card } from '../../ui/Card';
 import { ChipRow, ToggleChip } from '../../ui/Chip';
@@ -8,24 +9,50 @@ import styles from './QuickLog.module.css';
 
 const BPM_STEP = 2;
 
+interface PassageOption {
+  id: Id;
+  label: string;
+}
+
 interface QuickLogProps {
   methods: readonly string[];
-  /** Starting tempo: the last one logged for this piece or technique item. */
+  /** Starting tempo: the last one logged for this item (or the chosen passage). */
   defaultBpm?: number;
   entryCount: number;
-  onLog: (entry: { method: string; bpm?: number; note: string }) => void;
+  onLog: (entry: { method: string; bpm?: number; note: string; passageId?: Id }) => void;
   onShowEntries: () => void;
+  /** Pieces only: passages to log for; `passage` null means the whole piece. */
+  passages?: readonly PassageOption[];
+  passage?: Id | null;
+  onPassageChange?: (passage: Id | null) => void;
+  onAddPassage?: () => void;
 }
 
 /**
- * Logs how an item is being practiced in a few taps: a method, an optional tempo and an
- * optional note. Method and tempo stay selected after logging, for the next repetition.
- * Mount with `key` = item id so each item starts fresh.
+ * Logs how an item is being practiced in a few taps: a passage (pieces), a method, an
+ * optional tempo and an optional note. Method and tempo stay selected after logging, for the
+ * next repetition; the tempo is kept per passage. Mount with `key` = item id so each item
+ * starts fresh.
  */
-export function QuickLog({ methods, defaultBpm, entryCount, onLog, onShowEntries }: QuickLogProps) {
+export function QuickLog({
+  methods,
+  defaultBpm,
+  entryCount,
+  onLog,
+  onShowEntries,
+  passages,
+  passage = null,
+  onPassageChange,
+  onAddPassage,
+}: QuickLogProps) {
   const [method, setMethod] = useState<string | null>(null);
-  const [bpm, setBpm] = useState<number | null>(null);
+  const [bpms, setBpms] = useState<Record<string, number | null>>({});
   const [note, setNote] = useState('');
+
+  const bpmKey = passage ?? '';
+  const bpm = bpms[bpmKey] ?? null;
+  const setBpm = (update: (current: number | null) => number | null) =>
+    setBpms((all) => ({ ...all, [bpmKey]: update(all[bpmKey] ?? null) }));
 
   const canLog = method !== null || bpm !== null || note.trim() !== '';
   const step = (delta: number) =>
@@ -35,7 +62,12 @@ export function QuickLog({ methods, defaultBpm, entryCount, onLog, onShowEntries
 
   const log = () => {
     if (!canLog) return;
-    onLog({ method: method ?? '', ...(bpm !== null ? { bpm } : {}), note: note.trim() });
+    onLog({
+      method: method ?? '',
+      ...(bpm !== null ? { bpm } : {}),
+      ...(passage !== null ? { passageId: passage } : {}),
+      note: note.trim(),
+    });
     setNote('');
   };
 
@@ -52,13 +84,45 @@ export function QuickLog({ methods, defaultBpm, entryCount, onLog, onShowEntries
         )}
       </div>
 
-      <ChipRow>
-        {methods.map((m) => (
-          <ToggleChip key={m} pressed={method === m} onChange={(on) => setMethod(on ? m : null)}>
-            {m}
-          </ToggleChip>
-        ))}
-      </ChipRow>
+      {passages && (
+        <div className={styles.group} role="group" aria-label="Passage">
+          <span className={styles.groupLabel} aria-hidden="true">
+            Passage
+          </span>
+          <ChipRow>
+            <ToggleChip pressed={passage === null} onChange={() => onPassageChange?.(null)}>
+              Whole piece
+            </ToggleChip>
+            {passages.map((p) => (
+              <ToggleChip
+                key={p.id}
+                pressed={passage === p.id}
+                onChange={() => onPassageChange?.(p.id)}
+              >
+                {p.label}
+              </ToggleChip>
+            ))}
+            <button type="button" className={styles.addChip} onClick={onAddPassage}>
+              <Plus size={16} aria-hidden="true" /> Passage
+            </button>
+          </ChipRow>
+        </div>
+      )}
+
+      <div className={styles.group} role="group" aria-label="Method">
+        {passages && (
+          <span className={styles.groupLabel} aria-hidden="true">
+            Method
+          </span>
+        )}
+        <ChipRow>
+          {methods.map((m) => (
+            <ToggleChip key={m} pressed={method === m} onChange={(on) => setMethod(on ? m : null)}>
+              {m}
+            </ToggleChip>
+          ))}
+        </ChipRow>
+      </div>
 
       <div className={styles.bpm} role="group" aria-label="Tempo">
         <IconButton label="Slower" variant="outline" onClick={() => step(-BPM_STEP)}>
@@ -70,10 +134,12 @@ export function QuickLog({ methods, defaultBpm, entryCount, onLog, onShowEntries
         <IconButton label="Faster" variant="outline" onClick={() => step(BPM_STEP)}>
           <Plus size={20} />
         </IconButton>
-        {bpm !== null && (
-          <IconButton label="No tempo" onClick={() => setBpm(null)}>
+        {bpm !== null ? (
+          <IconButton label="No tempo" onClick={() => setBpm(() => null)}>
             <X size={18} />
           </IconButton>
+        ) : (
+          defaultBpm !== undefined && <span className={styles.lastBpm}>last time {defaultBpm}</span>
         )}
       </div>
 

@@ -10,10 +10,10 @@ import {
   usePieceSessions,
 } from '../../db/pieces';
 import { fromDateKey, toDateKey } from '../../domain/dates';
-import type { Piece, PieceStatus } from '../../domain/model';
-import { isPiece, pieceSessionSummaries, pieceStats } from '../../domain/pieceStats';
+import type { Passage, Piece, PieceStatus } from '../../domain/model';
+import { pieceSessionSummaries, pieceStats } from '../../domain/pieceStats';
 import { currentStatusSince, statusPeriods } from '../../domain/pieces';
-import { runningTempoGoal, tempoHistory } from '../../domain/tempo';
+import { runningTempoGoal } from '../../domain/tempo';
 import { formatDuration, formatMediumDate, formatShortDate } from '../../lib/format';
 import { useGoBack } from '../../lib/navigation';
 import { useNow } from '../../lib/useNow';
@@ -29,10 +29,14 @@ import { TextSheet } from '../../ui/TextSheet';
 import { composerLine, FEEL_LABELS, OUTCOME_LABELS, STATUS_LABELS } from './labels';
 import styles from './PieceDetailScreen.module.css';
 import { StatusSheet } from './PieceSheets';
+import { PassageSheet } from './PassageSheet';
+import { PassagesCard } from './PassagesCard';
 import { TempoCard } from './TempoCard';
 
 type OpenSheet =
-  { kind: 'menu' | 'focus' | 'notes' | 'delete' } | { kind: 'status'; preset: PieceStatus };
+  | { kind: 'menu' | 'focus' | 'notes' | 'delete' }
+  | { kind: 'status'; preset: PieceStatus }
+  | { kind: 'passage'; passage?: Passage };
 
 export function PieceDetailScreen() {
   const { pieceId = '' } = useParams();
@@ -71,7 +75,6 @@ function PieceDetail({ piece }: { piece: Piece }) {
   const recent = pieceSessionSummaries(piece.id, sessions ?? [], now).slice(0, 5);
   const outcome = piece.statusHistory[piece.statusHistory.length - 1]?.outcome;
   const since = currentStatusSince(piece);
-  const tempo = tempoHistory(isPiece(piece.id), sessions ?? []);
   const goalBpm = runningTempoGoal(
     { kind: 'piece', pieceId: piece.id },
     cycles ?? [],
@@ -122,7 +125,12 @@ function PieceDetail({ piece }: { piece: Piece }) {
         </div>
       </dl>
 
-      {tempo.length >= 2 && <TempoCard points={tempo} goalBpm={goalBpm} />}
+      <TempoCard
+        pieceId={piece.id}
+        passages={piece.passages ?? []}
+        sessions={sessions ?? []}
+        goalBpm={goalBpm}
+      />
 
       <Card aria-labelledby="focus-title">
         <div className={styles.cardHeader}>
@@ -140,6 +148,12 @@ function PieceDetail({ piece }: { piece: Piece }) {
           <p className={styles.placeholder}>What should you work on next time?</p>
         )}
       </Card>
+
+      <PassagesCard
+        piece={piece}
+        sessions={sessions ?? []}
+        onOpen={(passage) => open({ kind: 'passage', passage })}
+      />
 
       <Card aria-labelledby="status-title">
         <div className={styles.cardHeader}>
@@ -259,6 +273,15 @@ function PieceDetail({ piece }: { piece: Piece }) {
           close();
         }}
       />
+
+      {sheet?.kind === 'passage' && (
+        <PassageSheet
+          key={`passage-${sheetKey}`}
+          pieceId={piece.id}
+          passage={sheet.passage}
+          onClose={close}
+        />
+      )}
 
       <TextSheet
         key={`focus-${sheetKey}`}

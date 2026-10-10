@@ -36,7 +36,7 @@ import { Screen } from '../../ui/Screen';
 import { Sheet } from '../../ui/Sheet';
 import { MinutesSheet, TextSheet } from '../../ui/TextSheet';
 import { ItemPicker } from './ItemPicker';
-import { describeEntry, useLookups } from './lookups';
+import { useLookups } from './lookups';
 import styles from './SessionDetailScreen.module.css';
 import { SaveTemplateSheet } from './SessionSheets';
 
@@ -110,7 +110,7 @@ export function SessionDetailScreen({ session }: { session: Session }) {
                     </span>
                     {item.entries.map((entry) => (
                       <span key={entry.id} className={styles.entry}>
-                        {[describeEntry(entry), entry.note].filter(Boolean).join(' – ')}
+                        {[lookups.describeEntry(entry), entry.note].filter(Boolean).join(' – ')}
                       </span>
                     ))}
                     {item.note && <span className={styles.note}>{item.note}</span>}
@@ -196,7 +196,7 @@ export function SessionDetailScreen({ session }: { session: Session }) {
                   {selected.entries.map((entry) => (
                     <li key={entry.id} className={styles.entryRow}>
                       <span className={styles.entryText}>
-                        {[describeEntry(entry), entry.note].filter(Boolean).join(' – ')}
+                        {[lookups.describeEntry(entry), entry.note].filter(Boolean).join(' – ')}
                       </span>
                       <IconButton
                         label="Delete entry"

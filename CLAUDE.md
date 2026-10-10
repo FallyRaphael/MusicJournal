@@ -36,6 +36,8 @@ timer, prev/pause/next, method buttons, a BPM stepper and an "All items" overvie
   `BudgetControl.onChange`) so quick repeated taps don't overwrite each other.
 - Session items reference pieces/technique/books/one-offs (`free`) via `ItemRef`; compare with `sameRef` /
   `refKey` from `src/domain/refs.ts`. Section order follows the section types' `order`.
+- Passages live inside their piece (`piece.passages`, read with `?? []`); entries point to one
+  via `passageId`. Entries without a known passage count for the whole piece (`entryMatches`).
 - The work catalog (`src/catalog/catalog.json`) is generated data; only add entries whose
   catalog numbers and keys are certain. Search normalisation lives in `src/domain/search.ts`.
 - UI copy uses US spelling ("practiced"), dates are formatted en-GB ("27 Sept 2026").

@@ -37,6 +37,20 @@ export interface StatusChange {
   outcome?: ShelveOutcome;
 }
 
+/** A part of a piece practiced on its own, e.g. "Bars 13–16" or "Coda". */
+export interface Passage {
+  id: Id;
+  createdAt: Timestamp;
+  /** May be empty when bars are given ("Bars 13–16" is shown then). */
+  name: string;
+  fromBar?: number;
+  toBar?: number;
+  /** The current "focus next time" note for this passage. */
+  focusNote: string;
+  /** Learned well enough: moved out of the way, history kept. */
+  solid: boolean;
+}
+
 export interface Piece extends BaseRecord {
   title: string;
   composer: string;
@@ -53,6 +67,8 @@ export interface Piece extends BaseRecord {
   notes: string;
   /** The current "focus next time" note. */
   focusNote: string;
+  /** Passages practiced on their own (missing in pieces saved before passages). */
+  passages?: Passage[];
 }
 
 export interface TechniqueItem extends BaseRecord {
@@ -116,6 +132,8 @@ export interface PracticeEntry {
   at: Timestamp;
   method: string;
   bpm?: number;
+  /** The passage of the piece this entry was for; none means the whole piece. */
+  passageId?: Id;
   /** Book entries: the numbers of the first and last exercise played. */
   from?: number;
   to?: number;

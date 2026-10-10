@@ -2,7 +2,7 @@
 
 import { cycleEnd } from './cycles';
 import type { DateKey } from './dates';
-import type { Cycle, Id, ItemRef, Session, Timestamp } from './model';
+import type { Cycle, Id, ItemRef, PracticeEntry, Session, Timestamp } from './model';
 import { sessionTime, type RefMatcher } from './pieceStats';
 import { sameRef } from './refs';
 
@@ -18,7 +18,12 @@ export interface TempoPoint {
  * The fastest tempo logged for matching items in each session, oldest first. (Entries count
  * even in a session whose timer never ran.)
  */
-export function tempoHistory(matches: RefMatcher, sessions: readonly Session[]): TempoPoint[] {
+export function tempoHistory(
+  matches: RefMatcher,
+  sessions: readonly Session[],
+  /** Limits the entries, e.g. to one passage. */
+  include: (entry: PracticeEntry) => boolean = () => true,
+): TempoPoint[] {
   const points: TempoPoint[] = [];
   for (const session of sessions) {
     let best: { bpm: number; method: string } | undefined;
@@ -26,7 +31,7 @@ export function tempoHistory(matches: RefMatcher, sessions: readonly Session[]):
       for (const item of section.items) {
         if (!matches(item.ref)) continue;
         for (const entry of item.entries) {
-          if (entry.bpm !== undefined && (!best || entry.bpm > best.bpm)) {
+          if (entry.bpm !== undefined && include(entry) && (!best || entry.bpm > best.bpm)) {
             best = { bpm: entry.bpm, method: entry.method };
           }
         }

@@ -9,7 +9,7 @@ import { Button, IconButton } from '../../ui/Button';
 import { TextInput } from '../../ui/Field';
 import { NoBreakKeys } from '../../ui/NoBreakKeys';
 import { Sheet } from '../../ui/Sheet';
-import { describeEntry, type Lookups } from './lookups';
+import type { Lookups } from './lookups';
 import styles from './SessionSheets.module.css';
 
 interface AllItemsSheetProps {
@@ -96,13 +96,21 @@ interface EntriesSheetProps {
   onClose: () => void;
   title: string;
   entries: readonly PracticeEntry[];
+  describe: (entry: PracticeEntry) => string;
   onDelete: (entryId: Id) => void;
 }
 
 const timeOfDay = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit' });
 
 /** The entries logged for one item, newest first, with delete buttons. */
-export function EntriesSheet({ open, onClose, title, entries, onDelete }: EntriesSheetProps) {
+export function EntriesSheet({
+  open,
+  onClose,
+  title,
+  entries,
+  describe,
+  onDelete,
+}: EntriesSheetProps) {
   return (
     <Sheet open={open} onClose={onClose} title={title}>
       {entries.length === 0 ? (
@@ -113,9 +121,7 @@ export function EntriesSheet({ open, onClose, title, entries, onDelete }: Entrie
             <li key={entry.id} className={styles.entry}>
               <span className={styles.entryTime}>{timeOfDay.format(entry.at)}</span>
               <span className={styles.entryText}>
-                {describeEntry(entry) && (
-                  <span className={styles.entryMain}>{describeEntry(entry)}</span>
-                )}
+                {describe(entry) && <span className={styles.entryMain}>{describe(entry)}</span>}
                 {entry.note && <span className={styles.entryNote}>{entry.note}</span>}
               </span>
               <IconButton label="Delete entry" onClick={() => onDelete(entry.id)}>

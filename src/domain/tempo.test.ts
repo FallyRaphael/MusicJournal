@@ -68,6 +68,15 @@ describe('tempoHistory', () => {
     ]);
   });
 
+  it('can be limited to some entries, e.g. one passage', () => {
+    const points = tempoHistory(
+      isPiece('p1'),
+      [session('a', 1000, [entry(60, 'Slow practice'), entry(84)])],
+      (e) => e.method === 'Slow practice',
+    );
+    expect(points.map((p) => p.bpm)).toEqual([60]);
+  });
+
   it('skips sessions without a tempo, but counts entries logged before the timer ran', () => {
     const points = tempoHistory(isPiece('p1'), [
       session('none', 1000, [entry(undefined)]),
