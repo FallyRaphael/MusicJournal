@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUp, Ellipsis, ListPlus, Minus, Plus, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, Ellipsis, Minus, Plus, Trash2 } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
 import type { Id, ItemRef } from '../../domain/model';
 import {
@@ -9,9 +9,8 @@ import {
   type PlanSection,
 } from '../../domain/session';
 import { ActionList } from '../../ui/ActionList';
-import { Button, IconButton } from '../../ui/Button';
+import { IconButton } from '../../ui/Button';
 import { NoBreakKeys } from '../../ui/NoBreakKeys';
-import { EmptyState } from '../../ui/Screen';
 import { Sheet } from '../../ui/Sheet';
 import { ItemPicker } from './ItemPicker';
 import type { Lookups } from './lookups';
@@ -43,75 +42,81 @@ export function PlanEditor<T extends PlanItem>({
   lookups,
   emptyText = 'Add the pieces, technique and other things you want to practice.',
 }: PlanEditorProps<T>) {
-  const [picker, setPicker] = useState<{ sectionTypeId?: Id } | null>(null);
+  const [picker, setPicker] = useState<{ sectionTypeId: Id } | null>(null);
   // Changes on every opening, so the picker starts fresh.
   const [pickerKey, setPickerKey] = useState(0);
   const [menuItem, setMenuItem] = useState<T | null>(null);
 
-  const openPicker = (sectionTypeId?: Id) => {
+  const openPicker = (sectionTypeId: Id) => {
     setPickerKey((k) => k + 1);
     setPicker({ sectionTypeId });
   };
 
+  // Every section on offer, plus any retired ones the plan still uses, in section order.
+  const sectionIds = [
+    ...new Set([
+      ...lookups.activeSectionTypes.map((t) => t.id),
+      ...sections.map((s) => s.sectionTypeId),
+    ]),
+  ].sort((a, b) => position(a) - position(b));
+  function position(sectionTypeId: Id) {
+    const index = lookups.sectionTypes.findIndex((t) => t.id === sectionTypeId);
+    return index === -1 ? Number.MAX_SAFE_INTEGER : index;
+  }
+  const isEmpty = sections.every((s) => s.items.length === 0);
+
   return (
     <div className={styles.editor}>
-      {sections.length === 0 ? (
-        <EmptyState icon={<ListPlus size={24} aria-hidden="true" />} title="Nothing planned yet">
-          {emptyText}
-        </EmptyState>
-      ) : (
-        sections.map((section) => (
-          <section
-            key={section.id}
-            className={styles.section}
-            aria-label={lookups.sectionName(section.sectionTypeId)}
-          >
-            <header className={styles.sectionHeader}>
-              <h2 className={styles.sectionTitle}>{lookups.sectionName(section.sectionTypeId)}</h2>
-              <IconButton
-                label={`Add to ${lookups.sectionName(section.sectionTypeId)}`}
-                onClick={() => openPicker(section.sectionTypeId)}
-              >
-                <Plus size={20} />
-              </IconButton>
-            </header>
-            <ul className={styles.items}>
-              {section.items.map((item) => {
-                const info = lookups.info(item.ref);
-                return (
-                  <li key={item.id} className={styles.item}>
-                    <div className={styles.itemTop}>
-                      <span className={styles.itemText}>
-                        <span
-                          className={
-                            info.missing
-                              ? `${styles.itemTitle} ${styles.missing}`
-                              : styles.itemTitle
-                          }
-                        >
-                          <NoBreakKeys text={info.title} />
+      {isEmpty && <p className={styles.intro}>{emptyText}</p>}
+      {sectionIds.map((sectionTypeId) => {
+        const name = lookups.sectionName(sectionTypeId);
+        const items = sections.find((s) => s.sectionTypeId === sectionTypeId)?.items ?? [];
+        return (
+          <section key={sectionTypeId} className={styles.section} aria-label={name}>
+            <h2 className={styles.sectionTitle}>{name}</h2>
+            {items.length > 0 && (
+              <ul className={styles.items}>
+                {items.map((item) => {
+                  const info = lookups.info(item.ref);
+                  return (
+                    <li key={item.id} className={styles.item}>
+                      <div className={styles.itemTop}>
+                        <span className={styles.itemText}>
+                          <span
+                            className={
+                              info.missing
+                                ? `${styles.itemTitle} ${styles.missing}`
+                                : styles.itemTitle
+                            }
+                          >
+                            <NoBreakKeys text={info.title} />
+                          </span>
+                          {info.subtitle && <span className={styles.itemSub}>{info.subtitle}</span>}
                         </span>
-                        {info.subtitle && <span className={styles.itemSub}>{info.subtitle}</span>}
-                      </span>
-                      <IconButton
-                        label={`Options for ${info.title}`}
-                        onClick={() => setMenuItem(item)}
-                      >
-                        <Ellipsis size={20} />
-                      </IconButton>
-                    </div>
-                    <div className={styles.itemTime}>{timeControl(item)}</div>
-                  </li>
-                );
-              })}
-            </ul>
+                        <IconButton
+                          label={`Options for ${info.title}`}
+                          onClick={() => setMenuItem(item)}
+                        >
+                          <Ellipsis size={20} />
+                        </IconButton>
+                      </div>
+                      <div className={styles.itemTime}>{timeControl(item)}</div>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+            <button
+              type="button"
+              className={styles.addRow}
+              onClick={() => openPicker(sectionTypeId)}
+            >
+              <Plus size={18} aria-hidden="true" />
+              Add to {name.toLowerCase()}
+            </button>
           </section>
-        ))
-      )}
-
-      <Button icon={<Plus size={18} aria-hidden="true" />} onClick={() => openPicker()}>
-        Add item
-      </Button>
+        );
+      })}
 
       {picker && (
         <ItemPicker
@@ -120,6 +125,11 @@ export function PlanEditor<T extends PlanItem>({
           onClose={() => setPicker(null)}
           lookups={lookups}
           sectionTypeId={picker.sectionTypeId}
+          existing={
+            sections
+              .find((s) => s.sectionTypeId === picker.sectionTypeId)
+              ?.items.map((item) => item.ref) ?? []
+          }
           onAdd={(sectionTypeId, ref) =>
             onChange((current) =>
               addPlanItem(current, sectionTypeId, createItem(ref), lookups.order),

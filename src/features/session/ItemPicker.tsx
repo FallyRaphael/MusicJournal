@@ -1,254 +1,327 @@
-import { Check, Plus } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowLeft, Check, ChevronRight, Plus } from 'lucide-react';
+import { useState, type ReactNode } from 'react';
+import { createPiece } from '../../db/pieces';
+import { useRecentSessions } from '../../db/sessions';
 import { createTechnique } from '../../db/techniques';
-import type { Id, ItemRef, SectionType } from '../../domain/model';
+import type { Id, ItemRef } from '../../domain/model';
+import { matchesQuery, recentInSection, sectionKind, type PickKind } from '../../domain/picker';
 import { filterPieces } from '../../domain/pieces';
+import { refKey } from '../../domain/refs';
 import { Button } from '../../ui/Button';
-import { ChipRow, ToggleChip } from '../../ui/Chip';
-import { FieldGroup, Input, TextInput } from '../../ui/Field';
+import { Field, Input, TextInput } from '../../ui/Field';
 import { NoBreakKeys } from '../../ui/NoBreakKeys';
 import { SearchField } from '../../ui/SearchField';
-import { SegmentedControl } from '../../ui/SegmentedControl';
 import { Sheet } from '../../ui/Sheet';
-import { composerLine } from '../pieces/labels';
 import styles from './ItemPicker.module.css';
-import { refKey } from '../../domain/refs';
 import type { Lookups } from './lookups';
 
-type Kind = 'piece' | 'technique' | 'free';
-
-const KINDS = [
-  { value: 'piece', label: 'Pieces' },
-  { value: 'technique', label: 'Technique' },
-  { value: 'free', label: 'Other' },
-] as const;
-
-/** Which section new items of each kind go to, unless the user picks one. */
-const DEFAULT_SECTION: Record<Kind, string> = {
-  piece: 'repertoire',
-  technique: 'technique',
-  free: 'sight-reading',
+const CREATE_LABELS: Record<PickKind, string> = {
+  piece: 'Piece',
+  technique: 'Technique',
+  free: 'One-off',
 };
-
-function defaultSection(types: readonly SectionType[], kind: Kind): Id | undefined {
-  const wanted = DEFAULT_SECTION[kind];
-  return (types.find((t) => t.name.toLowerCase() === wanted) ?? types[0])?.id;
-}
 
 interface ItemPickerProps {
   open: boolean;
   onClose: () => void;
   lookups: Lookups;
-  /** Preselects a section, e.g. when adding from a section's own button. */
+  /** The section to add to. Without it, the picker asks for one first. */
   sectionTypeId?: Id;
+  /** Items already in the plan, shown as added. */
+  existing?: readonly ItemRef[];
   onAdd: (sectionTypeId: Id, ref: ItemRef) => void;
 }
 
 /**
- * Adds pieces, technique items or free text to a plan. Stays open so several items can
- * be added in a row. Mount with a changing `key` to reset it on open.
+ * Adds items to one section of a plan: suggestions from earlier sessions, a search across
+ * pieces, technique and one-offs, and quick creation. Stays open so several items can be
+ * added in a row. Mount with a changing `key` to reset it on open.
  */
-export function ItemPicker({ open, onClose, lookups, sectionTypeId, onAdd }: ItemPickerProps) {
-  const types = lookups.activeSectionTypes;
-  const [kind, setKind] = useState<Kind>('piece');
-  const [chosenSection, setChosenSection] = useState<Id | undefined>(sectionTypeId);
+export function ItemPicker({
+  open,
+  onClose,
+  lookups,
+  sectionTypeId,
+  existing = [],
+  onAdd,
+}: ItemPickerProps) {
+  const sessions = useRecentSessions();
+  const [section, setSection] = useState<Id | undefined>(sectionTypeId);
   const [query, setQuery] = useState('');
-  const [freeText, setFreeText] = useState('');
-  const [newTechnique, setNewTechnique] = useState({ name: '', category: '' });
+  const [creating, setCreating] = useState<PickKind | null>(null);
   const [added, setAdded] = useState<string[]>([]);
 
-  const section = chosenSection ?? defaultSection(types, kind);
-
+  const addedKeys = new Set([...existing.map(refKey), ...added]);
   const add = (ref: ItemRef) => {
-    if (!section) return;
+    if (!section || addedKeys.has(refKey(ref))) return;
     onAdd(section, ref);
     setAdded((keys) => [...keys, refKey(ref)]);
   };
 
-  const pieces = [
-    ...filterPieces(lookups.pieces, { tab: 'active', query, feels: [], tags: [] }),
-    ...filterPieces(lookups.pieces, { tab: 'upNext', query, feels: [], tags: [] }),
-    // Shelved pieces only when searching for them.
-    ...(query ? filterPieces(lookups.pieces, { tab: 'shelf', query, feels: [], tags: [] }) : []),
-  ];
-  const techniques = lookups.techniques.filter((t) => !t.archived);
-  const categories = [...new Set(lookups.techniques.map((t) => t.category).filter(Boolean))];
+  const footer = (
+    <Button variant="primary" onClick={onClose}>
+      Done{added.length > 0 ? ` · ${added.length} added` : ''}
+    </Button>
+  );
 
-  const addTechnique = async () => {
-    const name = newTechnique.name.trim();
-    if (!name) return;
-    const item = await createTechnique({
-      name,
-      category: newTechnique.category.trim(),
-      notes: '',
-    });
-    add({ kind: 'technique', techniqueId: item.id });
-    setNewTechnique((t) => ({ ...t, name: '' }));
+  if (!section) {
+    return (
+      <Sheet open={open} onClose={onClose} title="Add to which section?" footer={footer}>
+        <ul className={styles.list}>
+          {lookups.activeSectionTypes.map((type) => (
+            <li key={type.id}>
+              <button type="button" className={styles.option} onClick={() => setSection(type.id)}>
+                <span className={styles.text}>
+                  <span className={styles.title}>{type.name}</span>
+                </span>
+                <ChevronRight size={20} className={styles.plus} aria-hidden="true" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </Sheet>
+    );
+  }
+
+  const sectionName = lookups.sectionName(section);
+  const recent = recentInSection(sessions ?? [], section).filter(
+    (ref) => !lookups.info(ref).missing,
+  );
+  const preferred = sectionKind(sessions ?? [], section, sectionName);
+
+  const row = (ref: ItemRef, extra?: ReactNode) => {
+    const info = lookups.info(ref);
+    const isAdded = addedKeys.has(refKey(ref));
+    return (
+      <li key={refKey(ref)}>
+        <button
+          type="button"
+          className={styles.option}
+          onClick={() => add(ref)}
+          aria-disabled={isAdded}
+        >
+          <span className={styles.text}>
+            <span className={styles.title}>
+              <NoBreakKeys text={info.title} />
+            </span>
+            {info.subtitle && <span className={styles.sub}>{info.subtitle}</span>}
+            {extra}
+          </span>
+          {isAdded ? (
+            <Check size={20} className={styles.added} aria-label="Added" />
+          ) : (
+            <Plus size={20} className={styles.plus} aria-hidden="true" />
+          )}
+        </button>
+      </li>
+    );
   };
 
-  const addFree = () => {
-    const label = freeText.trim();
-    if (!label) return;
-    add({ kind: 'free', label });
-    setFreeText('');
-  };
+  const group = (title: string, refs: ItemRef[], empty?: string) =>
+    refs.length === 0 && !empty ? null : (
+      <section className={styles.group} aria-label={title}>
+        <h3 className={styles.groupTitle}>{title}</h3>
+        {refs.length === 0 ? (
+          <p className={styles.empty}>{empty}</p>
+        ) : (
+          <ul className={styles.list}>
+            {refs.map((ref) => {
+              const focus = lookups.info(ref).focusNote;
+              return row(ref, focus && <span className={styles.focus}>Focus: {focus}</span>);
+            })}
+          </ul>
+        )}
+      </section>
+    );
 
-  const isAdded = (ref: ItemRef) => added.includes(refKey(ref));
+  const pieceTabs = query
+    ? (['active', 'upNext', 'shelf'] as const)
+    : (['active', 'upNext'] as const);
+  const pieceRefs: ItemRef[] = pieceTabs
+    .flatMap((tab) => filterPieces(lookups.pieces, { tab, query, feels: [], tags: [] }))
+    .map((piece) => ({ kind: 'piece', pieceId: piece.id }));
+  const techniqueRefs: ItemRef[] = lookups.techniques
+    .filter((t) => !t.archived && matchesQuery(query, `${t.name} ${t.category}`))
+    .map((t) => ({ kind: 'technique', techniqueId: t.id }));
+  const freeRefs = recentInSection(sessions ?? [], section, 50).filter(
+    (ref) => ref.kind === 'free' && matchesQuery(query, ref.label),
+  );
+
+  const groups: Record<PickKind, ReactNode> = {
+    piece: group(
+      'Pieces',
+      pieceRefs,
+      lookups.pieces.length === 0 && !query ? 'No pieces yet – create one below.' : undefined,
+    ),
+    technique: group('Technique', techniqueRefs),
+    free: query ? group('One-offs', freeRefs) : null,
+  };
+  const order: PickKind[] = [preferred, ...(['piece', 'technique', 'free'] as const)].filter(
+    (kind, i, all) => all.indexOf(kind) === i,
+  );
+  const nothingFound =
+    query !== '' && pieceRefs.length + techniqueRefs.length + freeRefs.length === 0;
 
   return (
-    <Sheet
-      open={open}
-      onClose={onClose}
-      title="Add to session"
-      footer={
-        <Button variant="primary" onClick={onClose}>
-          Done{added.length > 0 ? ` · ${added.length} added` : ''}
-        </Button>
-      }
-    >
-      <FieldGroup label="Section">
-        <ChipRow>
-          {types.map((type) => (
-            <ToggleChip
-              key={type.id}
-              pressed={type.id === section}
-              onChange={() => setChosenSection(type.id)}
-            >
-              {type.name}
-            </ToggleChip>
-          ))}
-        </ChipRow>
-      </FieldGroup>
-
-      <SegmentedControl
-        legend="What to add"
-        name="picker-kind"
-        options={KINDS}
-        value={kind}
-        onChange={setKind}
-      />
-
-      {kind === 'piece' && (
-        <>
-          <SearchField label="Search pieces" value={query} onChange={setQuery} />
-          {pieces.length === 0 ? (
-            <p className={styles.empty}>
-              {lookups.pieces.length === 0
-                ? 'No pieces yet – add them under Pieces, or use “Other”.'
-                : 'No matching pieces.'}
-            </p>
-          ) : (
-            <ul className={styles.list}>
-              {pieces.map((piece) => {
-                const ref: ItemRef = { kind: 'piece', pieceId: piece.id };
-                return (
-                  <li key={piece.id}>
-                    <button type="button" className={styles.option} onClick={() => add(ref)}>
-                      <span className={styles.text}>
-                        <span className={styles.title}>
-                          <NoBreakKeys text={piece.title} />
-                        </span>
-                        {composerLine(piece) && (
-                          <span className={styles.sub}>{composerLine(piece)}</span>
-                        )}
-                        {piece.focusNote && (
-                          <span className={styles.focus}>Focus: {piece.focusNote}</span>
-                        )}
-                      </span>
-                      {isAdded(ref) ? (
-                        <Check size={20} className={styles.added} aria-label="Added" />
-                      ) : (
-                        <Plus size={20} className={styles.plus} aria-hidden="true" />
-                      )}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </>
-      )}
-
-      {kind === 'technique' && (
-        <>
-          {techniques.length > 0 && (
-            <ul className={styles.list}>
-              {techniques.map((technique) => {
-                const ref: ItemRef = { kind: 'technique', techniqueId: technique.id };
-                return (
-                  <li key={technique.id}>
-                    <button type="button" className={styles.option} onClick={() => add(ref)}>
-                      <span className={styles.text}>
-                        <span className={styles.title}>{technique.name}</span>
-                        {technique.category && (
-                          <span className={styles.sub}>{technique.category}</span>
-                        )}
-                      </span>
-                      {isAdded(ref) ? (
-                        <Check size={20} className={styles.added} aria-label="Added" />
-                      ) : (
-                        <Plus size={20} className={styles.plus} aria-hidden="true" />
-                      )}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-          <form
-            className={styles.newForm}
-            onSubmit={(event) => {
-              event.preventDefault();
-              void addTechnique();
-            }}
-          >
-            <span className={styles.formTitle}>New technique item</span>
-            <Input
-              aria-label="Name"
-              placeholder="Name, e.g. Hanon No. 1, C major scale"
-              value={newTechnique.name}
-              onChange={(event) => setNewTechnique((t) => ({ ...t, name: event.target.value }))}
-            />
-            <Input
-              aria-label="Category"
-              placeholder="Category, e.g. Scales (optional)"
-              list="technique-categories"
-              value={newTechnique.category}
-              onChange={(event) => setNewTechnique((t) => ({ ...t, category: event.target.value }))}
-            />
-            <datalist id="technique-categories">
-              {[...new Set([...categories, 'Scales', 'Arpeggios', 'Chords', 'Exercises'])].map(
-                (c) => (
-                  <option key={c} value={c} />
-                ),
-              )}
-            </datalist>
-            <Button type="submit" disabled={!newTechnique.name.trim()}>
-              Create and add
-            </Button>
-          </form>
-        </>
-      )}
-
-      {kind === 'free' && (
-        <form
-          className={styles.newForm}
-          onSubmit={(event) => {
-            event.preventDefault();
-            addFree();
+    <Sheet open={open} onClose={onClose} title={`Add to ${sectionName}`} footer={footer}>
+      {creating ? (
+        <CreateForm
+          kind={creating}
+          lookups={lookups}
+          initial={query}
+          onBack={() => setCreating(null)}
+          onCreated={(ref) => {
+            add(ref);
+            setCreating(null);
+            setQuery('');
           }}
-        >
-          <TextInput
-            label="What will you practice?"
-            placeholder="e.g. Mikrokosmos II, p. 12"
-            value={freeText}
-            onChange={(event) => setFreeText(event.target.value)}
-          />
-          <Button type="submit" disabled={!freeText.trim()}>
-            Add
-          </Button>
-        </form>
+        />
+      ) : (
+        <>
+          {!sectionTypeId && (
+            <button type="button" className={styles.change} onClick={() => setSection(undefined)}>
+              <ArrowLeft size={16} aria-hidden="true" /> Other section
+            </button>
+          )}
+          <SearchField label="Search pieces and technique" value={query} onChange={setQuery} />
+
+          {!query && group('Suggested', recent)}
+          {nothingFound && <p className={styles.empty}>Nothing found – create it below.</p>}
+          {order.map((kind) => groups[kind] && <div key={kind}>{groups[kind]}</div>)}
+
+          <section className={styles.group} aria-label="Create new">
+            <h3 className={styles.groupTitle}>Create new</h3>
+            <div className={styles.createButtons}>
+              {(['piece', 'technique', 'free'] as const).map((kind) => (
+                <Button
+                  key={kind}
+                  icon={<Plus size={18} aria-hidden="true" />}
+                  onClick={() => setCreating(kind)}
+                >
+                  {CREATE_LABELS[kind]}
+                </Button>
+              ))}
+            </div>
+          </section>
+        </>
       )}
     </Sheet>
+  );
+}
+
+interface CreateFormProps {
+  kind: PickKind;
+  lookups: Lookups;
+  /** Prefills the name, e.g. with what was searched for. */
+  initial: string;
+  onBack: () => void;
+  onCreated: (ref: ItemRef) => void;
+}
+
+/** Creates a piece, technique item or one-off and adds it. */
+function CreateForm({ kind, lookups, initial, onBack, onCreated }: CreateFormProps) {
+  const [name, setName] = useState(initial);
+  const [detail, setDetail] = useState('');
+  const categories = [
+    ...new Set([
+      ...lookups.techniques.map((t) => t.category).filter(Boolean),
+      'Scales',
+      'Arpeggios',
+      'Chords',
+      'Exercises',
+    ]),
+  ];
+
+  const submit = async () => {
+    const title = name.trim();
+    if (!title) return;
+    if (kind === 'piece') {
+      const piece = await createPiece(
+        { title, composer: detail.trim(), tags: [], notes: '' },
+        'learning',
+      );
+      onCreated({ kind: 'piece', pieceId: piece.id });
+    } else if (kind === 'technique') {
+      const item = await createTechnique({ name: title, category: detail.trim(), notes: '' });
+      onCreated({ kind: 'technique', techniqueId: item.id });
+    } else {
+      onCreated({ kind: 'free', label: title });
+    }
+  };
+
+  return (
+    <form
+      className={styles.newForm}
+      onSubmit={(event) => {
+        event.preventDefault();
+        void submit();
+      }}
+    >
+      <button type="button" className={styles.change} onClick={onBack}>
+        <ArrowLeft size={16} aria-hidden="true" /> Back
+      </button>
+      {kind === 'piece' && (
+        <>
+          <TextInput
+            label="Title"
+            placeholder="e.g. Clair de lune"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            autoFocus
+          />
+          <TextInput
+            label="Composer (optional)"
+            value={detail}
+            onChange={(event) => setDetail(event.target.value)}
+          />
+          <p className={styles.hint}>
+            It’s added to your pieces as “Learning”. Add details later on its page.
+          </p>
+        </>
+      )}
+      {kind === 'technique' && (
+        <>
+          <TextInput
+            label="Name"
+            placeholder="e.g. Hanon No. 1, C major scale"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            autoFocus
+          />
+          <Field label="Category (optional)" htmlFor="new-technique-category">
+            <Input
+              id="new-technique-category"
+              placeholder="e.g. Scales"
+              list="technique-categories"
+              value={detail}
+              onChange={(event) => setDetail(event.target.value)}
+            />
+          </Field>
+          <datalist id="technique-categories">
+            {categories.map((c) => (
+              <option key={c} value={c} />
+            ))}
+          </datalist>
+        </>
+      )}
+      {kind === 'free' && (
+        <>
+          <TextInput
+            label="What will you practice?"
+            placeholder="e.g. Hymn accompaniment, p. 12"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            autoFocus
+          />
+          <p className={styles.hint}>
+            For something you practice once. For things you come back to, create a piece or
+            technique item instead.
+          </p>
+        </>
+      )}
+      <Button type="submit" variant="primary" disabled={!name.trim()}>
+        Create and add
+      </Button>
+    </form>
   );
 }
