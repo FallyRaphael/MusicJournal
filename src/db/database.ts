@@ -1,6 +1,7 @@
 import Dexie, { type EntityTable } from 'dexie';
 import type { BackupData } from '../domain/backup';
 import type {
+  Book,
   Cycle,
   Piece,
   SectionType,
@@ -25,6 +26,7 @@ export interface Snapshot {
 export class PracticeDatabase extends Dexie {
   pieces!: EntityTable<Piece, 'id'>;
   techniqueItems!: EntityTable<TechniqueItem, 'id'>;
+  books!: EntityTable<Book, 'id'>;
   sectionTypes!: EntityTable<SectionType, 'id'>;
   templates!: EntityTable<SessionTemplate, 'id'>;
   sessions!: EntityTable<Session, 'id'>;
@@ -52,6 +54,21 @@ export class PracticeDatabase extends Dexie {
 
     // v2: snapshot before an import (not part of backups).
     this.version(2).stores({ snapshots: 'id' });
+
+    // v3: numbered books, and sessions indexed by the books they contain.
+    this.version(3)
+      .stores({
+        books: 'id, updatedAt',
+        sessions: 'id, date, status, updatedAt, *pieceIds, *techniqueIds, *bookIds',
+      })
+      .upgrade((tx) =>
+        tx
+          .table('sessions')
+          .toCollection()
+          .modify((session: Session) => {
+            session.bookIds ??= [];
+          }),
+      );
 
     // Runs once, when the database is first created on a device.
     this.on('populate', (tx) => {

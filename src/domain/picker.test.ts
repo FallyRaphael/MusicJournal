@@ -56,7 +56,8 @@ describe('sectionKind', () => {
   it('guesses from the name for a section never used', () => {
     expect(sectionKind([], 'x', 'Repertoire')).toBe('piece');
     expect(sectionKind([], 'x', 'Warm-up')).toBe('technique');
-    expect(sectionKind([], 'x', 'Sight-reading')).toBe('free');
+    expect(sectionKind([], 'x', 'Sight-reading')).toBe('book');
+    expect(sectionKind([], 'x', 'Theory & ear training')).toBe('free');
   });
 });
 

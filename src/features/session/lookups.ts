@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
+import { useBooks } from '../../db/books';
 import { usePieces } from '../../db/pieces';
 import { sectionOrder, useSectionTypes } from '../../db/sectionTypes';
 import { useTechniqueItems } from '../../db/techniques';
 import type {
+  Book,
   Id,
   ItemRef,
   Piece,
@@ -11,6 +13,7 @@ import type {
   TechniqueItem,
 } from '../../domain/model';
 import type { SectionOrder } from '../../domain/session';
+import { formatRange } from '../../domain/books';
 import { composerLine } from '../pieces/labels';
 
 export interface ItemInfo {
@@ -26,6 +29,7 @@ export function describeItem(
   ref: ItemRef,
   pieces: ReadonlyMap<Id, Piece>,
   techniques: ReadonlyMap<Id, TechniqueItem>,
+  books: ReadonlyMap<Id, Book>,
 ): ItemInfo {
   switch (ref.kind) {
     case 'piece': {
@@ -45,6 +49,17 @@ export function describeItem(
         ? { title: item.name, subtitle: item.category, focusNote: item.focusNote, missing: false }
         : { title: 'Deleted technique item', subtitle: '', focusNote: '', missing: true };
     }
+    case 'book': {
+      const book = books.get(ref.bookId);
+      return book
+        ? {
+            title: book.name,
+            subtitle: book.total ? `Book · ${book.total} exercises` : 'Book',
+            focusNote: '',
+            missing: false,
+          }
+        : { title: 'Deleted book', subtitle: '', focusNote: '', missing: true };
+    }
     case 'free':
       return { title: ref.label, subtitle: '', focusNote: '', missing: false };
   }
@@ -61,34 +76,42 @@ export interface Lookups {
   order: SectionOrder;
   pieces: Piece[];
   techniques: TechniqueItem[];
+  books: Book[];
 }
 
 /** Everything needed to show session items by name. */
 export function useLookups(): Lookups {
   const pieces = usePieces();
   const techniques = useTechniqueItems();
+  const books = useBooks();
   const sectionTypes = useSectionTypes();
 
   return useMemo(() => {
     const pieceMap = new Map((pieces ?? []).map((p) => [p.id, p]));
     const techniqueMap = new Map((techniques ?? []).map((t) => [t.id, t]));
+    const bookMap = new Map((books ?? []).map((b) => [b.id, b]));
     const typeMap = new Map((sectionTypes ?? []).map((t) => [t.id, t]));
     return {
-      loaded: pieces !== undefined && techniques !== undefined && sectionTypes !== undefined,
-      info: (ref: ItemRef) => describeItem(ref, pieceMap, techniqueMap),
+      loaded:
+        pieces !== undefined &&
+        techniques !== undefined &&
+        books !== undefined &&
+        sectionTypes !== undefined,
+      info: (ref: ItemRef) => describeItem(ref, pieceMap, techniqueMap, bookMap),
       sectionName: (id: Id) => typeMap.get(id)?.name ?? 'Other',
       sectionTypes: sectionTypes ?? [],
       activeSectionTypes: (sectionTypes ?? []).filter((t) => !t.archived),
       order: sectionOrder(sectionTypes ?? []),
       pieces: pieces ?? [],
       techniques: techniques ?? [],
+      books: books ?? [],
     };
-  }, [pieces, techniques, sectionTypes]);
+  }, [pieces, techniques, books, sectionTypes]);
 }
 
-/** "Slow practice · 60 BPM" */
+/** "Slow practice · 60 BPM", or "No. 45–48" for a book */
 export function describeEntry(entry: PracticeEntry): string {
-  return [entry.method, entry.bpm !== undefined ? `${entry.bpm} BPM` : '']
+  return [formatRange(entry), entry.method, entry.bpm !== undefined ? `${entry.bpm} BPM` : '']
     .filter(Boolean)
     .join(' · ');
 }

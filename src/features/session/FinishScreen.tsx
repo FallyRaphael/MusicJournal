@@ -34,7 +34,7 @@ function focusTargets(session: Session): { ref: ItemRef; key: string; focusNext:
   const seen = new Set<string>();
   const targets = [];
   for (const { item } of planItems(session.sections)) {
-    if (item.ref.kind === 'free') continue;
+    if (item.ref.kind === 'free' || item.ref.kind === 'book') continue;
     const key = refKey(item.ref);
     if (seen.has(key)) continue;
     seen.add(key);

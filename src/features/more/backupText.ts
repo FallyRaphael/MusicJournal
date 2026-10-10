@@ -4,6 +4,7 @@ import type { SyncedTable } from '../../domain/model';
 const NAMES: Record<SyncedTable, [one: string, many: string]> = {
   pieces: ['piece', 'pieces'],
   techniqueItems: ['technique item', 'technique items'],
+  books: ['book', 'books'],
   sectionTypes: ['section type', 'section types'],
   templates: ['template', 'templates'],
   sessions: ['session', 'sessions'],
@@ -18,7 +19,7 @@ export function countOf(table: SyncedTable, count: number): string {
 
 /** What a backup contains, e.g. "3 pieces · 12 sessions · 1 cycle". */
 export function contentsLine(data: BackupData): string {
-  const parts = (['pieces', 'sessions', 'cycles', 'templates'] as const)
+  const parts = (['pieces', 'sessions', 'cycles', 'templates', 'books'] as const)
     .filter((table) => data[table].length > 0)
     .map((table) => countOf(table, data[table].length));
   return parts.length > 0 ? parts.join(' · ') : 'no pieces or sessions';

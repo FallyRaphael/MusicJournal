@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { createBackupFile, parseBackupFile } from '../domain/backup';
 import { importData, readAllData, undoLastImport } from './backup';
 import { db } from './database';
+import { createBook } from './books';
 import { createPiece, deletePiece, updatePiece } from './pieces';
 
 beforeEach(async () => {
@@ -66,6 +67,15 @@ describe('backup and restore', () => {
     await undoLastImport();
     expect((await db.pieces.toArray()).map((p) => p.title)).toEqual(['Before']);
     expect(await db.snapshots.count()).toBe(0);
+  });
+
+  it('backs up and restores books', async () => {
+    await createBook({ name: 'Sight-reading book', total: 500, notes: '' });
+    const snapshot = await backup();
+    expect(snapshot.books).toHaveLength(1);
+    await db.books.clear();
+    await importData(snapshot, 'merge');
+    expect((await db.books.toArray()).map((b) => b.total)).toEqual([500]);
   });
 
   it('keeps the section types if a replaced backup has none', async () => {

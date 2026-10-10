@@ -1,4 +1,5 @@
 import {
+  BookOpen,
   ChevronRight,
   Dumbbell,
   History,
@@ -70,6 +71,7 @@ export function MoreScreen() {
           <NavRow to="/sessions" icon={History} label="Session history" />
           <NavRow to="/templates" icon={ListChecks} label="Templates" />
           <NavRow to="/technique" icon={Dumbbell} label="Technique items" />
+          <NavRow to="/books" icon={BookOpen} label="Books" />
         </ul>
       </Card>
 

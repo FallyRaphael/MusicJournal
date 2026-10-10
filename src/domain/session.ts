@@ -168,17 +168,19 @@ export function planItems<T extends PlanItem>(
 
 /* ---------- Session derived values ---------- */
 
-/** The ids of pieces and technique items in a session (stored as search indexes). */
+/** The ids of pieces, technique items and books in a session (stored as search indexes). */
 export function sessionIndexes(
   sections: readonly SessionSection[],
-): Pick<Session, 'pieceIds' | 'techniqueIds'> {
+): Pick<Session, 'pieceIds' | 'techniqueIds' | 'bookIds'> {
   const pieceIds = new Set<Id>();
   const techniqueIds = new Set<Id>();
+  const bookIds = new Set<Id>();
   for (const { item } of planItems(sections)) {
     if (item.ref.kind === 'piece') pieceIds.add(item.ref.pieceId);
     if (item.ref.kind === 'technique') techniqueIds.add(item.ref.techniqueId);
+    if (item.ref.kind === 'book') bookIds.add(item.ref.bookId);
   }
-  return { pieceIds: [...pieceIds], techniqueIds: [...techniqueIds] };
+  return { pieceIds: [...pieceIds], techniqueIds: [...techniqueIds], bookIds: [...bookIds] };
 }
 
 export function findItem(session: Pick<Session, 'sections'>, itemId: Id): SessionItem | undefined {
@@ -307,6 +309,8 @@ export function logEntry(
     at: now,
     method: fields.method,
     ...(fields.bpm !== undefined ? { bpm: fields.bpm } : {}),
+    ...(fields.from !== undefined ? { from: fields.from } : {}),
+    ...(fields.to !== undefined ? { to: fields.to } : {}),
     note: fields.note,
   };
   return updateSessionItem(

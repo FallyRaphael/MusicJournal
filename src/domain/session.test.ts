@@ -103,6 +103,7 @@ describe('plans', () => {
     expect(sessionIndexes(session().sections)).toEqual({
       pieceIds: ['p1', 'p2'],
       techniqueIds: [],
+      bookIds: [],
     });
   });
 });

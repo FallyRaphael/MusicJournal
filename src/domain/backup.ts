@@ -9,6 +9,7 @@
 
 import * as z from 'zod';
 import type {
+  Book,
   Cycle,
   Id,
   Piece,
@@ -23,11 +24,13 @@ import type {
 } from './model';
 
 export const BACKUP_APP = 'practice-journal';
-export const BACKUP_FORMAT_VERSION = 1;
+/** 2: adds books. Version 1 files (without books) can still be imported. */
+export const BACKUP_FORMAT_VERSION = 2;
 
 export const SYNCED_TABLES = [
   'pieces',
   'techniqueItems',
+  'books',
   'sectionTypes',
   'templates',
   'sessions',
@@ -38,6 +41,7 @@ export const SYNCED_TABLES = [
 export interface BackupData {
   pieces: Piece[];
   techniqueItems: TechniqueItem[];
+  books: Book[];
   sectionTypes: SectionType[];
   templates: SessionTemplate[];
   sessions: Session[];
@@ -73,6 +77,7 @@ const base = { id, createdAt: time, updatedAt: time };
 const itemRef = z.discriminatedUnion('kind', [
   z.looseObject({ kind: z.literal('piece'), pieceId: id }),
   z.looseObject({ kind: z.literal('technique'), techniqueId: id }),
+  z.looseObject({ kind: z.literal('book'), bookId: id }),
   z.looseObject({ kind: z.literal('free'), label: z.string() }),
 ]);
 const pieceStatus = z.enum(['upNext', 'learning', 'maintaining', 'shelved']);
@@ -104,6 +109,14 @@ const techniqueItem = z.looseObject({
   category: z.string(),
   notes: z.string(),
   focusNote: z.string(),
+  archived: z.boolean(),
+});
+
+const book = z.looseObject({
+  ...base,
+  name: z.string(),
+  total: z.number().int().positive().optional(),
+  notes: z.string(),
   archived: z.boolean(),
 });
 
@@ -140,6 +153,8 @@ const sessionItem = z.looseObject({
       at: time,
       method: z.string(),
       bpm: z.number().optional(),
+      from: z.number().int().optional(),
+      to: z.number().int().optional(),
       note: z.string(),
     }),
   ),
@@ -161,6 +176,7 @@ const session = z.looseObject({
   lastActivityAt: time.optional(),
   pieceIds: z.array(id),
   techniqueIds: z.array(id),
+  bookIds: z.array(id).optional(),
 });
 
 const cycle = z.looseObject({
@@ -196,6 +212,7 @@ const settings = z.looseObject({
 const backupData = z.looseObject({
   pieces: z.array(piece),
   techniqueItems: z.array(techniqueItem),
+  books: z.array(book).default([]),
   sectionTypes: z.array(sectionType),
   templates: z.array(template),
   sessions: z.array(session),

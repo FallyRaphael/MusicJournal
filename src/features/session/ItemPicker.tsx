@@ -1,5 +1,6 @@
 import { ArrowLeft, Check, ChevronRight, Plus } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
+import { createBook } from '../../db/books';
 import { createPiece } from '../../db/pieces';
 import { useRecentSessions } from '../../db/sessions';
 import { createTechnique } from '../../db/techniques';
@@ -18,8 +19,10 @@ import type { Lookups } from './lookups';
 const CREATE_LABELS: Record<PickKind, string> = {
   piece: 'Piece',
   technique: 'Technique',
+  book: 'Book',
   free: 'One-off',
 };
+const KINDS = ['piece', 'technique', 'book', 'free'] as const;
 
 interface ItemPickerProps {
   open: boolean;
@@ -143,24 +146,30 @@ export function ItemPicker({
   const techniqueRefs: ItemRef[] = lookups.techniques
     .filter((t) => !t.archived && matchesQuery(query, `${t.name} ${t.category}`))
     .map((t) => ({ kind: 'technique', techniqueId: t.id }));
+  const bookRefs: ItemRef[] = lookups.books
+    .filter((b) => !b.archived && matchesQuery(query, b.name))
+    .map((b) => ({ kind: 'book', bookId: b.id }));
   const freeRefs = recentInSection(sessions ?? [], section, 50).filter(
     (ref) => ref.kind === 'free' && matchesQuery(query, ref.label),
   );
 
+  // Without a search, suggested items aren't listed a second time below.
+  const suggestedKeys = new Set(query ? [] : recent.map(refKey));
+  const notSuggested = (refs: ItemRef[]) => refs.filter((ref) => !suggestedKeys.has(refKey(ref)));
   const groups: Record<PickKind, ReactNode> = {
     piece: group(
       'Pieces',
-      pieceRefs,
+      notSuggested(pieceRefs),
       lookups.pieces.length === 0 && !query ? 'No pieces yet – create one below.' : undefined,
     ),
-    technique: group('Technique', techniqueRefs),
+    technique: group('Technique', notSuggested(techniqueRefs)),
+    book: group('Books', notSuggested(bookRefs)),
     free: query ? group('One-offs', freeRefs) : null,
   };
-  const order: PickKind[] = [preferred, ...(['piece', 'technique', 'free'] as const)].filter(
-    (kind, i, all) => all.indexOf(kind) === i,
-  );
+  const order: PickKind[] = [preferred, ...KINDS].filter((kind, i, all) => all.indexOf(kind) === i);
   const nothingFound =
-    query !== '' && pieceRefs.length + techniqueRefs.length + freeRefs.length === 0;
+    query !== '' &&
+    pieceRefs.length + techniqueRefs.length + bookRefs.length + freeRefs.length === 0;
 
   return (
     <Sheet open={open} onClose={onClose} title={`Add to ${sectionName}`} footer={footer}>
@@ -183,7 +192,11 @@ export function ItemPicker({
               <ArrowLeft size={16} aria-hidden="true" /> Other section
             </button>
           )}
-          <SearchField label="Search pieces and technique" value={query} onChange={setQuery} />
+          <SearchField
+            label="Search pieces, technique and books"
+            value={query}
+            onChange={setQuery}
+          />
 
           {!query && group('Suggested', recent)}
           {nothingFound && <p className={styles.empty}>Nothing found – create it below.</p>}
@@ -192,7 +205,7 @@ export function ItemPicker({
           <section className={styles.group} aria-label="Create new">
             <h3 className={styles.groupTitle}>Create new</h3>
             <div className={styles.createButtons}>
-              {(['piece', 'technique', 'free'] as const).map((kind) => (
+              {KINDS.map((kind) => (
                 <Button
                   key={kind}
                   icon={<Plus size={18} aria-hidden="true" />}
@@ -244,6 +257,14 @@ function CreateForm({ kind, lookups, initial, onBack, onCreated }: CreateFormPro
     } else if (kind === 'technique') {
       const item = await createTechnique({ name: title, category: detail.trim(), notes: '' });
       onCreated({ kind: 'technique', techniqueId: item.id });
+    } else if (kind === 'book') {
+      const total = Number(detail);
+      const book = await createBook({
+        name: title,
+        total: Number.isInteger(total) && total > 0 ? total : undefined,
+        notes: '',
+      });
+      onCreated({ kind: 'book', bookId: book.id });
     } else {
       onCreated({ kind: 'free', label: title });
     }
@@ -304,6 +325,28 @@ function CreateForm({ kind, lookups, initial, onBack, onCreated }: CreateFormPro
           </datalist>
         </>
       )}
+      {kind === 'book' && (
+        <>
+          <TextInput
+            label="Name"
+            placeholder="e.g. Sight-reading book 1"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            autoFocus
+          />
+          <TextInput
+            label="Number of exercises (optional)"
+            type="number"
+            inputMode="numeric"
+            min={1}
+            value={detail}
+            onChange={(event) => setDetail(event.target.value)}
+          />
+          <p className={styles.hint}>
+            You log which numbers you played, and the app remembers where you are.
+          </p>
+        </>
+      )}
       {kind === 'free' && (
         <>
           <TextInput
@@ -314,8 +357,8 @@ function CreateForm({ kind, lookups, initial, onBack, onCreated }: CreateFormPro
             autoFocus
           />
           <p className={styles.hint}>
-            For something you practice once. For things you come back to, create a piece or
-            technique item instead.
+            For something you practice once. For things you come back to, create a piece, technique
+            item or book instead.
           </p>
         </>
       )}

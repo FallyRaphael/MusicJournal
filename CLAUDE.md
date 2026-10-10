@@ -34,7 +34,7 @@ timer, prev/pause/next, method buttons, a BPM stepper and an "All items" overvie
 - Session and template changes go through `mutateSession` / `mutateTemplate` (read–change–write
   in one transaction). Editors pass _updater functions_ (`PlanEditor.onChange`,
   `BudgetControl.onChange`) so quick repeated taps don't overwrite each other.
-- Session items reference pieces/technique/free text via `ItemRef`; compare with `sameRef` /
+- Session items reference pieces/technique/books/one-offs (`free`) via `ItemRef`; compare with `sameRef` /
   `refKey` from `src/domain/refs.ts`. Section order follows the section types' `order`.
 - The work catalog (`src/catalog/catalog.json`) is generated data; only add entries whose
   catalog numbers and keys are certain. Search normalisation lives in `src/domain/search.ts`.

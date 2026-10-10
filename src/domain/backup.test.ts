@@ -29,6 +29,7 @@ function data(overrides: Partial<BackupData> = {}): BackupData {
   return {
     pieces: [],
     techniqueItems: [],
+    books: [],
     sectionTypes: [],
     templates: [],
     sessions: [],
@@ -40,6 +41,14 @@ function data(overrides: Partial<BackupData> = {}): BackupData {
 }
 
 describe('parseBackupFile', () => {
+  it('reads version 1 files, which have no books', () => {
+    const withoutBooks: Partial<BackupData> = data();
+    delete withoutBooks.books;
+    const file = { ...createBackupFile(data(), 1), formatVersion: 1, data: withoutBooks };
+    const parsed = parseBackupFile(JSON.stringify(file));
+    expect(parsed.ok && parsed.file.data.books).toEqual([]);
+  });
+
   it('reads back what was exported', () => {
     const file = createBackupFile(data({ pieces: [piece('a', 1, 'Nocturne')] }), 123);
     const parsed = parseBackupFile(JSON.stringify(file));

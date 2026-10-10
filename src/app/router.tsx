@@ -13,6 +13,7 @@ import { SessionRoute } from '../features/session/SessionRoute';
 import { LogSessionScreen } from '../features/session/LogSessionScreen';
 import { SessionsScreen } from '../features/session/SessionsScreen';
 import { TechniqueScreen } from '../features/technique/TechniqueScreen';
+import { BooksScreen } from '../features/books/BooksScreen';
 import { TemplateEditorScreen } from '../features/templates/TemplateEditorScreen';
 import { TemplatesScreen } from '../features/templates/TemplatesScreen';
 import { AppShell } from './AppShell';
@@ -36,6 +37,7 @@ export const router = createHashRouter([
           { path: 'sessions', Component: SessionsScreen },
           { path: 'templates', Component: TemplatesScreen },
           { path: 'technique', Component: TechniqueScreen },
+          { path: 'books', Component: BooksScreen },
           { path: 'cycles/:cycleId', Component: CycleSummaryScreen },
         ],
       },

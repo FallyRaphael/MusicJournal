@@ -14,11 +14,13 @@ export interface TempoPoint {
   method: string;
 }
 
-/** The fastest tempo logged for matching items in each practiced session, oldest first. */
+/**
+ * The fastest tempo logged for matching items in each session, oldest first. (Entries count
+ * even in a session whose timer never ran.)
+ */
 export function tempoHistory(matches: RefMatcher, sessions: readonly Session[]): TempoPoint[] {
   const points: TempoPoint[] = [];
   for (const session of sessions) {
-    if (session.status === 'planned') continue;
     let best: { bpm: number; method: string } | undefined;
     for (const section of session.sections) {
       for (const item of section.items) {

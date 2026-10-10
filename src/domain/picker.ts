@@ -51,6 +51,7 @@ export function sectionKind(
   if (mostCommon) return mostCommon;
   if (/repertoire|piece/i.test(sectionName)) return 'piece';
   if (/technique|warm/i.test(sectionName)) return 'technique';
+  if (/sight|étude|etude|book/i.test(sectionName)) return 'book';
   return 'free';
 }
 

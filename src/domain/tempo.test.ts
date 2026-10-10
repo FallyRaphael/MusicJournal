@@ -68,12 +68,12 @@ describe('tempoHistory', () => {
     ]);
   });
 
-  it('skips sessions without a tempo and planned sessions', () => {
+  it('skips sessions without a tempo, but counts entries logged before the timer ran', () => {
     const points = tempoHistory(isPiece('p1'), [
       session('none', 1000, [entry(undefined)]),
       session('planned', 2000, [entry(90)], 'planned'),
     ]);
-    expect(points).toEqual([]);
+    expect(points.map((p) => p.sessionId)).toEqual(['planned']);
   });
 });
 

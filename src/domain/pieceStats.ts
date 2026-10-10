@@ -31,6 +31,11 @@ export const isTechnique =
   (ref) =>
     ref.kind === 'technique' && ref.techniqueId === techniqueId;
 
+export const isBook =
+  (bookId: Id): RefMatcher =>
+  (ref) =>
+    ref.kind === 'book' && ref.bookId === bookId;
+
 /** The practiced sessions with matching items, newest first. */
 export function sessionSummaries(
   matches: RefMatcher,

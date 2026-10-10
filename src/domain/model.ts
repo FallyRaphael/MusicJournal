@@ -64,6 +64,15 @@ export interface TechniqueItem extends BaseRecord {
   archived: boolean;
 }
 
+/** A book of numbered exercises worked through in order, e.g. for sight-reading. */
+export interface Book extends BaseRecord {
+  name: string;
+  /** How many exercises the book has, if known. */
+  total?: number;
+  notes: string;
+  archived: boolean;
+}
+
 /* ---------- Sessions ---------- */
 
 export interface SectionType extends BaseRecord {
@@ -76,6 +85,7 @@ export interface SectionType extends BaseRecord {
 export type ItemRef =
   | { kind: 'piece'; pieceId: Id }
   | { kind: 'technique'; techniqueId: Id }
+  | { kind: 'book'; bookId: Id }
   | { kind: 'free'; label: string };
 
 export interface TemplateItem {
@@ -106,6 +116,9 @@ export interface PracticeEntry {
   at: Timestamp;
   method: string;
   bpm?: number;
+  /** Book entries: the numbers of the first and last exercise played. */
+  from?: number;
+  to?: number;
   note: string;
 }
 
@@ -148,6 +161,8 @@ export interface Session extends BaseRecord {
   pieceIds: Id[];
   /** Search index only: ids of all technique items in `sections`. */
   techniqueIds: Id[];
+  /** Search index only: ids of all books in `sections` (missing in sessions saved before books). */
+  bookIds?: Id[];
 }
 
 /* ---------- Cycles ---------- */
@@ -203,4 +218,11 @@ export interface Tombstone {
 
 /** The tables that hold user data and take part in backups. */
 export type SyncedTable =
-  'pieces' | 'techniqueItems' | 'sectionTypes' | 'templates' | 'sessions' | 'cycles' | 'settings';
+  | 'pieces'
+  | 'techniqueItems'
+  | 'books'
+  | 'sectionTypes'
+  | 'templates'
+  | 'sessions'
+  | 'cycles'
+  | 'settings';

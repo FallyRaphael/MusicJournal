@@ -1,6 +1,7 @@
 import { Flag, List, NotebookPen, Pause, Play, SkipBack, SkipForward, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
+import { useBookSessions } from '../../db/books';
 import {
   deleteSession,
   mutateSession,
@@ -9,6 +10,7 @@ import {
 } from '../../db/sessions';
 import { useSettings } from '../../db/settings';
 import type { Id, Session } from '../../domain/model';
+import { bookProgress } from '../../domain/books';
 import { lastBpm } from '../../domain/pieceStats';
 import { sameRef } from '../../domain/refs';
 import {
@@ -41,7 +43,7 @@ import { MinutesSheet, TextSheet } from '../../ui/TextSheet';
 import { NoBreakKeys } from '../../ui/NoBreakKeys';
 import { ItemPicker } from './ItemPicker';
 import { useLookups } from './lookups';
-import { QuickLog } from './QuickLog';
+import { BookLog, QuickLog } from './QuickLog';
 import { AllItemsSheet, EntriesSheet } from './SessionSheets';
 import styles from './StageScreen.module.css';
 
@@ -61,6 +63,7 @@ export function StageScreen({ session }: { session: Session }) {
   const settings = useSettings();
   const recentSessions = useRecentSessions();
   const runningSession = useRunningSession();
+  const bookSessions = useBookSessions();
 
   const running = runningItem(session);
   const now = useNow(running ? 250 : 30_000);
@@ -78,6 +81,18 @@ export function StageScreen({ session }: { session: Session }) {
   const elapsed = current ? itemSeconds(current, now) : 0;
   const budgetSeconds = current?.budgetMinutes ? current.budgetMinutes * 60 : undefined;
   const isLast = current ? neighborItemId(session, current.id, 1) === undefined : true;
+  const bookRef = current?.ref.kind === 'book' ? current.ref : undefined;
+  const book = bookRef && {
+    total: lookups.books.find((b) => b.id === bookRef.bookId)?.total,
+    progress: bookProgress(bookRef.bookId, bookSessions ?? []),
+  };
+  const subtitle = book
+    ? book.progress.last === undefined
+      ? info?.subtitle
+      : book.total
+        ? `${book.progress.last} of ${book.total} done`
+        : `Up to No. ${book.progress.last}`
+    : info?.subtitle;
   const blockedBy =
     runningSession && runningSession.id !== session.id && session.status === 'planned'
       ? runningSession
@@ -221,7 +236,7 @@ export function StageScreen({ session }: { session: Session }) {
             <h1 className={styles.title}>
               <NoBreakKeys text={info!.title} />
             </h1>
-            {info!.subtitle && <p className={styles.subtitle}>{info!.subtitle}</p>}
+            {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
             <p
               className={`${styles.clock} tabular`}
               role="timer"
@@ -275,14 +290,27 @@ export function StageScreen({ session }: { session: Session }) {
             </section>
           )}
 
-          <QuickLog
-            key={current.id}
-            methods={settings.methods}
-            defaultBpm={defaultBpm}
-            entryCount={current.entries.length}
-            onShowEntries={() => open('entries')}
-            onLog={(entry) => act((s, at) => logEntry(s, current.id, entry, at))}
-          />
+          {book ? (
+            bookSessions !== undefined && (
+              <BookLog
+                key={current.id}
+                next={book.progress.next}
+                total={book.total}
+                entryCount={current.entries.length}
+                onShowEntries={() => open('entries')}
+                onLog={(entry) => act((s, at) => logEntry(s, current.id, entry, at))}
+              />
+            )
+          ) : (
+            <QuickLog
+              key={current.id}
+              methods={settings.methods}
+              defaultBpm={defaultBpm}
+              entryCount={current.entries.length}
+              onShowEntries={() => open('entries')}
+              onLog={(entry) => act((s, at) => logEntry(s, current.id, entry, at))}
+            />
+          )}
 
           <div className={styles.itemActions}>
             <Button
@@ -292,13 +320,15 @@ export function StageScreen({ session }: { session: Session }) {
             >
               {current.note ? 'Edit note' : 'Note'}
             </Button>
-            <Button
-              variant="ghost"
-              icon={<Flag size={18} aria-hidden="true" />}
-              onClick={() => open('focus')}
-            >
-              {current.focusNext ? 'Edit focus next time' : 'Focus next time'}
-            </Button>
+            {!book && (
+              <Button
+                variant="ghost"
+                icon={<Flag size={18} aria-hidden="true" />}
+                onClick={() => open('focus')}
+              >
+                {current.focusNext ? 'Edit focus next time' : 'Focus next time'}
+              </Button>
+            )}
           </div>
         </div>
       )}
