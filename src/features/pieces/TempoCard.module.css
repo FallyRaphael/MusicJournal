@@ -1,0 +1,96 @@
+.title {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.current {
+  margin-top: 4px;
+  color: var(--text-muted);
+}
+
+.bpm {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text);
+}
+
+.muted {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.chart {
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.chart:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.grid {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.goal {
+  stroke: var(--text-muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+
+.guide {
+  stroke: var(--border-strong);
+  stroke-width: 1;
+}
+
+.line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.dot {
+  fill: var(--accent);
+}
+
+.selected {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.label {
+  font-size: 12px;
+  fill: var(--text-muted);
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: -8px 0 -10px;
+  font-size: var(--text-sm);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target);
+  padding: 0 4px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}

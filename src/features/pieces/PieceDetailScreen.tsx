@@ -1,6 +1,7 @@
 import { Ellipsis, Flag, Pencil, RefreshCw, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
+import { useCycles } from '../../db/cycles';
 import {
   changePieceStatus,
   deletePiece,
@@ -8,10 +9,11 @@ import {
   usePiece,
   usePieceSessions,
 } from '../../db/pieces';
-import { fromDateKey } from '../../domain/dates';
+import { fromDateKey, toDateKey } from '../../domain/dates';
 import type { Piece, PieceStatus } from '../../domain/model';
-import { pieceSessionSummaries, pieceStats } from '../../domain/pieceStats';
+import { isPiece, pieceSessionSummaries, pieceStats } from '../../domain/pieceStats';
 import { currentStatusSince, statusPeriods } from '../../domain/pieces';
+import { runningTempoGoal, tempoHistory } from '../../domain/tempo';
 import { formatDuration, formatMediumDate, formatShortDate } from '../../lib/format';
 import { useGoBack } from '../../lib/navigation';
 import { useNow } from '../../lib/useNow';
@@ -27,6 +29,7 @@ import { TextSheet } from '../../ui/TextSheet';
 import { composerLine, FEEL_LABELS, OUTCOME_LABELS, STATUS_LABELS } from './labels';
 import styles from './PieceDetailScreen.module.css';
 import { StatusSheet } from './PieceSheets';
+import { TempoCard } from './TempoCard';
 
 type OpenSheet =
   { kind: 'menu' | 'focus' | 'notes' | 'delete' } | { kind: 'status'; preset: PieceStatus };
@@ -51,6 +54,7 @@ function PieceDetail({ piece }: { piece: Piece }) {
   const navigate = useNavigate();
   const goBack = useGoBack('/pieces');
   const sessions = usePieceSessions(piece.id);
+  const cycles = useCycles();
   const [sheet, setSheet] = useState<OpenSheet | null>(null);
   // Changes whenever a sheet opens, so sheets with inputs start fresh each time.
   const [sheetKey, setSheetKey] = useState(0);
@@ -67,6 +71,12 @@ function PieceDetail({ piece }: { piece: Piece }) {
   const recent = pieceSessionSummaries(piece.id, sessions ?? [], now).slice(0, 5);
   const outcome = piece.statusHistory[piece.statusHistory.length - 1]?.outcome;
   const since = currentStatusSince(piece);
+  const tempo = tempoHistory(isPiece(piece.id), sessions ?? []);
+  const goalBpm = runningTempoGoal(
+    { kind: 'piece', pieceId: piece.id },
+    cycles ?? [],
+    toDateKey(new Date(now)),
+  );
 
   return (
     <Screen>
@@ -111,6 +121,8 @@ function PieceDetail({ piece }: { piece: Piece }) {
           <dd>{piece.targetDate ? formatShortDate(fromDateKey(piece.targetDate)) : '–'}</dd>
         </div>
       </dl>
+
+      {tempo.length >= 2 && <TempoCard points={tempo} goalBpm={goalBpm} />}
 
       <Card aria-labelledby="focus-title">
         <div className={styles.cardHeader}>
