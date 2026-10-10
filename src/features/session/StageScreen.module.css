@@ -43,7 +43,7 @@
   flex-grow: 1;
   flex-direction: column;
   gap: 16px;
-  padding: 0 var(--page-gutter) 24px;
+  padding: 12px var(--page-gutter) 24px;
 }
 
 .progress {
@@ -54,7 +54,9 @@
 
 .segments {
   display: grid;
+  align-items: center;
   gap: 4px;
+  min-height: 10px;
 }
 
 .segment {
@@ -64,9 +66,11 @@
   background: var(--border);
 }
 
+/* The current item stands out by size and a soft accent track, not by an outline. */
 .segmentCurrent {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--accent-soft);
 }
 
 .segmentFill {
@@ -113,7 +117,7 @@
 .clock {
   margin-top: 8px;
   font-family: var(--font-mono);
-  font-size: clamp(64px, 24vw, 104px);
+  font-size: clamp(52px, 17vw, 76px);
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1;
